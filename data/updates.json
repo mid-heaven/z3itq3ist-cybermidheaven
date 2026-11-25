@@ -24,7 +24,7 @@
     "spotifyEmbed": "https://open.spotify.com/embed/playlist/4zjr6vrc8wSm24YPigzhbL?utm_source=generator&theme=0",
     "spotifyProfileUrl": "https://open.spotify.com/user/31pu6vk7wf2wceqmz5yimpwmvzh4?si=2962cbee675f415a",
     "spotifyLinerNotes": "Wala. Trip ko lang ngayon.",
-    "updatedAt": "2026-11-25T14:00:13.489Z"
+    "updatedAt": "2026-11-25T14:01:18.451Z"
   },
   "operator": {
     "badge": "VERIFIED",
@@ -252,10 +252,10 @@
     {
       "id": "ad-01",
       "enabled": true,
-      "size": "lg",
+      "size": "tall",
       "theme": "acid",
       "win": "✨✨✨✨✨✨FOLLOW MY INSTAGRAM!✨✨✨✨✨",
-      "head": "˚.⋆꒰১IG USER WALANG POSTS, PURO STORIES!໒꒱⋆.˚",
+      "head": "˚.⋆꒰১ INSTAGRAM USER NA WALANG POSTS, PURO STORIES! ໒꒱⋆.˚",
       "copy": "Come on, guys! Lets be mutuals and fulfill my dreams of being an effortless cloutchaser. (>⩊<.ᐟ)",
       "cta": "CLICK AND FOLLOW HERE",
       "url": "https://www.instagram.com/z3itq3ist/",
@@ -432,201 +432,20 @@
   ],
   "archive": [
     {
-      "id": "all-mww6xpyq",
-      "createdAt": "2026-11-25T14:00:13.489Z",
-      "category": "DISPATCH",
-      "title": "FULL NODE SYNC",
-      "body": "Published Status, Directory, All 20 Ads, Operator & Integrations.",
+      "id": "ads-mww6z437",
+      "createdAt": "2026-11-25T14:01:18.451Z",
+      "category": "ADS_15",
+      "title": "15 POP-UP ADS SAVED",
+      "body": "Updated 15 Pop-Up Ads (15/15 active).",
       "restoreData": {
-        "current": {
-          "listening": "Signal Deck // Nocturnal Static",
-          "reading": "whatever",
-          "watching": "Pirate TV CH 01 // Dark Synthwave",
-          "fuel": "Iced Coffee // 3AM",
-          "mood": "Maxed-out GitHub Pages cyber-occult node online!",
-          "spotifyEmbed": "https://open.spotify.com/embed/playlist/4zjr6vrc8wSm24YPigzhbL?utm_source=generator&theme=0",
-          "spotifyProfileUrl": "https://open.spotify.com/user/31pu6vk7wf2wceqmz5yimpwmvzh4?si=2962cbee675f415a",
-          "spotifyLinerNotes": "Wala. Trip ko lang ngayon.",
-          "updatedAt": "2026-11-25T14:00:13.489Z"
-        },
-        "operator": {
-          "badge": "VERIFIED",
-          "avatarUrl": "",
-          "alias": "z3itq3ist",
-          "opClass": "TECHNO-PAGAN",
-          "sector": "WASTELAND_09",
-          "sigil": "ᛟ ⛨ ☽ ⌖",
-          "gridPct": 78,
-          "gridStatus": "SCRAPPED",
-          "occultPct": 92,
-          "occultStatus": "VOLATILE"
-        },
-        "directory": {
-          "manifestoNote": "",
-          "manifestoParagraphs": [
-            "You have drifted off the sterile corporate highway and tuned into z3itq3ist — a hand-welded digital altar built from salvaged markup, late-night static, esoteric notebooks, and bootleg signals.",
-            "No feeds, no engagement bait, no smooth minimalist cages. Everything here is stitched together by hand and archived permanently on GitHub.",
-            "Use the Sector Directory to raid my Spotify & grimoire rack, flip Pirate TV channels, pull a 3-Card Tarot spread, light the Digital Altar, rearrange the Cyber-Locker, or leave static in the Blackbox Chat."
-          ],
-          "ciphers": [
-            "ᛟ [DECRYPTED 01/04]: The weird web never died—it just went underground behind rusted firewalls.",
-            "☽ [DECRYPTED 02/04]: Click 7 flying cherubims/seraphims to summon the 3-HP Gilded Arch-Seraph Boss.",
-            "⛨ [DECRYPTED 03/04]: Enter the Konami Code (↑↑↓↓←→←→BA) to unlock the hidden Glitch Vault & 4th synth frequency.",
-            "⌖ [DECRYPTED 04/04]: Long live hand-coded HTML, weird shrines, and permanent personal archives."
-          ],
-          "books": [
-            {
-              "title": "[PLACEHOLDER BOOK TITLE #1]",
-              "author": "[Author Name #1]",
-              "format": "Physical / E-book",
-              "status": "READING",
-              "accent": "acid",
-              "cover": "https://placehold.co/90x132/0b0d0f/39ff14?text=BOOK+01",
-              "progressLabel": "PAGE 184 / 320",
-              "progressPct": 58,
-              "notes": "[@ 18%] First impressions on the prose.\n[@ 58%] Mid-book reaction."
-            },
-            {
-              "title": "[PLACEHOLDER BOOK TITLE #2]",
-              "author": "[Author Name #2]",
-              "format": "Essays / Manga",
-              "status": "SIDE READ",
-              "accent": "pink",
-              "cover": "https://placehold.co/90x132/0b0d0f/ff1f6d?text=BOOK+02",
-              "progressLabel": "PAGE 42 / 210",
-              "progressPct": 20,
-              "notes": "[@ 20%] Highlighted quote or hot take."
-            }
-          ],
-          "vhs": [
-            {
-              "type": "series",
-              "title": "The Boulet Brothers' Dragula season 7",
-              "year": "2026",
-              "status": "WATCHING",
-              "genre": "Alternative Drag Reality Series",
-              "progress": "S01 E05",
-              "rating": "4.5 / 5 ☠",
-              "accent": "cyan",
-              "notes": "Vanda LaRose",
-              "quote": "Hello, uglies!"
-            },
-            {
-              "type": "movie",
-              "title": "[PLACEHOLDER MOVIE #1]",
-              "year": "1999",
-              "status": "OBSESSED",
-              "genre": "Cult / Cyber-Horror",
-              "progress": "",
-              "rating": "5.0 / 5 ☠",
-              "accent": "acid",
-              "notes": "Why this film permanently rewired your brain.",
-              "quote": "Favorite movie quote."
-            }
-          ],
-          "tvChannels": [
-            {
-              "ch": "CH 01",
-              "label": "MIDNIGHT MIX",
-              "title": "MIDNIGHT TRANSMISSION // DARK SYNTHWAVE",
-              "embed": "https://www.youtube.com/embed/nMGxbYwkOPA?rel=0",
-              "note": "The Last Operator // 3AM dark synthwave transmission."
-            },
-            {
-              "ch": "CH 02",
-              "label": "VHS TOKYO",
-              "title": "TOKYO NOSTALGIA // VHS VAPORWAVE",
-              "embed": "https://www.youtube.com/embed/1XAUDIGSQEE?rel=0",
-              "note": "Late-night CRT tape visuals & nocturnal static."
-            },
-            {
-              "ch": "CH 03",
-              "label": "ARCADE RUIN",
-              "title": "ABANDONED ARCADE AMBIENT SYNTHWAVE",
-              "embed": "https://www.youtube.com/embed/yXsG4IUxXlo?rel=0",
-              "note": "No one plays here anymore // haunted neon cabinets."
-            },
-            {
-              "ch": "CH 04",
-              "label": "80S HORROR",
-              "title": "LATE NIGHT ARCADE // 80S HORROR VIBES",
-              "embed": "https://www.youtube.com/embed/gH6IzaznZFI?rel=0",
-              "note": "Retro tape station // midnight cassette loop."
-            }
-          ],
-          "gifs": [
-            {
-              "slot": 1,
-              "label": "CYBER_SKULL.GIF",
-              "url": ""
-            },
-            {
-              "slot": 2,
-              "label": "HEX_STAR.GIF",
-              "url": ""
-            },
-            {
-              "slot": 3,
-              "label": "ORACLE_EYE.GIF",
-              "url": ""
-            },
-            {
-              "slot": 4,
-              "label": "RUST_MOTH.GIF",
-              "url": ""
-            },
-            {
-              "slot": 5,
-              "label": "TRIPLE_MOON.GIF",
-              "url": ""
-            },
-            {
-              "slot": 6,
-              "label": "RUNE_CORE.GIF",
-              "url": ""
-            }
-          ],
-          "locker": {
-            "polaroid1Img": "https://placehold.co/220x200/0b0d0f/39ff14?text=POLAROID+01",
-            "polaroid1Cap": "[caption #1 // 2026]",
-            "polaroid2Img": "https://placehold.co/220x200/0b0d0f/ff1f6d?text=POLAROID+02",
-            "polaroid2Cap": "[late night static]",
-            "receiptHeader": "SECTOR 09 BODEGA",
-            "receiptItems": "1x ICED COFFEE | $4.04\n2x BLANK VHS | $6.66\n1x RAW HTML | FREE",
-            "receiptTotal": "SOUL_OK",
-            "zineQuote": "Drop your favorite unhinged lyric, book quote, or personal motto here.",
-            "ticketNo": "NO. 0666",
-            "ticketTitle": "[FAVORITE GIG / FILM STUB]",
-            "ticketDate": "DATE: 11/25/2026 // ROW Z"
-          },
-          "relays": {
-            "substackTitle": "[Latest Substack Essay Title]",
-            "substackDate": "NOV 25, 2026",
-            "substackTeaser": "1-2 sentence teaser of your newest Substack post or newsletter theme.",
-            "substackUrl": "https://YOUR_SUBSTACK.substack.com",
-            "igHandle": "YOUR_INSTAGRAM_HANDLE",
-            "igUrl": "https://instagram.com/YOUR_INSTAGRAM_HANDLE",
-            "igBio": "Darkroom dump, photos & visual chaos.",
-            "igImg1": "https://placehold.co/70x70/14080e/ff1f6d?text=01",
-            "igImg2": "https://placehold.co/70x70/0d1112/39ff14?text=02",
-            "igImg3": "https://placehold.co/70x70/081316/00f0ff?text=03",
-            "ttHandle": "YOUR_TIKTOK_HANDLE",
-            "ttUrl": "https://tiktok.com/@YOUR_TIKTOK_HANDLE",
-            "ttBio": "Short-form edits, rants & cursed clips.",
-            "fbHandle": "YOUR_FACEBOOK_HANDLE",
-            "fbUrl": "https://facebook.com/YOUR_FACEBOOK_HANDLE",
-            "fbBio": "Status dispatches & signal check-ins.",
-            "deadnetLinks": "INTERNET ARCHIVE | https://archive.org | RELIC_VAULT\nGIFCITIES | https://gifcities.org | GIF_DUMP"
-          }
-        },
         "popupAds": [
           {
             "id": "ad-01",
             "enabled": true,
-            "size": "lg",
+            "size": "tall",
             "theme": "acid",
             "win": "✨✨✨✨✨✨FOLLOW MY INSTAGRAM!✨✨✨✨✨",
-            "head": "˚.⋆꒰১IG USER WALANG POSTS, PURO STORIES!໒꒱⋆.˚",
+            "head": "˚.⋆꒰১ INSTAGRAM USER NA WALANG POSTS, PURO STORIES! ໒꒱⋆.˚",
             "copy": "Come on, guys! Lets be mutuals and fulfill my dreams of being an effortless cloutchaser. (>⩊<.ᐟ)",
             "cta": "CLICK AND FOLLOW HERE",
             "url": "https://www.instagram.com/z3itq3ist/",
@@ -798,58 +617,6 @@
             "copy": "Link your socials, guestbook, or newsletter here.",
             "cta": "CONNECT ↗",
             "url": "https://example.com/ad-15",
-            "img": ""
-          }
-        ],
-        "inlineAds": [
-          {
-            "id": "inline-1",
-            "enabled": true,
-            "marquee": "🦐🪩 FREE BRAIN RAM DOWNLOAD!! 紧急通知 999% 🧀🦖 무료 혜택 지금 클릭 👁️👄👁️ 🛸 NO SCAM 1000% REAL!! 🚽🔥",
-            "head": "⚡ OVERCLOCK YOUR SOUL 999%!! 神秘下载 // 무료 다운로드 🛸",
-            "sub": "SALVAGED CYBER-BARGAIN • 100% HAUNTED PIXELS • CLICK BEFORE SIGNAL DECAYS 🧀",
-            "cta": "CLAIM NOW ↗",
-            "url": "https://example.com/inline-ad-1",
-            "img": "gifs/mwvs4ul8-4hv2mfjbj7ym4exhozirwkxmrjxi434b.gif"
-          },
-          {
-            "id": "inline-2",
-            "enabled": true,
-            "marquee": "🗿 ALERT!! 경고 // 警告 🪱",
-            "head": "HAUNTED MODEM UPGRADE!! 999% SPEED 🛸",
-            "sub": "",
-            "cta": "DOWNLOAD NOW >>",
-            "url": "https://example.com/inline-ad-2",
-            "img": ""
-          },
-          {
-            "id": "inline-3",
-            "enabled": true,
-            "marquee": "",
-            "head": "SECRET MIXTAPE DROP // 秘密磁带 🪩",
-            "sub": "Edit all 5 inline neon banners directly from console.html!",
-            "cta": "OPEN PORTAL ↗",
-            "url": "https://example.com/inline-ad-3",
-            "img": ""
-          },
-          {
-            "id": "inline-4",
-            "enabled": true,
-            "marquee": "🧠 MEGA DEAL!! 奇迹 // 기적 🚽",
-            "head": "BUY 1 PIXEL GET 99 GHOSTS!! 🫧🦖",
-            "sub": "",
-            "cta": "ENTER!! 进入/입장 💎↗",
-            "url": "https://example.com/inline-ad-4",
-            "img": ""
-          },
-          {
-            "id": "inline-5",
-            "enabled": true,
-            "marquee": "🛸🤡 LAST CHANCE!! 最后机会点击领取 🧀🦖 긴급 이벤트 마감 임박!! 👁️👄👁️ 9999% FREE CHEESE BONUS 🪩",
-            "head": "🗿 ULTIMATE CHAOS SHOP!! 终极商店 // 궁극의 링크 🧃🔥",
-            "sub": "🚨 CLICK BEFORE THE MOON EXPLODES!! 超级优惠 • 지금 클릭 • 100% LEGIT 🪱🪩",
-            "cta": "",
-            "url": "https://example.com/inline-ad-5",
             "img": ""
           }
         ]
