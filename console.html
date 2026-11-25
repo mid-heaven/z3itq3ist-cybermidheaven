@@ -62,7 +62,7 @@
       <div>
         <div class="font-tech text-[11px] text-gold tracking-[0.2em]">ᛟ GITHUB PAGES // OPERATOR CMS, MEDIA UPLOADER &amp; RSS PUBLISHER</div>
         <h1 class="font-display text-2xl sm:text-3xl text-acid tracking-[0.12em] mt-1">z3itq3ist // OPERATOR CONSOLE</h1>
-        <p class="text-xs text-ash mt-1">Edit <strong class="text-bone">Zine &amp; Status</strong>, <strong class="text-cyan">All 6 Directory Portals</strong>, <strong class="text-pink">All 20 Ads</strong>, <strong class="text-rust">Operator Tag</strong>, <strong class="text-gold">Images/GIFs</strong> &amp; <strong class="text-acid">feed.xml</strong>.</p>
+        <p class="text-xs text-ash mt-1">Control <strong class="text-bone">Status &amp; Zine</strong>, <strong class="text-cyan">All 6 Directory Portals</strong>, <strong class="text-pink">All 20 Ads</strong>, <strong class="text-rust">Operator Tag</strong>, <strong class="text-gold">Media Uploads</strong> &amp; <strong class="text-acid">feed.xml</strong>.</p>
       </div>
       <div class="flex flex-wrap items-center gap-2 font-tech text-[11px]">
         <span id="conn-badge" class="px-2.5 py-1 rounded-sm border border-rust text-rust bg-void font-bold">● DISCONNECTED</span>
@@ -104,7 +104,7 @@
     <!-- MAIN WORKSPACE -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
 
-      <!-- LEFT 8 COLS: 6-TAB EDITOR -->
+      <!-- LEFT 8 COLS: 6-MODULE CMS EDITOR -->
       <section class="lg:col-span-8 cyber-panel rounded-sm overflow-hidden">
         <div class="bg-[#080d0c] border-b border-rust/45 p-2.5 grid grid-cols-2 sm:grid-cols-3 gap-1.5 font-tech text-[11px]">
           <button type="button" data-main-tab="status" class="main-tab-btn is-active py-2 px-2 rounded-sm border border-rust/45 bg-void text-bone font-bold tracking-wider transition">ᛟ 01 // STATUS &amp; ZINE</button>
@@ -156,7 +156,7 @@
                   <label class="field-label text-rust" for="entry-image">Header Photo / GIF</label>
                   <div class="flex gap-1.5">
                     <input id="entry-image" type="text" class="field-input" placeholder="images/post.jpg or https://...">
-                    <button type="button" data-quick-upload="entry-image" class="px-2.5 rounded-sm border border-gold text-gold hover:bg-gold hover:text-void font-tech font-bold text-xs shrink-0">↑</button>
+                    <button type="button" data-quick-upload="entry-image" title="Upload image to GitHub" class="px-2.5 rounded-sm border border-gold text-gold hover:bg-gold hover:text-void font-tech font-bold text-xs shrink-0">↑</button>
                   </div>
                 </div>
                 <div><label class="field-label text-cyan" for="entry-link">Attached Link (Optional)</label><input id="entry-link" type="url" class="field-input" placeholder="https://..."></div>
@@ -168,7 +168,7 @@
             </button>
           </div>
 
-          <!-- TAB 2: DIRECTORY PORTALS -->
+          <!-- TAB 2: ALL 6 DIRECTORY PORTALS -->
           <div id="panel-directory" class="main-tab-panel hidden space-y-4">
             <div class="flex flex-wrap gap-1.5 font-tech text-[10px] border-b border-rust/35 pb-2.5">
               <button type="button" data-sub-tab="manifesto" class="sub-tab-btn is-active px-2.5 py-1.5 rounded-sm border border-rust/45 bg-void text-bone font-bold">ᛟ MANIFESTO &amp; TICKERS</button>
@@ -191,7 +191,7 @@
                 <div><label class="field-label text-bone" for="dir-manifesto-paras">Manifesto Paragraphs (Separate with a blank line)</label><textarea id="dir-manifesto-paras" rows="5" class="field-input text-xs"></textarea></div>
               </div>
               <div class="rounded-sm border border-pink/45 bg-void/75 p-3 space-y-2">
-                <div class="font-tech text-xs text-pink font-bold">⛨ ENCRYPTED_FRAGMENT.DAT // DECRYPTABLE CIPHERS (1 PER LINE)</div>
+                <div class="font-tech text-xs text-pink font-bold">⛨ ENCRYPTED_FRAGMENT.DAT // CIPHERS (1 PER LINE)</div>
                 <textarea id="dir-ciphers" rows="4" class="field-input font-tech text-xs"></textarea>
               </div>
             </div>
@@ -554,7 +554,7 @@
     'use strict';
     const $ = (id) => document.getElementById(id);
     const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
-    const STORAGE_KEY = 'z3itq3ist_gh_pages_cms_v3';
+    const STORAGE_KEY = 'z3itq3ist_gh_pages_cms_v4';
     const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
     const escXml = (s) => String(s ?? '').replace(/[<>&'"]/g, (m) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', "'": '&apos;', '"': '&quot;' }[m]));
 
@@ -583,7 +583,7 @@
           siteUrl: location.href.replace(/console\.html.*$/i, ''),
           siteDesc: 'Hand-welded cyber-occult static shrine, zine archive & weird-web node.',
           heroTickerTop: 'ᛟ SALVAGED RELAY // SECTOR 09 ONLINE ⛨ WELCOME TO THE WEIRD WEB ☽ NO ALGORITHMS // PURE STATIC & PAGAN HTML ⌖',
-          heroTickerBottom: "✦ CLICK FLYING SERAPHIMS TO BANISH THEM (7 = ARCH-SERAPH BOSS) ⌖ TYPE 'neofetch' IN TERMINAL ⛨ TRY KONAMI CODE ᛟ"
+          heroTickerBottom: "✦ CLICK FLYING CHERUBIMS & SERAPHIMS TO BANISH THEM (7 = ARCH-SERAPH BOSS) ⌖ TYPE 'neofetch' IN TERMINAL ⛨ KONAMI ↑↑↓↓←→←→BA ᛟ"
         },
         integrations: { lastfmUser: '', lastfmApiKey: '', giscusRepo: '', giscusRepoId: '', giscusCategory: 'General', giscusCategoryId: '' },
         current: { listening: '', reading: '', watching: '', fuel: '', mood: '', spotifyEmbed: '', spotifyProfileUrl: '', spotifyLinerNotes: '', updatedAt: '' },
@@ -610,7 +610,6 @@
     }
 
     let repoData = createDefaultData();
-    let currentFileSha = null;
     let selectedAdIdx = 0;
     let quickUploadCallback = null;
 
@@ -670,9 +669,6 @@
       };
     }
 
-    /* =====================================================================
-       STATUS, CONFIG & TABS
-       ===================================================================== */
     function setStatus(msg, tone = 'ash') {
       const cols = { acid: 'text-acid', pink: 'text-pink', cyan: 'text-cyan', gold: 'text-gold', ash: 'text-ash' };
       const el = $('status-console');
@@ -717,7 +713,6 @@
           return s;
         }
       } catch {}
-      // Auto-guess username & repo when hosted on *.github.io
       const m = location.hostname.match(/^([a-z0-9-]+)\.github\.io$/i);
       if (m) {
         const u = m[1];
@@ -747,26 +742,21 @@
       $('ad-sub-inline5').classList.toggle('hidden', t !== 'inline5');
     }));
 
-    /* =====================================================================
-       GITHUB CONTENTS API HELPERS (JSON + MEDIA + FEED.XML)
-       ===================================================================== */
     function ghFileUrl(cfg, relPath) {
       const clean = relPath.replace(/^\/+/, '').split('/').map(encodeURIComponent).join('/');
       return `https://api.github.com/repos/${encodeURIComponent(cfg.user)}/${encodeURIComponent(cfg.repo)}/contents/${clean}`;
     }
 
-    async function ghPutFile(relPath, base64Content, commitMsg, knownSha = undefined) {
+    async function ghPutFile(relPath, base64Content, commitMsg) {
       const cfg = saveCfg();
       if (!cfg.user || !cfg.repo || !cfg.token) throw new Error('Configure GitHub username, repo & token first.');
-      let sha = knownSha;
-      if (sha === undefined) {
-        try {
-          const head = await fetch(`${ghFileUrl(cfg, relPath)}?ref=${encodeURIComponent(cfg.branch)}&_=${Date.now()}`, {
-            cache: 'no-store', headers: { Accept: 'application/vnd.github+json', Authorization: `Bearer ${cfg.token}` }
-          });
-          sha = head.ok ? (await head.json()).sha : null;
-        } catch { sha = null; }
-      }
+      let sha = null;
+      try {
+        const head = await fetch(`${ghFileUrl(cfg, relPath)}?ref=${encodeURIComponent(cfg.branch)}&_=${Date.now()}`, {
+          cache: 'no-store', headers: { Accept: 'application/vnd.github+json', Authorization: `Bearer ${cfg.token}` }
+        });
+        if (head.ok) sha = (await head.json()).sha;
+      } catch {}
       const body = { message: commitMsg, branch: cfg.branch, content: base64Content };
       if (sha) body.sha = sha;
       const res = await fetch(ghFileUrl(cfg, relPath), {
@@ -803,19 +793,15 @@
     $('quick-upload-input').addEventListener('change', async (e) => {
       const file = e.target.files?.[0];
       if (!file || !quickUploadCallback) return;
-      try {
-        const path = await uploadImageToGitHub(file);
-        quickUploadCallback(path);
-      } catch (err) { setStatus(`Upload failed: ${err.message}`, 'pink'); }
+      try { const p = await uploadImageToGitHub(file); quickUploadCallback(p); }
+      catch (err) { setStatus(`Upload failed: ${err.message}`, 'pink'); }
       quickUploadCallback = null;
     });
     $$('[data-quick-upload]').forEach((btn) => btn.addEventListener('click', () => {
-      const target = $(btn.dataset.quickUpload);
-      if (!target) return;
+      const target = $(btn.dataset.quickUpload); if (!target) return;
       triggerQuickUpload((p) => { target.value = p; target.dispatchEvent(new Event('input')); });
     }));
 
-    // Drag & Drop Media Zone (Tab 5)
     const dropZone = $('media-drop-zone'), mediaIn = $('media-file-input');
     dropZone.addEventListener('click', () => mediaIn.click());
     dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('is-dragover'); });
@@ -833,9 +819,6 @@
       mediaIn.value = '';
     });
 
-    /* =====================================================================
-       RSS FEED.XML GENERATOR
-       ===================================================================== */
     function buildRssXml() {
       const m = repoData.siteMeta || {};
       const baseUrl = (m.siteUrl || location.href.replace(/console\.html.*$/i, '')).replace(/\/?$/, '/');
@@ -847,9 +830,6 @@
       return `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0">\n  <channel>\n    <title>${escXml(m.siteTitle || 'z3itq3ist // SECTOR 09')}</title>\n    <link>${escXml(baseUrl)}</link>\n    <description>${escXml(m.siteDesc || 'Cyber-occult indie web archive.')}</description>\n    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>\n${itemsXml}\n  </channel>\n</rss>\n`;
     }
 
-    /* =====================================================================
-       DYNAMIC EDITORS: BOOKS, VHS, TV, GIFS, 15 POP-UPS, 5 INLINE, OPERATOR
-       ===================================================================== */
     function renderBooksEditor() {
       const box = $('books-editor-list'); box.innerHTML = '';
       if (!repoData.directory.books.length) { box.innerHTML = `<div class="text-xs font-tech text-ash text-center py-2">No books yet. Click [ + ADD BOOK ].</div>`; return; }
@@ -945,7 +925,6 @@
       });
     }
 
-    /* 15 Pop-Up Ads + 5 Inline Ads */
     const AD_COLS = { acid: ['#39ff14', '#09160a'], pink: ['#ff1f6d', '#1c0811'], cyan: ['#00f0ff', '#07171c'], amber: ['#d48c28', '#1c1308'] };
     function renderAdsPills() {
       const wrap = $('ads-slot-pills'); wrap.innerHTML = '';
@@ -1021,7 +1000,6 @@
       });
     }
 
-    /* Operator Live Preview */
     function renderOpPreview() {
       const op = repoData.operator;
       $('op-prev-badge').textContent = op.badge || 'VERIFIED';
@@ -1050,9 +1028,6 @@
       });
     });
 
-    /* =====================================================================
-       HYDRATE & COLLECT ALL FORMS
-       ===================================================================== */
     function hydrateAll() {
       const m = repoData.siteMeta, ig = repoData.integrations, c = repoData.current, lk = repoData.directory.locker, r = repoData.directory.relays, op = repoData.operator;
       $('meta-title').value = m.siteTitle || ''; $('meta-url').value = m.siteUrl || ''; $('meta-desc').value = m.siteDesc || '';
@@ -1127,9 +1102,6 @@
       return nowIso;
     }
 
-    /* =====================================================================
-       SYNC, ARCHIVE VAULT & PUBLISH
-       ===================================================================== */
     async function syncFromGitHub() {
       const cfg = saveCfg();
       if (!cfg.user || !cfg.repo || !cfg.token) { setStatus('Enter GitHub username, repo name & token first.', 'pink'); setBadge(false); return; }
@@ -1139,12 +1111,11 @@
           cache: 'no-store', headers: { Accept: 'application/vnd.github+json', Authorization: `Bearer ${cfg.token}` }
         });
         if (res.status === 404) {
-          currentFileSha = null; repoData = createDefaultData(); hydrateAll();
+          repoData = createDefaultData(); hydrateAll();
           setBadge(true, '● READY (NEW FILE)'); setStatus(`Connected! "${cfg.path}" will be created on your first publish.`, 'gold'); return;
         }
         if (!res.ok) throw new Error((await res.json().catch(() => ({}))).message || `HTTP ${res.status}`);
         const payload = await res.json();
-        currentFileSha = payload.sha;
         repoData = mergeData(JSON.parse(fromBase64Utf8(payload.content || '{}')));
         hydrateAll();
         setBadge(true, `● SYNCED (${repoData.archive.length})`);
@@ -1185,7 +1156,7 @@
           const prev = [...repoData.archive];
           repoData.archive = repoData.archive.filter((e) => e.id !== it.id);
           try {
-            currentFileSha = await ghPutFile(getCfg().path, toBase64Utf8(JSON.stringify(repoData, null, 2)), `archive: remove ${it.id}`, undefined);
+            await ghPutFile(getCfg().path, toBase64Utf8(JSON.stringify(repoData, null, 2)), `archive: remove ${it.id}`);
             renderArchive(); setBadge(true, `● SYNCED (${repoData.archive.length})`); setStatus('Archive entry deleted.', 'gold');
           } catch (err) { repoData.archive = prev; setStatus(`Delete failed: ${err.message}`, 'pink'); }
         });
@@ -1221,7 +1192,7 @@
           msg = `ads: ${note.slice(0, 55)}`;
           repoData.archive.unshift({ id: 'ads-' + Date.now().toString(36), createdAt: nowIso, category: 'ADS_15', title: '15 POP-UP ADS SAVED', body: note, restoreData: { popupAds: repoData.popupAds.map((a) => ({ ...a })) } });
         } else if (scope === 'inline') {
-          const note = $('inline-changelog-note').value.trim() || `Updated 5 Neon Inline Ads.`;
+          const note = $('inline-changelog-note').value.trim() || 'Updated 5 Neon Inline Ads.';
           msg = `inline-ads: ${note.slice(0, 55)}`;
           repoData.archive.unshift({ id: 'in-' + Date.now().toString(36), createdAt: nowIso, category: 'INLINE_5', title: '5 NEON INLINE ADS SAVED', body: note, restoreData: { inlineAds: repoData.inlineAds.map((a) => ({ ...a })) } });
         } else if (scope === 'operator') {
@@ -1237,10 +1208,10 @@
 
       setStatus(`Committing ${getCfg().path} to GitHub Pages...`, 'cyan');
       try {
-        currentFileSha = await ghPutFile(getCfg().path, toBase64Utf8(JSON.stringify(repoData, null, 2)), msg, undefined);
+        await ghPutFile(getCfg().path, toBase64Utf8(JSON.stringify(repoData, null, 2)), msg);
         if ($('opt-auto-rss').checked) {
           setStatus('Updating RSS feed.xml...', 'gold');
-          await ghPutFile('feed.xml', toBase64Utf8(buildRssXml()), 'rss: update feed.xml', undefined);
+          await ghPutFile('feed.xml', toBase64Utf8(buildRssXml()), 'rss: update feed.xml');
         }
         if (scope === 'status') { $('entry-title').value = ''; $('entry-tags').value = ''; $('entry-body').value = ''; $('entry-image').value = ''; $('entry-link').value = ''; }
         $('dir-changelog-note').value = ''; $('ads-changelog-note').value = ''; $('inline-changelog-note').value = ''; $('op-changelog-note').value = '';
@@ -1257,7 +1228,7 @@
     $$('.publish-btn').forEach((b) => b.addEventListener('click', () => publishScope(b.dataset.publishScope || 'all')));
     $('btn-gen-rss-only').addEventListener('click', async () => {
       collectAll(); setStatus('Rebuilding feed.xml...', 'cyan');
-      try { await ghPutFile('feed.xml', toBase64Utf8(buildRssXml()), 'rss: rebuild feed.xml', undefined); setStatus('feed.xml rebuilt and live!', 'acid'); }
+      try { await ghPutFile('feed.xml', toBase64Utf8(buildRssXml()), 'rss: rebuild feed.xml'); setStatus('feed.xml rebuilt and live!', 'acid'); }
       catch (err) { setStatus(`RSS build failed: ${err.message}`, 'pink'); }
     });
     $('btn-add-book').addEventListener('click', () => { repoData.directory.books.push({ title: 'NEW BOOK', author: 'Author', format: 'Physical', status: 'READING', accent: 'acid', cover: '', progressLabel: 'PAGE 1 / 200', progressPct: 5, notes: '' }); renderBooksEditor(); });
