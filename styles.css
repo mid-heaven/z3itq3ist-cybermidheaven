@@ -609,3 +609,173 @@ body.overdrive-mode .top-glitch-target.is-bursting { animation: topBurstSnap .22
   .z3-seraph { width: 54px; height: 46px; opacity: .94; filter: drop-shadow(0 0 4px var(--sr-glow, rgba(57, 255, 20, .82))); }
   .z3-seraph.is-boss { width: 90px; height: 76px; }
 }
+/* ============================================================================
+   13. DISPLAY MODE #5: WASHED PSYCHEDELIC POP ART (body[data-display="psychedelic"])
+   ============================================================================ */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=IBM+Plex+Mono:wght@500;700&family=Shrikhand&family=Space+Grotesk:wght@400;600&display=swap');
+
+body[data-display="psychedelic"] {
+  --psy-paper: #F3EAD6;
+  --psy-elevated: #EFE2C6;
+  --psy-cream: #FAF4E6;
+  --psy-ink: #26201E;
+  --psy-muted: #594D47;
+  --psy-coral: #D97659;
+  --psy-ochre: #E3B35C;
+  --psy-sage: #93A168;
+  --psy-teal: #63A6BC;
+  --psy-rose: #D985A7;
+  --psy-lavender: #A589BD;
+  --psy-rainbow: linear-gradient(90deg, #D985A7, #D97659, #E3B35C, #93A168, #63A6BC, #A589BD);
+
+  background-color: var(--psy-paper) !important;
+  color: var(--psy-ink) !important;
+  font-family: 'Space Grotesk', sans-serif !important;
+  background-image:
+    radial-gradient(rgba(38, 32, 30, 0.13) 1.25px, transparent 1.25px),
+    radial-gradient(ellipse at 14% 12%, rgba(217, 133, 167, 0.22), transparent 46%),
+    radial-gradient(ellipse at 86% 24%, rgba(99, 166, 188, 0.22), transparent 46%) !important;
+  background-size: 16px 16px, auto, auto !important;
+}
+
+/* Hide CRT scanlines & soften neon ambient canvases on parchment stock */
+body[data-display="psychedelic"] .crt-overlay { opacity: 0 !important; }
+body[data-display="psychedelic"] #z3-occult-veil-layer,
+body[data-display="psychedelic"] #z3-seraph-layer { opacity: 0.45; }
+
+/* Global Risograph Paper Grain Overlay */
+body[data-display="psychedelic"]::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 90;
+  opacity: 0.12;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.82' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Groovy 1960s-70s Display Typography & Misprint Shadows */
+body[data-display="psychedelic"] h1,
+body[data-display="psychedelic"] h2,
+body[data-display="psychedelic"] h3,
+body[data-display="psychedelic"] .font-display,
+body[data-display="psychedelic"] .z3-wb-title {
+  font-family: 'Shrikhand', 'Fraunces', serif !important;
+  color: var(--psy-ink) !important;
+  background: none !important;
+  -webkit-text-fill-color: var(--psy-ink) !important;
+  text-shadow: 2px 2px 0 var(--psy-cream), 4px 4px 0 var(--psy-ochre) !important;
+  filter: none !important;
+}
+body[data-display="psychedelic"] .hero-title-wrap::before,
+body[data-display="psychedelic"] .hero-title-wrap::after { display: none !important; }
+
+body[data-display="psychedelic"] .font-tech {
+  font-family: 'IBM Plex Mono', monospace !important;
+}
+
+/* Top Telemetry Bar & Bottom Mobile Dock */
+body[data-display="psychedelic"] #top-telemetry-bar,
+body[data-display="psychedelic"] #z3-mob-dock {
+  background: var(--psy-cream) !important;
+  border-color: var(--psy-ink) !important;
+  border-width: 2.5px !important;
+  box-shadow: 0 4px 0 var(--psy-ink) !important;
+  color: var(--psy-ink) !important;
+}
+
+/* Comic-Ink Outlined Cards & Hard-Offset Pop-Art Shadows */
+body[data-display="psychedelic"] .cyber-panel,
+body[data-display="psychedelic"] .main-island,
+body[data-display="psychedelic"] .hero-shrine,
+body[data-display="psychedelic"] .z3-popup-win {
+  background: var(--psy-elevated) !important;
+  background-image: none !important;
+  border: 2.5px solid var(--psy-ink) !important;
+  border-radius: 14px !important;
+  box-shadow: -2px 2px 0 var(--psy-teal), 5px 5px 0 var(--psy-ink) !important;
+  color: var(--psy-ink) !important;
+  animation: none !important;
+}
+body[data-display="psychedelic"] .cyber-panel::before,
+body[data-display="psychedelic"] .cyber-panel::after,
+body[data-display="psychedelic"] .main-island-wrap::before { display: none !important; }
+
+body[data-display="psychedelic"] .hero-shrine-stage {
+  background:
+    radial-gradient(circle at 50% 45%, var(--psy-cream) 0%, var(--psy-elevated) 72%) !important;
+}
+
+/* Washed Rainbow Ribbon Headers & Tickers */
+body[data-display="psychedelic"] .scrap-hdr,
+body[data-display="psychedelic"] #hero-ticker-top,
+body[data-display="psychedelic"] #hero-ticker-bottom,
+body[data-display="psychedelic"] .caution-tape {
+  background: var(--psy-rainbow) !important;
+  border-color: var(--psy-ink) !important;
+  color: var(--psy-ink) !important;
+}
+
+/* Inner Dark Boxes Converted to Warm Cream Stock */
+body[data-display="psychedelic"] .bg-void,
+body[data-display="psychedelic"] .bg-scrap,
+body[data-display="psychedelic"] .bg-iron,
+body[data-display="psychedelic"] [class*="bg-[#"],
+body[data-display="psychedelic"] [class*="bg-void/"],
+body[data-display="psychedelic"] [class*="bg-scrap/"],
+body[data-display="psychedelic"] .dir-portal,
+body[data-display="psychedelic"] .z3-wb-box {
+  background: var(--psy-cream) !important;
+  background-image: none !important;
+  border-color: var(--psy-ink) !important;
+  color: var(--psy-ink) !important;
+  box-shadow: 3px 3px 0 var(--psy-ink) !important;
+}
+
+/* Readable Ink Colors Across All Utilities */
+body[data-display="psychedelic"] .text-acid,
+body[data-display="psychedelic"] .text-pink,
+body[data-display="psychedelic"] .text-cyan,
+body[data-display="psychedelic"] .text-rust,
+body[data-display="psychedelic"] .text-gold,
+body[data-display="psychedelic"] .text-bone {
+  color: var(--psy-ink) !important;
+}
+body[data-display="psychedelic"] .text-ash {
+  color: var(--psy-muted) !important;
+}
+
+/* Tactile Pop-Art Buttons & Active Portal Pills */
+body[data-display="psychedelic"] button,
+body[data-display="psychedelic"] .btn-88x31,
+body[data-display="psychedelic"] .dir-portal {
+  border: 2px solid var(--psy-ink) !important;
+  border-radius: 999px !important;
+  box-shadow: 3px 3px 0 var(--psy-ink) !important;
+  transition: transform 140ms ease, box-shadow 140ms ease !important;
+}
+body[data-display="psychedelic"] .dir-portal { border-radius: 12px !important; }
+body[data-display="psychedelic"] .dir-portal.is-active,
+body[data-display="psychedelic"] .core-cta {
+  background: var(--psy-ochre) !important;
+  color: var(--psy-ink) !important;
+}
+body[data-display="psychedelic"] button:active {
+  transform: translate(2px, 2px) !important;
+  box-shadow: 1px 1px 0 var(--psy-ink) !important;
+}
+
+/* Sun-Bleached Photo Filter */
+body[data-display="psychedelic"] img {
+  filter: saturate(0.82) contrast(0.94) sepia(0.14);
+  border: 2px solid var(--psy-ink) !important;
+}
+
+/* Inline Neon Ads Converted to Sun-Bleached Pop Posters */
+body[data-display="psychedelic"] .dismissible-ad {
+  background: var(--psy-ochre) !important;
+  border: 2.5px solid var(--psy-ink) !important;
+  box-shadow: 5px 5px 0 var(--psy-ink) !important;
+  animation: none !important;
+}
