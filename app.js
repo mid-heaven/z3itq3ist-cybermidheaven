@@ -1,6 +1,6 @@
 /* ============================================================================
-   z3itq3ist // MAXED-OUT APPLICATION ENGINE (app.js)
-   100% Complete — All 19 Features + Wilder Chaos Glitch Overdrive
+   z3itq3ist // PHASE 3 — COMPLETE MAXED-OUT APPLICATION ENGINE (app.js)
+   All 6 Directory Portals + Chibi Cherubims/Seraphims + 3-HP Boss + Wild Chaos
    ============================================================================ */
 (() => {
   'use strict';
@@ -14,18 +14,18 @@
   }[m]));
 
   const KEYS = {
-    display:       'z3_display_mode_v3',
-    sfx:           'z3_sfx_enabled_v3',
-    calm:          'z3_calm_mode_v3',
-    relics:        'z3_relics_v3',
-    kills:         'z3_seraph_kills_v3',
-    closedPopups:  'z3_closed_popups_v3',
-    closedInline:  'z3_closed_inline_v3',
-    lockerPos:     'z3_locker_pos_v3',
-    lockerStamps:  'z3_locker_stamps_v3',
-    altarState:    'z3_altar_state_v3',
-    konamiUnlocked:'z3_konami_unlocked_v3',
-    adsClosedCount:'z3_ads_closed_cnt_v3'
+    display:       'z3_display_mode_v4',
+    sfx:           'z3_sfx_enabled_v4',
+    calm:          'z3_calm_mode_v4',
+    relics:        'z3_relics_v4',
+    kills:         'z3_seraph_kills_v4',
+    closedPopups:  'z3_closed_popups_v4',
+    closedInline:  'z3_closed_inline_v4',
+    lockerPos:     'z3_locker_pos_v4',
+    lockerStamps:  'z3_locker_stamps_v4',
+    altarState:    'z3_altar_state_v4',
+    konamiUnlocked:'z3_konami_unlocked_v4',
+    adsClosedCount:'z3_ads_closed_cnt_v4'
   };
 
   const lsGet = (k, fb = null) => { try { const v = localStorage.getItem(k); return v === null ? fb : v; } catch { return fb; } };
@@ -34,86 +34,14 @@
   const lsSetJson = (k, v) => { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} };
 
   /* =========================================================================
-     0. INJECT EXTRA WILD CHAOS GLITCH STYLES (SELF-CONTAINED)
+     1. FALLBACK DATASET (SO EVERY FEATURE WORKS EVEN OFFLINE)
      ========================================================================= */
-  (() => {
-    if ($('z3-wild-chaos-css')) return;
-    const st = document.createElement('style');
-    st.id = 'z3-wild-chaos-css';
-    st.textContent = `
-      @keyframes z3ScreenShake {
-        0%, 100% { transform: translate3d(0,0,0) skewX(0deg); }
-        15% { transform: translate3d(-5px, 2px, 0) skewX(-1.4deg); }
-        32% { transform: translate3d(6px, -3px, 0) skewX(1.8deg); }
-        52% { transform: translate3d(-4px, -2px, 0) skewX(-1.2deg); }
-        74% { transform: translate3d(5px, 3px, 0) skewX(1.3deg); }
-      }
-      @keyframes z3PanelInvertFlash {
-        0%, 100% { filter: none; }
-        25% { filter: invert(1) hue-rotate(140deg) contrast(1.8) saturate(2.5); }
-        55% { filter: hue-rotate(-110deg) contrast(1.6) drop-shadow(-10px 0 0 #ff1f6d) drop-shadow(10px 0 0 #00f0ff); }
-      }
-      @keyframes z3TearSlide {
-        0%   { opacity: .95; transform: translateX(var(--tx0, -24px)) scaleY(1); }
-        50%  { opacity: .82; transform: translateX(var(--tx1, 32px)) scaleY(1.3); }
-        100% { opacity: 0;   transform: translateX(var(--tx2, -14px)) scaleY(.6); }
-      }
-      @keyframes z3StaticFlash {
-        0%   { opacity: .36; }
-        45%  { opacity: .14; }
-        100% { opacity: 0; }
-      }
-      #z3-chaos-tear-layer {
-        position: fixed;
-        inset: 0;
-        z-index: 64;
-        pointer-events: none;
-        overflow: hidden;
-      }
-      .z3-tear-bar {
-        position: fixed;
-        left: -6vw;
-        width: 112vw;
-        pointer-events: none;
-        mix-blend-mode: screen;
-        animation: z3TearSlide var(--td, .22s) steps(3, end) forwards;
-      }
-      .z3-chaos-flash {
-        position: fixed;
-        inset: 0;
-        pointer-events: none;
-        mix-blend-mode: hard-light;
-        animation: z3StaticFlash .19s steps(3, end) forwards;
-      }
-      body.overdrive-mode.chaos-shaking > div.relative.z-20 {
-        animation: z3ScreenShake .24s steps(3, end) infinite;
-      }
-      body.overdrive-mode .chaos-invert-spike {
-        animation: z3PanelInvertFlash .22s steps(2, end) infinite !important;
-      }
-      body.overdrive-mode::after {
-        content: "";
-        position: fixed;
-        inset: 0;
-        z-index: 63;
-        pointer-events: none;
-        background:
-          repeating-linear-gradient(0deg, rgba(255, 31, 109, .08) 0 2px, transparent 2px 5px, rgba(0, 240, 255, .07) 5px 7px, transparent 7px 11px);
-        mix-blend-mode: screen;
-      }
-    `;
-    document.head.appendChild(st);
-  })();
-
-  /* =========================================================================
-     1. COMPLETE BUILT-IN FALLBACK DATASET (4 VERIFIED PIRATE TV CHANNELS)
-     ========================================================================= */
-  const FALLBACK_SITE_DATA = {
-    schemaVersion: 3,
+  const FALLBACK_DATA = {
     siteMeta: {
       siteTitle: 'z3itq3ist // SECTOR 09 CYBER-OCCULT NODE',
+      siteUrl: location.href.replace(/index\.html.*$/i, ''),
       heroTickerTop: 'ᛟ SALVAGED RELAY // SECTOR 09 ONLINE ⛨ WELCOME TO THE WEIRD WEB ☽ NO ALGORITHMS // PURE STATIC & PAGAN HTML ⌖ LONG LIVE INDIE CYBERSPACE ✦',
-      heroTickerBottom: "✦ CLICK FLYING SERAPHIMS TO BANISH THEM (7 = ARCH-SERAPH BOSS) ⌖ TYPE 'neofetch' IN TERMINAL ⛨ TRY KONAMI CODE ↑↑↓↓←→←→BA ᛟ"
+      heroTickerBottom: "✦ CLICK FLYING CHERUBIMS & SERAPHIMS TO BANISH THEM (7 = ARCH-SERAPH BOSS) ⌖ TYPE 'neofetch' OR 'console' IN TERMINAL ⛨ KONAMI ↑↑↓↓←→←→BA ᛟ"
     },
     integrations: {},
     current: {
@@ -121,7 +49,7 @@
       reading: 'Salvaged Grimoire Vol. 01',
       watching: 'Pirate TV CH 01 // Dark Synthwave',
       fuel: 'Iced Coffee // 3AM',
-      mood: 'Hand-welded cyber-occult node online',
+      mood: 'Maxed-out GitHub Pages cyber-occult node online!',
       spotifyEmbed: 'https://open.spotify.com/embed/playlist/37i9dQZF1DXdxcBWuJkbcy?utm_source=generator&theme=0',
       spotifyProfileUrl: 'https://open.spotify.com/',
       spotifyLinerNotes: '3AM raindrive static & post-punk rituals.',
@@ -140,16 +68,16 @@
       ],
       ciphers: [
         'ᛟ [DECRYPTED 01/04]: The weird web never died—it just went underground behind rusted firewalls.',
-        '☽ [DECRYPTED 02/04]: Banish 7 flying seraphims to summon the Gilded Arch-Seraph Boss.',
-        '⛨ [DECRYPTED 03/04]: Try the Konami Code (↑↑↓↓←→←→BA) to unlock the hidden Glitch Vault & 4th synth frequency.',
-        '⌖ [DECRYPTED 04/04]: Long live hand-coded HTML, weird shrines, and permanent personal archives.'
+        '☽ [DECRYPTED 02/04]: Click 7 flying cherubims/seraphims to summon the 3-HP Gilded Arch-Seraph Boss.',
+        '⛨ [DECRYPTED 03/04]: Enter the Konami Code (↑↑↓↓←→←→BA) to unlock the hidden Glitch Vault & 4th synth frequency.',
+        '⌖ [DECRYPTED 04/04]: Type "console" in the terminal anytime to open your GitHub CMS.'
       ],
       books: [
         { title: '[PLACEHOLDER BOOK TITLE #1]', author: '[Author Name #1]', format: 'Physical / E-book', status: 'READING', accent: 'acid', cover: 'https://placehold.co/90x132/0b0d0f/39ff14?text=BOOK+01', progressLabel: 'PAGE 184 / 320', progressPct: 58, notes: '[@ 18%] First impressions on the prose.\n[@ 58%] Mid-book reaction.' },
         { title: '[PLACEHOLDER BOOK TITLE #2]', author: '[Author Name #2]', format: 'Essays / Manga', status: 'SIDE READ', accent: 'pink', cover: 'https://placehold.co/90x132/0b0d0f/ff1f6d?text=BOOK+02', progressLabel: 'PAGE 42 / 210', progressPct: 20, notes: '[@ 20%] Highlighted quote or hot take.' }
       ],
       vhs: [
-        { type: 'series', title: '[PLACEHOLDER SERIES #1]', year: '2026', status: 'WATCHING', genre: 'Sci-Fi / Psychological', progress: 'S01 E05', rating: '4.5 / 5 ☠', accent: 'pink', notes: 'What hooks you about this show.', quote: 'Placeholder favorite line.' },
+        { type: 'series', title: '[PLACEHOLDER SERIES #1]', year: '2026', status: 'WATCHING', genre: 'Sci-Fi / Psychological', progress: 'S01 E05', rating: '4.5 / 5 ☠', accent: 'pink', notes: 'What hooks you about this show, cinematography, or theories.', quote: 'Placeholder favorite line.' },
         { type: 'movie',  title: '[PLACEHOLDER MOVIE #1]',  year: '1999', status: 'OBSESSED', genre: 'Cult / Cyber-Horror',   progress: '',        rating: '5.0 / 5 ☠', accent: 'acid', notes: 'Why this film permanently rewired your brain.', quote: 'Favorite movie quote.' }
       ],
       tvChannels: [
@@ -171,7 +99,7 @@
         ticketNo: 'NO. 0666', ticketTitle: '[FAVORITE GIG / FILM STUB]', ticketDate: 'DATE: 11/25/2026 // ROW Z'
       },
       relays: {
-        substackTitle: '[Latest Substack Essay Title]', substackDate: 'NOV 25, 2026', substackTeaser: 'Teaser of your newest Substack post or newsletter.', substackUrl: 'https://YOUR_SUBSTACK.substack.com',
+        substackTitle: '[Latest Substack Essay Title]', substackDate: 'NOV 25, 2026', substackTeaser: '1-2 sentence teaser of your newest Substack post or newsletter theme.', substackUrl: 'https://YOUR_SUBSTACK.substack.com',
         igHandle: 'YOUR_INSTAGRAM_HANDLE', igUrl: 'https://instagram.com/YOUR_INSTAGRAM_HANDLE', igBio: 'Darkroom dump, photos & visual chaos.',
         igImg1: 'https://placehold.co/70x70/14080e/ff1f6d?text=01', igImg2: 'https://placehold.co/70x70/0d1112/39ff14?text=02', igImg3: 'https://placehold.co/70x70/081316/00f0ff?text=03',
         ttHandle: 'YOUR_TIKTOK_HANDLE', ttUrl: 'https://tiktok.com/@YOUR_TIKTOK_HANDLE', ttBio: 'Short-form edits, rants & cursed clips.',
@@ -201,21 +129,21 @@
       {
         id: 'log-init', createdAt: '2026-11-25T00:00:00.000Z', category: 'DISPATCH',
         title: 'SECTOR 09 MAXED-OUT REBUILD ONLINE', tags: ['launch', 'zine', 'github-pages'],
-        body: '# WELCOME TO SECTOR 09\n\nAll 19 interactive modules are live on **GitHub Pages**.\n\n> Click any archive entry to read it inside the full **Zine Reader**!\n\n- Banish **7 flying seraphims** to summon the Gilded Arch-Seraph Boss\n- Enter the **Konami Code** (`↑↑↓↓←→←→BA`) to unlock the secret 4th Synth track\n- Light the **Digital Altar** or pull a **3-Card Tarot Spread**'
+        body: '# WELCOME TO SECTOR 09\n\nAll 19 interactive modules, flying **Chibi Cherubims & Seraphims**, **Wild Chaos Glitches**, and your permanent **GitHub CMS** are now live!\n\n> Click any archive card to open it inside the full **Zine Reader**.\n\n- Banish **7 flying cherubims/seraphims** to summon the 3-HP **Gilded Arch-Seraph Boss**\n- Enter the **Konami Code** (`↑↑↓↓←→←→BA`) to unlock the secret 4th synth track\n- Light the **Digital Altar** or pull a **3-Card Tarot Spread**\n- Type `console` in the terminal to open `console.html`'
       }
     ]
   };
 
-  /* Global State */
-  let siteData = FALLBACK_SITE_DATA;
+  /* Global State (FIX: calmOn ONLY enables if user explicitly clicked CALM) */
+  let siteData = FALLBACK_DATA;
   let currentUserId = 'NODE-' + Math.random().toString(36).slice(2, 8).toUpperCase();
   let sfxOn = lsGet(KEYS.sfx, '1') !== '0';
-  let calmOn = lsGet(KEYS.calm) === '1' || (lsGet(KEYS.calm) === null && window.matchMedia?.('(prefers-reduced-motion: reduce)').matches);
+  let calmOn = lsGet(KEYS.calm, '0') === '1';
   let chaosOn = false;
   let seraphKills = Number(lsGet(KEYS.kills, '0')) || 0;
   let adsClosedTotal = Number(lsGet(KEYS.adsClosedCount, '0')) || 0;
   let unlockedRelics = new Set(lsGetJson(KEYS.relics, []));
-  let cipherList = [...FALLBACK_SITE_DATA.directory.ciphers];
+  let cipherList = [...FALLBACK_DATA.directory.ciphers];
   let cipherIdx = 0;
 
   /* =========================================================================
@@ -234,30 +162,27 @@
         foleySynth.volume.value = -16;
       }
       const now = Tone.now();
-      if (type === 'click')  foleySynth.triggerAttackRelease('C6', '32n', now);
+      if (type === 'click')       foleySynth.triggerAttackRelease('C6', '32n', now);
       else if (type === 'tab')    foleySynth.triggerAttackRelease(['E5', 'B5'], '32n', now);
       else if (type === 'zap')    foleySynth.triggerAttackRelease(['G5', 'C#6', 'G6'], '16n', now);
       else if (type === 'tarot')  foleySynth.triggerAttackRelease(['D4', 'A4', 'F5', 'A5'], '8n', now);
       else if (type === 'candle') foleySynth.triggerAttackRelease(['F4', 'C5'], '16n', now);
       else if (type === 'relic')  foleySynth.triggerAttackRelease(['C5', 'E5', 'G5', 'C6'], '8n', now);
       else if (type === 'boss')   foleySynth.triggerAttackRelease(['C3', 'F#3', 'C4'], '4n', now);
-      else if (type === 'glitch') {
-        const notes = ['C2', 'F#2', 'C#5', 'G#5', 'D#6', 'A#3'];
-        foleySynth.triggerAttackRelease(pick(notes), '32n', now);
-      } else if (type === 'static') {
+      else if (type === 'glitch') foleySynth.triggerAttackRelease(pick(['C2', 'F#2', 'C#5', 'G#5', 'D#6', 'A#3']), '32n', now);
+      else if (type === 'static') {
         const n = new Tone.Noise('white').toDestination();
-        n.volume.value = -22;
-        n.start(now); n.stop(now + 0.16);
+        n.volume.value = -22; n.start(now); n.stop(now + 0.16);
         setTimeout(() => { try { n.dispose(); } catch {} }, 350);
       }
     } catch {}
   }
 
   /* =========================================================================
-     3. TOAST NOTIFICATIONS & 7-BADGE RELIC ACHIEVEMENTS CASE
+     3. TOASTS & 7-RELIC ACHIEVEMENTS CASE
      ========================================================================= */
   const RELIC_DEFS = [
-    { id: 'seraph_slayer',   icon: '✦', name: 'SERAPH SLAYER',    desc: 'Banish 5 flying chibi seraphims.' },
+    { id: 'seraph_slayer',   icon: '✦', name: 'SERAPH SLAYER',    desc: 'Banish 5 flying chibi cherubims or seraphims.' },
     { id: 'boss_slayer',     icon: '👑', name: 'ARCH-SERAPH BANE', desc: 'Defeat the 3-HP Gilded Arch-Seraph Boss.' },
     { id: 'chaos_survivor',  icon: '⚡', name: 'CHAOS SURVIVOR',   desc: 'Unleash Wild Chaos Overdrive mode.' },
     { id: 'fortune_seeker',  icon: '☽', name: 'FORTUNE SEEKER',   desc: 'Consult the 22 Major Arcana Tarot deck.' },
@@ -312,7 +237,7 @@
   }
 
   /* =========================================================================
-     4. UNIFIED MODAL SYSTEM & BIOS POST BOOT SCREEN
+     4. MODALS & RETRO BIOS POST BOOT SEQUENCE
      ========================================================================= */
   let auraInterval = null;
   function setModal(el, show) {
@@ -327,12 +252,9 @@
     setModal($('cyber-modal'), true);
   }
 
-  $$('.app-modal').forEach((m) => {
-    m.addEventListener('click', (e) => {
-      if (e.target === m || e.target.closest('[data-close-modal]')) { playSfx('click'); setModal(m, false); }
-    });
-  });
-
+  $$('.app-modal').forEach((m) => m.addEventListener('click', (e) => {
+    if (e.target === m || e.target.closest('[data-close-modal]')) { playSfx('click'); setModal(m, false); }
+  }));
   $('btn-relics-open')?.addEventListener('click', () => { playSfx('click'); syncRelicsUI(); setModal($('relics-modal'), true); });
 
   let biosTimer = null;
@@ -346,26 +268,22 @@
     const lines = [
       'Z3IT_BIOS v09.44 // SALVAGED HARDWARE POST',
       'CHECKING OCCULT RAM............ 666 KB [OK]',
+      'SUMMONING CHIBI CHERUBIMS...... 7 UNIT [OK]',
       'MOUNTING PAGAN_FIREWALL........ ACTIVE [OK]',
       'LOADING 22 MAJOR ARCANA........ SYNCED [OK]',
-      'INITIALIZING PIRATE_TV 4CH..... LOCKED [OK]',
       '>> WELCOME TO SECTOR 09. ENTERING SHRINE...'
     ];
     let i = 0;
     clearInterval(biosTimer);
     biosTimer = setInterval(() => {
-      if (i < lines.length) {
-        log.textContent += (i ? '\n' : '') + lines[i++];
-      } else {
-        clearInterval(biosTimer);
-        setTimeout(() => ov.classList.add('is-hidden'), 320);
-      }
-    }, 240);
+      if (i < lines.length) log.textContent += (i ? '\n' : '') + lines[i++];
+      else { clearInterval(biosTimer); setTimeout(() => ov.classList.add('is-hidden'), 300); }
+    }, 220);
   }
   $('btn-bios-skip')?.addEventListener('click', () => { clearInterval(biosTimer); $('z3-bios-overlay')?.classList.add('is-hidden'); });
 
   /* =========================================================================
-     5. TOP BAR CONTROLS: DISPLAY FILTER RACK, SFX, CALM MODE, CLOCK & MOON
+     5. TOP BAR CONTROLS (DISPLAY RACK, SFX, CALM, CLOCK, TELEMETRY, MOON)
      ========================================================================= */
   const DISPLAY_MODES = ['crt', 'phosphor', 'amber', 'clean'];
   let dispIdx = Math.max(0, DISPLAY_MODES.indexOf(lsGet(KEYS.display, 'crt')));
@@ -380,8 +298,7 @@
   applyDisplayMode();
 
   function syncSfxUI() {
-    const btn = $('btn-sfx-toggle');
-    if (!btn) return;
+    const btn = $('btn-sfx-toggle'); if (!btn) return;
     btn.textContent = sfxOn ? 'SFX: ON' : 'SFX: OFF';
     btn.setAttribute('data-ghost', btn.textContent);
     btn.classList.toggle('bg-gold', sfxOn); btn.classList.toggle('text-void', sfxOn);
@@ -392,8 +309,7 @@
 
   function syncCalmUI() {
     document.body.classList.toggle('calm-mode', calmOn);
-    const btn = $('btn-calm-toggle');
-    if (!btn) return;
+    const btn = $('btn-calm-toggle'); if (!btn) return;
     btn.textContent = calmOn ? 'CALM: ON' : 'CALM: OFF';
     btn.setAttribute('data-ghost', btn.textContent);
     btn.classList.toggle('bg-rust', calmOn); btn.classList.toggle('text-void', calmOn);
@@ -403,8 +319,7 @@
   syncCalmUI();
 
   function updateClock() {
-    const el = $('live-clock');
-    if (!el) return;
+    const el = $('live-clock'); if (!el) return;
     const t = new Date().toTimeString().slice(0, 8);
     el.textContent = t;
     if (chaosOn) el.setAttribute('data-ghost', t);
@@ -418,8 +333,7 @@
     if ($('stat-sid')) $('stat-sid').textContent = currentUserId;
   }
   function updateLiveMoonPhase() {
-    const el = $('live-lunar-badge');
-    if (!el) return;
+    const el = $('live-lunar-badge'); if (!el) return;
     const synodic = 29.53058867;
     const diff = (Date.now() - Date.UTC(2000, 0, 6, 18, 14, 0)) / 86400000;
     const f = (((diff % synodic) + synodic) % synodic) / synodic;
@@ -435,7 +349,6 @@
   updateClock(); setInterval(updateClock, 1000);
   updateTelemetry(); updateLiveMoonPhase();
 
-  /* Hero cursor spotlight */
   const heroShrine = $('hero-shrine');
   heroShrine?.addEventListener('pointermove', (e) => {
     const r = heroShrine.getBoundingClientRect();
@@ -444,7 +357,7 @@
   });
 
   /* =========================================================================
-     6. DRAG HELPER, TABS, WINDOW CHROME, WEBRING & SIDEBAR AD ROTATOR
+     6. DRAG HELPER, DIRECTORY TABS, CHROME, STAMPS, CIPHER & WEBRING
      ========================================================================= */
   function bindDrag(handle, target, onStart, clampFn, onEnd) {
     handle.addEventListener('pointerdown', (e) => {
@@ -501,7 +414,6 @@
     showModal(t, m);
   }));
 
-  /* Copy 88x31 Badge HTML */
   $('btn-copy-badge')?.addEventListener('click', () => {
     const siteUrl = siteData.siteMeta?.siteUrl || location.href;
     const snippet = `<a href="${siteUrl}" target="_blank" rel="noopener"><img src="https://placehold.co/88x31/050607/39ff14?text=z3itq3ist" alt="z3itq3ist" width="88" height="31"></a>`;
@@ -510,7 +422,6 @@
     showToast('◈ 88x31 BADGE COPIED', 'Paste the HTML snippet onto your own shrine!', '#39ff14');
   });
 
-  /* Cipher Decryptor */
   $('btn-decrypt-cipher')?.addEventListener('click', () => {
     playSfx('click');
     const out = $('cipher-output');
@@ -524,7 +435,6 @@
     }, 36);
   });
 
-  /* Webring & Rotating Shady Sidebar Ad */
   const webringNodes = ['Node #08: rust_shrine.github.io', 'Node #09: z3itq3ist (CURRENT)', 'Node #10: pagan_modem.neocities.org', 'Node #11: scrap_oracle.github.io', 'Node #12: deadnet_sigil.org'];
   let webringIdx = 1;
   $$('.webring-btn').forEach((b) => b.addEventListener('click', () => {
@@ -614,7 +524,6 @@
   const trackBtns = $$('.track-btn');
   const trackLabels = { void: 'VOID_DRONE', acid: 'ACID_HEX', static: 'RITUAL_FM', konami: 'KONAMI_HEX' };
   let audioOn = false, currentTrack = 'void', synthNodes = [], audioLoop = null;
-
   if (lsGet(KEYS.konamiUnlocked) === '1') $('btn-track-konami')?.classList.remove('hidden');
 
   function disposeAudio() {
@@ -683,12 +592,8 @@
 
   async function toggleAudio(forcePlay = false) {
     try {
-      if (!audioOn || forcePlay) {
-        if (typeof Tone !== 'undefined') await Tone.start();
-        audioOn = true; startTrack();
-      } else {
-        audioOn = false; disposeAudio();
-      }
+      if (!audioOn || forcePlay) { if (typeof Tone !== 'undefined') await Tone.start(); audioOn = true; startTrack(); }
+      else { audioOn = false; disposeAudio(); }
       syncAudioUI();
     } catch (err) { console.warn('Audio error:', err); }
   }
@@ -699,7 +604,7 @@
     trackBtns.forEach((x) => {
       const on = x === b;
       x.classList.toggle('border-cyan', on); x.classList.toggle('bg-cyan/15', on); x.classList.toggle('text-cyan', on); x.classList.toggle('font-bold', on);
-      if (!on && x.id !== 'btn-track-konami') { x.classList.add('border-rust/40', 'bg-void', 'text-ash'); }
+      if (!on && x.id !== 'btn-track-konami') x.classList.add('border-rust/40', 'bg-void', 'text-ash');
     });
     if (audioOn) startTrack();
     syncAudioUI();
@@ -747,8 +652,7 @@
     ['XXI // THE WORLD', 'Completion, wholeness, fulfillment, and cosmic harmony.', 'Unfinished business or standing just shy of closure.', '<rect x="4" y="4" width="72" height="102" fill="none" stroke="#39ff14" stroke-width="1.4"/><ellipse cx="40" cy="55" rx="22" ry="32" fill="none" stroke="#39ff14" stroke-width="2" stroke-dasharray="6 3"/><polygon points="40,34 52,55 40,76 28,55" fill="none" stroke="#00f0ff" stroke-width="1.8"/>']
   ];
 
-  let tarotMode = 1;
-  let lastTarotSummary = '';
+  let tarotMode = 1, lastTarotSummary = '';
   function syncTarotModeBtns() {
     $('btn-tarot-1')?.classList.toggle('border-cyan', tarotMode === 1);
     $('btn-tarot-1')?.classList.toggle('bg-cyan/20', tarotMode === 1);
@@ -795,7 +699,7 @@
   });
 
   /* =========================================================================
-     11. INTERACTIVE DIGITAL ALTAR (3 CYBER-CANDLES + INCENSE SMOKE)
+     11. DIGITAL ALTAR (3 LIGHTABLE CYBER-CANDLES + INCENSE SMOKE)
      ========================================================================= */
   const ALTAR_BLESSINGS = [
     'May your bandwidth stay uncut and your markup stay weird.',
@@ -806,8 +710,7 @@
   const altarState = lsGetJson(KEYS.altarState, { c: [false, false, false], inc: false });
 
   function syncAltarUI() {
-    const candles = $$('.altar-candle');
-    candles.forEach((c, idx) => c.classList.toggle('is-lit', Boolean(altarState.c[idx])));
+    $$('.altar-candle').forEach((c, idx) => c.classList.toggle('is-lit', Boolean(altarState.c[idx])));
     $('incense-ember')?.classList.toggle('hidden', !altarState.inc);
     const litCnt = altarState.c.filter(Boolean).length + (altarState.inc ? 1 : 0);
     if ($('altar-lit-count')) $('altar-lit-count').textContent = `${litCnt} / 4 LIT`;
@@ -818,7 +721,6 @@
     }
     if (litCnt === 4) unlockRelic('altar_keeper');
   }
-
   $$('.altar-candle').forEach((btn) => btn.addEventListener('click', () => {
     const i = Number(btn.dataset.candle);
     altarState.c[i] = !altarState.c[i];
@@ -899,9 +801,8 @@
   ], saveLockerPositions));
   $('btn-reset-locker')?.addEventListener('click', () => { playSfx('click'); resetLocker(true); });
 
-  /* Visitor Rune Stamps inside Locker */
   let userStamps = lsGetJson(KEYS.lockerStamps, []);
-  function saveUserStamps() { lsSetJson(KEYS.lockerStamps, userStamps); }
+  const saveUserStamps = () => lsSetJson(KEYS.lockerStamps, userStamps);
   function mountUserStamp(st) {
     if (!lockerBoard) return;
     const el = document.createElement('div');
@@ -910,10 +811,7 @@
     el.style.left = `${st.x}px`; el.style.top = `${st.y}px`; el.style.color = st.color;
     el.style.transform = `rotate(${st.rot}deg)`; el.style.zIndex = String(++lockerZ);
     el.title = 'Drag to move • Double-click to remove';
-    el.addEventListener('dblclick', () => {
-      userStamps = userStamps.filter((u) => u.id !== st.id);
-      saveUserStamps(); el.remove(); playSfx('click');
-    });
+    el.addEventListener('dblclick', () => { userStamps = userStamps.filter((u) => u.id !== st.id); saveUserStamps(); el.remove(); playSfx('click'); });
     bindDrag(el, el, () => { el.style.zIndex = String(++lockerZ); }, (x, y) => [
       Math.min(Math.max(0, x), (lockerBoard.clientWidth || 560) - 36),
       Math.min(Math.max(0, y), (lockerBoard.clientHeight || 440) - 36)
@@ -934,7 +832,7 @@
   userStamps.forEach(mountUserStamp);
 
   /* =========================================================================
-     13. SHADY VISITOR AURA SCANNER
+     13. VISITOR AURA SCANNER
      ========================================================================= */
   const AURA_TITLES = ['LEVEL 4 NEON NECROMANCER', 'ROGUE RADIO SCAVENGER', 'CURSED HTML ARCHIVIST', '3AM CAFFEINE ALCHEMIST', 'CYBER-PAGAN SIGNAL WITCH', 'BOOTLEG VHS SOMMELIER', 'SECTOR 09 GHOST IN THE WIRE'];
   const AURA_NOTES = ['Mild sigil interference detected near your left browser tab.', 'Your cursor emits high levels of nostalgic CRT phosphor.', 'Compatible with z3itq3ist frequency. Do not feed after midnight.', 'Warning: Too cool for modern corporate social feeds.'];
@@ -942,8 +840,7 @@
     clearInterval(auraInterval);
     setModal($('aura-modal'), true);
     playSfx('click');
-    const stream = $('aura-scan-stream');
-    if (!stream) return;
+    const stream = $('aura-scan-stream'); if (!stream) return;
     let ticks = 0;
     const hex = () => '0x' + Math.floor(Math.random() * 0xFFFF).toString(16).toUpperCase().padStart(4, '0');
     auraInterval = setInterval(() => {
@@ -965,12 +862,11 @@
   const closedInline = new Set(lsGetJson(KEYS.closedInline, []));
   const closedPopups = new Set(lsGetJson(KEYS.closedPopups, []));
   const openPopups = new Map();
-  let livePopupAds = [...FALLBACK_SITE_DATA.popupAds];
+  let livePopupAds = [...FALLBACK_DATA.popupAds];
   let popZ = 63, popCycleT = null, popBursts = [];
 
   function trackAdClosed() {
-    adsClosedTotal++;
-    lsSet(KEYS.adsClosedCount, adsClosedTotal);
+    adsClosedTotal++; lsSet(KEYS.adsClosedCount, adsClosedTotal);
     if (adsClosedTotal >= 5) unlockRelic('ad_exterminator');
   }
   function applyInlineDismissals() {
@@ -981,8 +877,7 @@
   }
   $$('[data-close-inline-ad]').forEach((btn) => btn.addEventListener('click', (e) => {
     e.preventDefault(); e.stopPropagation();
-    const id = btn.dataset.closeInlineAd;
-    if (!id) return;
+    const id = btn.dataset.closeInlineAd; if (!id) return;
     closedInline.add(id); lsSetJson(KEYS.closedInline, [...closedInline]);
     applyInlineDismissals(); playSfx('click'); trackAdClosed();
   }));
@@ -1061,8 +956,7 @@
 
   function spawnRandomPopup() {
     const avail = livePopupAds.filter((a) => a.enabled !== false && !closedPopups.has(a.id) && !openPopups.has(a.id));
-    if (!avail.length) return false;
-    return spawnPopupById(pick(avail).id, false);
+    return avail.length ? spawnPopupById(pick(avail).id, false) : false;
   }
 
   function schedulePopups() {
@@ -1078,8 +972,7 @@
     const activeList = livePopupAds.filter((a) => a.enabled !== false);
     const unclosed = activeList.filter((a) => !closedPopups.has(a.id)).length;
     if ($('z3-dock-count')) $('z3-dock-count').textContent = `${unclosed}/${activeList.length}`;
-    const grid = $('z3-dir-grid');
-    if (!grid) return;
+    const grid = $('z3-dir-grid'); if (!grid) return;
     grid.innerHTML = activeList.map((ad) => {
       const th = POP_THEMES[ad.theme] || POP_THEMES.pink;
       const muted = closedPopups.has(ad.id);
@@ -1098,9 +991,7 @@
       `;
     }).join('');
     $$('[data-launch-ad]', grid).forEach((b) => b.addEventListener('click', () => {
-      playSfx('click');
-      spawnPopupById(b.dataset.launchAd, true);
-      $('z3-ad-dir-modal')?.classList.remove('is-open');
+      playSfx('click'); spawnPopupById(b.dataset.launchAd, true); $('z3-ad-dir-modal')?.classList.remove('is-open');
     }));
   }
 
@@ -1119,8 +1010,7 @@
   /* =========================================================================
      15. ZINE READER (MARKDOWN PARSER) & SEARCHABLE ARCHIVE
      ========================================================================= */
-  let archiveEntries = [];
-  let activeZineIdx = 0;
+  let archiveEntries = [], activeZineIdx = 0;
 
   function parseZineMarkdown(md) {
     const lines = String(md || '').split('\n');
@@ -1149,8 +1039,7 @@
   }
 
   function openZineReader(idx) {
-    const item = archiveEntries[idx];
-    if (!item) return;
+    const item = archiveEntries[idx]; if (!item) return;
     activeZineIdx = idx;
     if ($('zine-cat')) $('zine-cat').textContent = `ᛟ ZINE_READER // ${item.category || 'DISPATCH'}`;
     if ($('zine-date')) $('zine-date').textContent = item.createdAt ? new Date(item.createdAt).toLocaleString() : 'ARCHIVED';
@@ -1169,8 +1058,7 @@
 
   function renderArchiveBox(entries) {
     archiveEntries = Array.isArray(entries) ? entries : [];
-    const wrap = $('z3-github-archive-box');
-    if (!wrap) return;
+    const wrap = $('z3-github-archive-box'); if (!wrap) return;
     let filter = 'ALL', limit = 6, query = '';
     const CAT_CLS = {
       STATUS: 'border-acid text-acid bg-acid/10', DISPATCH: 'border-cyan text-cyan bg-cyan/10',
@@ -1230,7 +1118,7 @@
   }
 
   /* =========================================================================
-     16. HYDRATE ALL PORTALS FROM updates.json (+ LAST.FM & GISCUS)
+     16. HYDRATE ALL 6 DIRECTORY PORTALS + OPERATOR + 20 ADS FROM updates.json
      ========================================================================= */
   const BUILTIN_RELIC_SVGS = [
     `<svg viewBox="0 0 64 64" class="w-14 h-14 anim-gif-glitch"><circle cx="32" cy="32" r="28" fill="none" stroke="#39ff14" stroke-width="1.5" stroke-dasharray="4 3"/><path d="M18,28 C18,16 46,16 46,28 C46,36 41,40 41,46 H23 C23,40 18,36 18,28 Z" fill="#131618" stroke="#d8d5c8" stroke-width="1.6"/><circle cx="26" cy="29" r="3.5" fill="#39ff14"/><rect x="34" y="26" width="7" height="6" fill="#ff1f6d"/></svg>`,
@@ -1242,8 +1130,7 @@
   ];
 
   function spawnStickerFromHtml(innerHtml) {
-    const layer = $('sticker-layer');
-    if (!layer) return;
+    const layer = $('sticker-layer'); if (!layer) return;
     while (layer.children.length >= 24) layer.firstElementChild.remove();
     const wrap = document.createElement('div');
     wrap.className = 'fixed pointer-events-auto cursor-pointer select-none p-1.5 rounded-sm border border-acid/60 bg-void/90 shadow-[0_0_16px_rgba(57,255,20,.3)] transition-transform hover:scale-125';
@@ -1256,79 +1143,65 @@
   }
   $('btn-clear-stickers')?.addEventListener('click', () => { if ($('sticker-layer')) $('sticker-layer').innerHTML = ''; playSfx('click'); });
 
-  function hydrateLastFm(integ, cur) {
+  function hydrateLastFm(integ) {
     if (!integ?.lastfmUser || !integ?.lastfmApiKey) return;
-    const url = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${encodeURIComponent(integ.lastfmUser)}&api_key=${encodeURIComponent(integ.lastfmApiKey)}&format=json&limit=1`;
-    fetch(url).then((r) => (r.ok ? r.json() : null)).then((d) => {
-      const tr = d?.recenttracks?.track?.[0];
-      if (!tr) return;
-      const nowPlaying = tr['@attr']?.nowplaying === 'true';
-      const label = `${tr.artist?.['#text'] || ''} - ${tr.name || ''}${nowPlaying ? ' [SCROBBLING NOW ●]' : ''}`;
-      const el = $('cur-listen-val');
-      if (el && label.trim()) el.textContent = label;
-    }).catch(() => {});
+    fetch(`https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=${encodeURIComponent(integ.lastfmUser)}&api_key=${encodeURIComponent(integ.lastfmApiKey)}&format=json&limit=1`)
+      .then((r) => (r.ok ? r.json() : null))
+      .then((d) => {
+        const tr = d?.recenttracks?.track?.[0]; if (!tr) return;
+        const label = `${tr.artist?.['#text'] || ''} - ${tr.name || ''}${tr['@attr']?.nowplaying === 'true' ? ' [SCROBBLING ●]' : ''}`;
+        if ($('cur-listen-val') && label.trim()) $('cur-listen-val').textContent = label;
+      }).catch(() => {});
   }
 
   function hydrateGiscus(integ) {
     const mount = $('giscus-mount');
-    if (!mount || !integ?.giscusRepo || !integ?.giscusRepoId || !integ?.giscusCategoryId) return;
-    if (mount.dataset.loaded) return;
+    if (!mount || !integ?.giscusRepo || !integ?.giscusRepoId || !integ?.giscusCategoryId || mount.dataset.loaded) return;
     mount.dataset.loaded = '1';
     mount.innerHTML = '';
     const s = document.createElement('script');
-    s.src = 'https://giscus.app/client.js';
-    s.async = true; s.crossOrigin = 'anonymous';
-    s.dataset.repo = integ.giscusRepo;
-    s.dataset.repoId = integ.giscusRepoId;
-    s.dataset.category = integ.giscusCategory || 'General';
-    s.dataset.categoryId = integ.giscusCategoryId;
-    s.dataset.mapping = 'pathname';
-    s.dataset.reactionsEnabled = '1';
-    s.dataset.theme = 'dark_high_contrast';
+    s.src = 'https://giscus.app/client.js'; s.async = true; s.crossOrigin = 'anonymous';
+    s.dataset.repo = integ.giscusRepo; s.dataset.repoId = integ.giscusRepoId;
+    s.dataset.category = integ.giscusCategory || 'General'; s.dataset.categoryId = integ.giscusCategoryId;
+    s.dataset.mapping = 'pathname'; s.dataset.reactionsEnabled = '1'; s.dataset.theme = 'dark_high_contrast';
     mount.appendChild(s);
   }
 
   function applySiteData(raw, isFallback = false) {
     const d = {
-      ...FALLBACK_SITE_DATA,
-      ...(raw || {}),
-      siteMeta:     { ...FALLBACK_SITE_DATA.siteMeta, ...(raw?.siteMeta || {}) },
-      integrations: { ...FALLBACK_SITE_DATA.integrations, ...(raw?.integrations || {}) },
-      current:      { ...FALLBACK_SITE_DATA.current, ...(raw?.current || {}) },
-      operator:     { ...FALLBACK_SITE_DATA.operator, ...(raw?.operator || {}) },
+      ...FALLBACK_DATA, ...(raw || {}),
+      siteMeta:     { ...FALLBACK_DATA.siteMeta, ...(raw?.siteMeta || {}) },
+      integrations: { ...FALLBACK_DATA.integrations, ...(raw?.integrations || {}) },
+      current:      { ...FALLBACK_DATA.current, ...(raw?.current || {}) },
+      operator:     { ...FALLBACK_DATA.operator, ...(raw?.operator || {}) },
       directory:    {
-        ...FALLBACK_SITE_DATA.directory,
-        ...(raw?.directory || {}),
-        locker: { ...FALLBACK_SITE_DATA.directory.locker, ...(raw?.directory?.locker || {}) },
-        relays: { ...FALLBACK_SITE_DATA.directory.relays, ...(raw?.directory?.relays || {}) }
+        ...FALLBACK_DATA.directory, ...(raw?.directory || {}),
+        locker: { ...FALLBACK_DATA.directory.locker, ...(raw?.directory?.locker || {}) },
+        relays: { ...FALLBACK_DATA.directory.relays, ...(raw?.directory?.relays || {}) }
       }
     };
-    if (!Array.isArray(d.directory.tvChannels) || !d.directory.tvChannels.length) d.directory.tvChannels = FALLBACK_SITE_DATA.directory.tvChannels;
-    if (!Array.isArray(d.directory.books) || !d.directory.books.length) d.directory.books = FALLBACK_SITE_DATA.directory.books;
-    if (!Array.isArray(d.directory.vhs) || !d.directory.vhs.length) d.directory.vhs = FALLBACK_SITE_DATA.directory.vhs;
-    if (!Array.isArray(d.directory.gifs) || !d.directory.gifs.length) d.directory.gifs = FALLBACK_SITE_DATA.directory.gifs;
-    if (!Array.isArray(d.popupAds) || !d.popupAds.length) d.popupAds = FALLBACK_SITE_DATA.popupAds;
-    if (!Array.isArray(d.archive) || !d.archive.length) d.archive = FALLBACK_SITE_DATA.archive;
+    if (!Array.isArray(d.directory.tvChannels) || !d.directory.tvChannels.length) d.directory.tvChannels = FALLBACK_DATA.directory.tvChannels;
+    if (!Array.isArray(d.directory.books) || !d.directory.books.length) d.directory.books = FALLBACK_DATA.directory.books;
+    if (!Array.isArray(d.directory.vhs) || !d.directory.vhs.length) d.directory.vhs = FALLBACK_DATA.directory.vhs;
+    if (!Array.isArray(d.directory.gifs) || !d.directory.gifs.length) d.directory.gifs = FALLBACK_DATA.directory.gifs;
+    if (!Array.isArray(d.popupAds) || !d.popupAds.length) d.popupAds = FALLBACK_DATA.popupAds;
+    if (!Array.isArray(d.archive) || !d.archive.length) d.archive = FALLBACK_DATA.archive;
     siteData = d;
 
-    /* 1. Site Meta & Tickers */
     if (d.siteMeta.siteTitle) document.title = d.siteMeta.siteTitle;
     if (d.siteMeta.heroTickerTop && $('hero-ticker-top')) {
-      const t = esc(d.siteMeta.heroTickerTop);
-      $('hero-ticker-top').innerHTML = `<span>${t}</span><span>${t}</span>`;
+      const t = esc(d.siteMeta.heroTickerTop); $('hero-ticker-top').innerHTML = `<span>${t}</span><span>${t}</span>`;
     }
     if (d.siteMeta.heroTickerBottom && $('hero-ticker-bottom')) {
-      const t = esc(d.siteMeta.heroTickerBottom);
-      $('hero-ticker-bottom').innerHTML = `<span>${t}</span><span>${t}</span>`;
+      const t = esc(d.siteMeta.heroTickerBottom); $('hero-ticker-bottom').innerHTML = `<span>${t}</span><span>${t}</span>`;
     }
 
-    /* 2. Currently Status Box + Last.fm */
     const cur = d.current;
     if ($('currently-status-box')) {
-      const upd = cur.updatedAt ? new Date(cur.updatedAt).toLocaleDateString([], { year: 'numeric', month: 'short', day: '2-digit' }) : (isFallback ? 'FALLBACK MODE' : 'LIVE');
+      const upd = cur.updatedAt ? new Date(cur.updatedAt).toLocaleDateString([], { year: 'numeric', month: 'short', day: '2-digit' }) : (isFallback ? 'PRE-FILLED' : 'LIVE');
       $('currently-status-box').innerHTML = `
         <div class="flex items-center justify-between border-b border-rust/30 pb-1 font-tech text-[10px]">
-          <span class="text-acid font-bold tracking-widest">● CURRENTLY_LOG // ${isFallback ? 'LOCAL FALLBACK' : 'GITHUB PAGES LIVE'}</span>
+          <span class="text-acid font-bold tracking-widest">● CURRENTLY_LOG // ${isFallback ? 'LOCAL MODE' : 'GITHUB PAGES LIVE'}</span>
           <span class="text-ash">UPDATED: ${esc(upd)}</span>
         </div>
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-[11px] font-typewriter">
@@ -1340,24 +1213,19 @@
         </div>
       `;
     }
-    hydrateLastFm(d.integrations, cur);
+    hydrateLastFm(d.integrations);
 
-    /* 3. Manifesto Pinned Note, Paragraphs & Ciphers */
     const pin = $('z3-manifesto-pinned-note');
     if (pin) {
-      if (d.directory.manifestoNote) {
-        pin.classList.remove('hidden');
-        pin.innerHTML = `<span class="text-pink font-tech font-bold">⛨ PINNED_BROADCAST:</span> ${esc(d.directory.manifestoNote)}`;
-      } else pin.classList.add('hidden');
+      if (d.directory.manifestoNote) { pin.classList.remove('hidden'); pin.innerHTML = `<span class="text-pink font-tech font-bold">⛨ PINNED_BROADCAST:</span> ${esc(d.directory.manifestoNote)}`; }
+      else pin.classList.add('hidden');
     }
     if ($('manifesto-paragraphs')) {
-      const paras = Array.isArray(d.directory.manifestoParagraphs) && d.directory.manifestoParagraphs.length
-        ? d.directory.manifestoParagraphs : FALLBACK_SITE_DATA.directory.manifestoParagraphs;
+      const paras = Array.isArray(d.directory.manifestoParagraphs) && d.directory.manifestoParagraphs.length ? d.directory.manifestoParagraphs : FALLBACK_DATA.directory.manifestoParagraphs;
       $('manifesto-paragraphs').innerHTML = paras.map((p, i) => `<p>${i === 0 ? '<span class="text-acid font-tech font-bold">&gt; BOOT_SEQUENCE:</span> ' : ''}${esc(p)}</p>`).join('');
     }
     if (Array.isArray(d.directory.ciphers) && d.directory.ciphers.length) cipherList = d.directory.ciphers;
 
-    /* 4. Operator Tag */
     const op = d.operator;
     if ($('op-badge')) $('op-badge').textContent = op.badge || 'VERIFIED';
     if ($('op-avatar-box') && op.avatarUrl) {
@@ -1385,7 +1253,6 @@
       `;
     }
 
-    /* 5. Media Vault: Spotify, Books & VHS */
     if ($('spotify-embed-iframe') && cur.spotifyEmbed?.startsWith('https://open.spotify.com/embed/')) {
       if ($('spotify-embed-iframe').src !== cur.spotifyEmbed) $('spotify-embed-iframe').src = cur.spotifyEmbed;
     }
@@ -1449,7 +1316,6 @@
       $$('.vhs-toggle-btn', $('vhs-list')).forEach((b) => b.addEventListener('click', () => { playSfx('click'); b.parentElement?.querySelector('.vhs-review')?.classList.toggle('hidden'); }));
     }
 
-    /* 6. Pirate TV 4 Channels */
     const tvGrid = $('tv-channels-grid');
     if (tvGrid) {
       const chs = d.directory.tvChannels;
@@ -1474,7 +1340,6 @@
       loadChannel(0, false);
     }
 
-    /* 7. Occult GIFs / Sticker Spawner */
     const gifsGrid = $('gifs-grid');
     if (gifsGrid) {
       gifsGrid.innerHTML = d.directory.gifs.map((g, i) => {
@@ -1487,7 +1352,6 @@
       }));
     }
 
-    /* 8. Cyber-Locker Artifacts */
     const lk = d.directory.locker;
     if ($('locker-p1')) {
       const img = $('locker-p1').querySelector('img'), cap = $('locker-p1').querySelector('.font-display');
@@ -1506,15 +1370,11 @@
       }).join('');
       $('locker-receipt').innerHTML = `<div class="text-center font-bold border-b border-dashed border-black/50 pb-1 mb-1">${esc(lk.receiptHeader || 'SECTOR 09 BODEGA')}</div>${rows}<div class="border-t border-dashed border-black/50 mt-1 pt-1 flex justify-between font-bold"><span>TOTAL</span><span>${esc(lk.receiptTotal || 'SOUL_OK')}</span></div><div class="text-center text-[8px] mt-1 tracking-widest">||||| |||| |||||</div>`;
     }
-    if ($('locker-zine')) {
-      const p = $('locker-zine').querySelector('p');
-      if (p) p.textContent = `"${String(lk.zineQuote || '').replace(/^"|"$/g, '')}"`;
-    }
+    if ($('locker-zine')) { const p = $('locker-zine').querySelector('p'); if (p) p.textContent = `"${String(lk.zineQuote || '').replace(/^"|"$/g, '')}"`; }
     if ($('locker-ticket')) {
       $('locker-ticket').innerHTML = `<div class="flex justify-between text-pink font-bold border-b border-pink/40 pb-1"><span>ADMIT ONE</span><span>${esc(lk.ticketNo || 'NO. 0666')}</span></div><div class="text-bone mt-1 font-bold">${esc(lk.ticketTitle || '[TICKET]')}</div><div class="text-ash text-[9px]">${esc(lk.ticketDate || '')}</div>`;
     }
 
-    /* 9. Signal Relays + Sync 88x31 Stamps + Giscus */
     const r = d.directory.relays;
     if ($('rel-sub-title-out')) $('rel-sub-title-out').textContent = r.substackTitle || '';
     if ($('rel-sub-date-out')) $('rel-sub-date-out').textContent = r.substackDate ? `PUBLISHED: ${r.substackDate}` : '';
@@ -1547,24 +1407,19 @@
     }
     hydrateGiscus(d.integrations);
 
-    /* 10. 5 Inline Ads & 15 Pop-Up Ads */
     if (Array.isArray(d.inlineAds)) {
       d.inlineAds.forEach((ia) => {
-        const sec = document.querySelector(`[data-dismiss-ad="${ia.id}"]`);
-        if (!sec) return;
+        const sec = document.querySelector(`[data-dismiss-ad="${ia.id}"]`); if (!sec) return;
         sec.dataset.cmsDisabled = ia.enabled === false ? '1' : '0';
         const link = sec.querySelector('.inline-ad-link'); if (link && ia.url) link.href = ia.url;
         const head = sec.querySelector('.inline-ad-head'); if (head && ia.head) head.textContent = ia.head;
         const sub  = sec.querySelector('.inline-ad-sub');  if (sub && ia.sub !== undefined) sub.textContent = ia.sub;
         const cta  = sec.querySelector('.inline-ad-cta');  if (cta && ia.cta) cta.textContent = ia.cta;
         const marq = sec.querySelector('.inline-ad-marquee');
-        if (marq && ia.marquee) {
-          marq.innerHTML = marq.tagName === 'DIV' ? `<span>${esc(ia.marquee)}</span><span>${esc(ia.marquee)}</span>` : esc(ia.marquee);
-        }
+        if (marq && ia.marquee) marq.innerHTML = marq.tagName === 'DIV' ? `<span>${esc(ia.marquee)}</span><span>${esc(ia.marquee)}</span>` : esc(ia.marquee);
         const gifSlot = sec.querySelector('.inline-ad-gif');
         if (gifSlot && ia.img) {
-          const img = document.createElement('img');
-          img.src = ia.img; img.alt = ia.head || 'Ad GIF'; img.className = 'w-full h-full object-cover';
+          const img = document.createElement('img'); img.src = ia.img; img.alt = ia.head || 'Ad GIF'; img.className = 'w-full h-full object-cover';
           gifSlot.innerHTML = ''; gifSlot.appendChild(img);
         }
       });
@@ -1589,17 +1444,13 @@
   }));
 
   /* =========================================================================
-     17. WILDER CHAOS OVERDRIVE + HYPER-MATRIX RAIN + GLITCH TEAR ENGINE
+     17. WILDER CHAOS OVERDRIVE + HYPER-MATRIX RAIN + RGB TEAR ENGINE
      ========================================================================= */
   const matrixWrap = $('matrix-rain-wrapper'), matrixCanvas = $('matrix-rain-canvas'), matrixCtx = matrixCanvas?.getContext('2d');
   const chaosGhostLayer = $('chaos-ghost-layer'), topGhostLayer = $('top-bar-ghost-layer');
+  const tearLayer = $('z3-chaos-tear-layer');
   const topTargets = $$('#top-telemetry-bar .top-glitch-target');
-  let tearLayer = $('z3-chaos-tear-layer');
-  if (!tearLayer) { tearLayer = document.createElement('div'); tearLayer.id = 'z3-chaos-tear-layer'; document.body.appendChild(tearLayer); }
-
-  const chaosTimers = new Set();
-  const chaosBaseRects = new Map();
-  const scrambledOriginals = new Map();
+  const chaosTimers = new Set(), chaosBaseRects = new Map(), scrambledOriginals = new Map();
   let chaosZ = 20, chaosHideTimer = null, matrixRaf = null, matrixLast = 0, matrixDrops = [], matrixCols = 0;
 
   const addChaosTimer = (fn, ms) => { const id = setTimeout(() => { chaosTimers.delete(id); fn(); }, ms); chaosTimers.add(id); return id; };
@@ -1627,27 +1478,24 @@
     matrixCtx.fillStyle = 'rgba(4, 7, 5, .15)';
     matrixCtx.fillRect(0, 0, w, h);
 
-    const tear = Math.random() < .35;
+    const tear = Math.random() < .38;
     const tearY = tear ? Math.floor(Math.random() * (h / 16)) * 16 : -1;
-    const tearShift = tear ? (Math.random() < .5 ? -1 : 1) * rand(18, 56) : 0;
+    const tearShift = tear ? (Math.random() < .5 ? -1 : 1) * rand(20, 62) : 0;
 
     for (let i = 0; i < matrixCols; i++) {
       let x = i * 16;
       const y = matrixDrops[i] * 16;
       if (tear && Math.abs(y - tearY) <= 48) x += tearShift;
       const r = Math.random();
-      if (r < .06) matrixCtx.fillStyle = '#ff1f6d';
-      else if (r < .12) matrixCtx.fillStyle = '#00f0ff';
-      else if (r < .18) matrixCtx.fillStyle = '#ffffff';
-      else matrixCtx.fillStyle = '#39ff14';
+      matrixCtx.fillStyle = r < .07 ? '#ff1f6d' : r < .14 ? '#00f0ff' : r < .2 ? '#ffffff' : '#39ff14';
       matrixCtx.fillText(MATRIX_GLITCH_CHARS[Math.floor(Math.random() * MATRIX_GLITCH_CHARS.length)], x, y);
-      matrixDrops[i] = (y > h && Math.random() > .92) ? 0 : matrixDrops[i] + 1;
+      matrixDrops[i] = (y > h && Math.random() > .91) ? 0 : matrixDrops[i] + 1;
     }
-    if (Math.random() < .26) {
-      matrixCtx.fillStyle = pick(['rgba(57,255,20,.16)', 'rgba(255,31,109,.18)', 'rgba(0,240,255,.16)']);
-      matrixCtx.fillRect(0, Math.random() * h, w, rand(4, 24));
+    if (Math.random() < .28) {
+      matrixCtx.fillStyle = pick(['rgba(57,255,20,.18)', 'rgba(255,31,109,.2)', 'rgba(0,240,255,.18)']);
+      matrixCtx.fillRect(0, Math.random() * h, w, rand(4, 26));
     }
-    if (Math.random() < .12) {
+    if (Math.random() < .14) {
       matrixCtx.fillStyle = '#ff1f6d';
       matrixCtx.fillText(pick(['ERR_0x666', 'BREACH!!', 'SEGFAULT', 'ᛟ_CORRUPT']), rand(20, w - 120), rand(40, h - 40));
     }
@@ -1655,19 +1503,18 @@
 
   function spawnScreenTearBar() {
     if (!chaosOn || !tearLayer) return;
-    while (tearLayer.children.length >= 12) tearLayer.firstElementChild.remove();
+    while (tearLayer.children.length >= 14) tearLayer.firstElementChild.remove();
     const bar = document.createElement('div');
     bar.className = 'z3-tear-bar';
-    const h = Math.round(rand(2, 26));
-    const col1 = pick(['rgba(255,31,109,.65)', 'rgba(0,240,255,.65)', 'rgba(57,255,20,.6)', 'rgba(255,255,0,.55)']);
-    const col2 = pick(['rgba(0,240,255,.5)', 'rgba(255,31,109,.5)', 'rgba(255,255,255,.45)']);
+    const col1 = pick(['rgba(255,31,109,.7)', 'rgba(0,240,255,.7)', 'rgba(57,255,20,.65)', 'rgba(255,255,0,.6)']);
+    const col2 = pick(['rgba(0,240,255,.55)', 'rgba(255,31,109,.55)', 'rgba(255,255,255,.45)']);
     bar.style.top = `${rand(0, 98).toFixed(1)}vh`;
-    bar.style.height = `${h}px`;
+    bar.style.height = `${Math.round(rand(2, 28))}px`;
     bar.style.background = `repeating-linear-gradient(90deg, ${col1} 0 18px, transparent 18px 26px, ${col2} 26px 46px)`;
-    bar.style.setProperty('--tx0', `${rand(-45, 45).toFixed(0)}px`);
-    bar.style.setProperty('--tx1', `${rand(-60, 60).toFixed(0)}px`);
-    bar.style.setProperty('--tx2', `${rand(-30, 30).toFixed(0)}px`);
-    const dur = rand(.12, .28);
+    bar.style.setProperty('--tx0', `${rand(-48, 48).toFixed(0)}px`);
+    bar.style.setProperty('--tx1', `${rand(-68, 68).toFixed(0)}px`);
+    bar.style.setProperty('--tx2', `${rand(-32, 32).toFixed(0)}px`);
+    const dur = rand(.11, .27);
     bar.style.setProperty('--td', `${dur.toFixed(2)}s`);
     tearLayer.appendChild(bar);
     addChaosTimer(() => bar.remove(), Math.ceil(dur * 1000) + 40);
@@ -1678,11 +1525,11 @@
     const fl = document.createElement('div');
     fl.className = 'z3-chaos-flash';
     fl.style.background = pick([
-      'linear-gradient(90deg, rgba(255,31,109,.28), transparent 40%, rgba(0,240,255,.28))',
-      'repeating-linear-gradient(0deg, rgba(57,255,20,.22) 0 3px, rgba(0,0,0,.6) 3px 6px)'
+      'linear-gradient(90deg, rgba(255,31,109,.3), transparent 40%, rgba(0,240,255,.3))',
+      'repeating-linear-gradient(0deg, rgba(57,255,20,.24) 0 3px, rgba(0,0,0,.62) 3px 6px)'
     ]);
     tearLayer.appendChild(fl);
-    addChaosTimer(() => fl.remove(), 220);
+    addChaosTimer(() => fl.remove(), 210);
   }
 
   function scrambleRandomTextNode() {
@@ -1692,17 +1539,11 @@
     const el = pick(candidates);
     const orig = el.textContent;
     scrambledOriginals.set(el, orig);
-    const glitchGlyphs = '▓▒░ØÆᛟ⛨∆╳01#$%@!';
-    el.textContent = orig.split('').map((c) => (c === ' ' || Math.random() < .35 ? c : glitchGlyphs[Math.floor(Math.random() * glitchGlyphs.length)])).join('');
-    addChaosTimer(() => {
-      if (scrambledOriginals.has(el)) { el.textContent = scrambledOriginals.get(el); scrambledOriginals.delete(el); }
-    }, rand(180, 520));
+    const g = '▓▒░ØÆᛟ⛨∆╳01#$%@!';
+    el.textContent = orig.split('').map((c) => (c === ' ' || Math.random() < .3 ? c : g[Math.floor(Math.random() * g.length)])).join('');
+    addChaosTimer(() => { if (scrambledOriginals.has(el)) { el.textContent = scrambledOriginals.get(el); scrambledOriginals.delete(el); } }, rand(160, 500));
   }
-
-  function restoreAllScrambledText() {
-    scrambledOriginals.forEach((orig, el) => { el.textContent = orig; });
-    scrambledOriginals.clear();
-  }
+  function restoreAllScrambledText() { scrambledOriginals.forEach((orig, el) => { el.textContent = orig; }); scrambledOriginals.clear(); }
 
   function spawnGhost(el, layer, isTop = false) {
     if (!chaosOn || !layer || el.offsetParent === null || (isTop && el.matches(':hover'))) return;
@@ -1712,7 +1553,7 @@
     const g = el.cloneNode(true);
     g.removeAttribute('id'); $$('[id]', g).forEach((n) => n.removeAttribute('id'));
     $$('iframe', g).forEach((f) => { const d = document.createElement('div'); d.className = 'w-full h-full bg-pink/15 border border-acid text-acid flex items-center justify-center font-tech text-xs'; d.textContent = '⚠ SIGNAL_CORRUPT ⚠'; f.replaceWith(d); });
-    const dur = isTop ? rand(.38, .75) : rand(.45, .95);
+    const dur = isTop ? rand(.36, .74) : rand(.44, .92);
     g.classList.remove('chaos-blinking', 'chaos-glitching', 'chaos-invert-spike', 'chaos-ghost-echo', 'chaos-returning');
     g.classList.add(isTop ? 'top-bar-ghost-clone' : 'chaos-ghost-clone');
     Object.assign(g.style, {
@@ -1733,35 +1574,29 @@
   function triggerPanelGlitch(el) {
     if (!chaosOn || el.matches(':hover') || el.matches(':focus-within')) return;
     const r = Math.random();
-    if (r < .28) { el.classList.add('chaos-blinking'); addChaosTimer(() => el.classList.remove('chaos-blinking'), rand(160, 480)); }
-    else if (r < .58) { el.classList.add('chaos-glitching'); addChaosTimer(() => el.classList.remove('chaos-glitching'), rand(160, 520)); }
+    if (r < .28) { el.classList.add('chaos-blinking'); addChaosTimer(() => el.classList.remove('chaos-blinking'), rand(150, 460)); }
+    else if (r < .58) { el.classList.add('chaos-glitching'); addChaosTimer(() => el.classList.remove('chaos-glitching'), rand(150, 500)); }
     else if (r < .78) { el.classList.add('chaos-invert-spike'); addChaosTimer(() => el.classList.remove('chaos-invert-spike'), rand(120, 320)); }
-    else { el.classList.add('chaos-ghost-echo'); spawnGhost(el, chaosGhostLayer); addChaosTimer(() => el.classList.remove('chaos-ghost-echo'), rand(240, 680)); }
+    else { el.classList.add('chaos-ghost-echo'); spawnGhost(el, chaosGhostLayer); addChaosTimer(() => el.classList.remove('chaos-ghost-echo'), rand(240, 660)); }
   }
 
   function warpChaosPanel(panel) {
     if (!chaosOn || panel.matches(':hover') || panel.matches(':focus-within')) return;
-    const base = chaosBaseRects.get(panel);
-    if (!base) return;
-    const vw = window.innerWidth, isNarrow = vw < 768, isWide = base.width > vw * .62;
-    const maxX = isNarrow ? 22 : isWide ? 88 : 130;
-    const maxY = isNarrow ? 34 : isWide ? 110 : 210;
+    const base = chaosBaseRects.get(panel); if (!base) return;
+    const vwNow = window.innerWidth, isNarrow = vwNow < 768, isWide = base.width > vwNow * .62;
+    const maxX = isNarrow ? 22 : isWide ? 88 : 135;
+    const maxY = isNarrow ? 34 : isWide ? 110 : 215;
     const maxRot = isNarrow ? 6 : isWide ? 8.5 : 19;
-    const x = rand(-maxX, maxX).toFixed(1), y = rand(-maxY, maxY).toFixed(1);
-    const rot = rand(-maxRot, maxRot).toFixed(1), sc = rand(.9, 1.09).toFixed(2);
-    const skewX = rand(-8, 8).toFixed(1), skewY = rand(-3, 3).toFixed(1);
-    const teleport = Math.random() < .58;
+    const teleport = Math.random() < .6;
     if (Math.random() < (teleport ? .9 : .55)) spawnGhost(panel, chaosGhostLayer);
-    panel.style.transition = teleport ? 'none' : `transform ${rand(.18, .62).toFixed(2)}s cubic-bezier(.22,1,.36,1)`;
-    panel.style.transform = `translate3d(${x}px,${y}px,0) rotate(${rot}deg) scale(${sc}) skew(${skewX}deg,${skewY}deg)`;
-    if (Math.random() < .78) triggerPanelGlitch(panel);
+    panel.style.transition = teleport ? 'none' : `transform ${rand(.18, .6).toFixed(2)}s cubic-bezier(.22,1,.36,1)`;
+    panel.style.transform = `translate3d(${rand(-maxX, maxX).toFixed(1)}px,${rand(-maxY, maxY).toFixed(1)}px,0) rotate(${rand(-maxRot, maxRot).toFixed(1)}deg) scale(${rand(.9, 1.09).toFixed(2)}) skew(${rand(-8, 8).toFixed(1)}deg,${rand(-3, 3).toFixed(1)}deg)`;
+    if (Math.random() < .8) triggerPanelGlitch(panel);
   }
-
   const bringChaosForward = (e) => { if (chaosOn) { chaosZ = chaosZ >= 36 ? 20 : chaosZ + 1; e.currentTarget.style.zIndex = String(chaosZ); } };
 
   function startChaosMode() {
-    clearChaosTimers();
-    restoreAllScrambledText();
+    clearChaosTimers(); restoreAllScrambledText();
     if (chaosGhostLayer) chaosGhostLayer.innerHTML = '';
     if (topGhostLayer) topGhostLayer.innerHTML = '';
     if (tearLayer) tearLayer.innerHTML = '';
@@ -1782,18 +1617,18 @@
     unlockRelic('chaos_survivor');
     playSfx('boss');
 
-    const glitchStormLoop = () => {
+    const stormLoop = () => {
       if (!chaosOn) return;
       spawnScreenTearBar();
-      if (Math.random() < .55) spawnScreenTearBar();
-      if (Math.random() < .32) spawnStaticFlash();
-      if (Math.random() < .65) scrambleRandomTextNode();
-      if (Math.random() < .35) {
+      if (Math.random() < .6) spawnScreenTearBar();
+      if (Math.random() < .35) spawnStaticFlash();
+      if (Math.random() < .7) scrambleRandomTextNode();
+      if (Math.random() < .38) {
         document.body.classList.add('chaos-shaking');
         playSfx('glitch');
         addChaosTimer(() => document.body.classList.remove('chaos-shaking'), rand(160, 380));
       }
-      addChaosTimer(glitchStormLoop, rand(140, 380));
+      addChaosTimer(stormLoop, rand(130, 360));
     };
 
     const topLoop = () => {
@@ -1805,31 +1640,29 @@
         picked.classList.add('is-bursting');
         addChaosTimer(() => picked.classList.remove('is-bursting'), rand(140, 320));
       }
-      addChaosTimer(topLoop, rand(280, 760));
+      addChaosTimer(topLoop, rand(260, 720));
     };
 
     requestAnimationFrame(() => {
       if (!chaosOn) return;
-      const driftP = (p) => { if (!chaosOn) return; warpChaosPanel(p); addChaosTimer(() => driftP(p), rand(240, 760)); };
+      const driftP = (p) => { if (!chaosOn) return; warpChaosPanel(p); addChaosTimer(() => driftP(p), rand(230, 740)); };
       const driftM = (el) => {
         if (!chaosOn) return;
         if (!el.matches(':hover')) {
           el.style.transition = Math.random() < .55 ? 'none' : `transform ${rand(.18, .55).toFixed(2)}s ease-out`;
           el.style.transform = `translate3d(${rand(-30, 30).toFixed(1)}px,${rand(-18, 18).toFixed(1)}px,0) rotate(${rand(-18, 18).toFixed(1)}deg) skewX(${rand(-10, 10).toFixed(1)}deg)`;
-          if (Math.random() < .48) triggerPanelGlitch(el);
+          if (Math.random() < .5) triggerPanelGlitch(el);
         }
         addChaosTimer(() => driftM(el), rand(220, 680));
       };
       panels.forEach((p) => { p.addEventListener('pointerdown', bringChaosForward); driftP(p); });
       micros.forEach((m) => driftM(m));
-      glitchStormLoop();
-      topLoop();
+      stormLoop(); topLoop();
     });
   }
 
   function stopChaosMode() {
-    clearChaosTimers();
-    restoreAllScrambledText();
+    clearChaosTimers(); restoreAllScrambledText();
     document.body.classList.remove('overdrive-mode', 'chaos-shaking');
     cancelAnimationFrame(matrixRaf); matrixRaf = null;
     matrixCtx?.clearRect(0, 0, window.innerWidth, window.innerHeight);
@@ -1839,8 +1672,8 @@
     if (tearLayer) tearLayer.innerHTML = '';
     topTargets.forEach((el) => el.classList.remove('is-bursting'));
 
-    const panels = getChaosPanels(), micros = getChaosMicros();
-    [...panels, ...micros].forEach((el) => {
+    const all = [...getChaosPanels(), ...getChaosMicros()];
+    all.forEach((el) => {
       el.removeEventListener('pointerdown', bringChaosForward);
       el.classList.remove('chaos-blinking', 'chaos-glitching', 'chaos-invert-spike', 'chaos-ghost-echo');
       el.classList.add('chaos-returning');
@@ -1849,7 +1682,7 @@
     });
     addChaosTimer(() => {
       if (chaosOn) return;
-      [...panels, ...micros].forEach((el) => { el.classList.remove('chaos-returning'); el.style.transition = ''; el.style.transform = ''; });
+      all.forEach((el) => { el.classList.remove('chaos-returning'); el.style.transition = ''; el.style.transform = ''; });
     }, 680);
   }
 
@@ -1876,7 +1709,7 @@
   $('btn-overdrive')?.addEventListener('click', () => setChaos(!chaosOn));
 
   /* =========================================================================
-     18. OCCULT 5-LINE MARGINS + MINI CHIBI SERAPHIMS + 3-HP ARCH-SERAPH BOSS
+     18. OCCULT 5-LINE MARGINS + FLYING CHIBI CHERUBIMS/SERAPHIMS + 3-HP BOSS
      ========================================================================= */
   const veilCanvas = $('z3-occult-veil-canvas'), veilCtx = veilCanvas?.getContext('2d');
   const seraphLayer = $('z3-seraph-layer');
@@ -2006,6 +1839,7 @@
     veilCtx.restore();
   }
 
+  /* 3 Chibi Angelic Outlines: 0 = 6-Winged Seraphim, 1 = Chibi Cherubim, 2 = Ophanim Wheel (+ Boss) */
   const buildSeraphSVG = (v, m, p, isBoss = false) => isBoss
     ? `<svg viewBox="0 0 80 64" fill="none" stroke-linecap="round" stroke-linejoin="round"><g class="sr-halo"><ellipse cx="40" cy="7" rx="16" ry="4" stroke="#f5d27a" stroke-width="2.4"/><polygon points="40,1 43,6 37,6" fill="#ff1f6d"/></g><g class="sr-wing-top-l"><path d="M34 22 C24 6, 8 8, 7 18 C13 20, 19 20, 26 24" stroke="#f5d27a" stroke-width="2.2"/></g><g class="sr-wing-top-r"><path d="M46 22 C56 6, 72 8, 73 18 C67 20, 61 20, 54 24" stroke="#f5d27a" stroke-width="2.2"/></g><g class="sr-wing-mid-l"><path d="M29 29 C16 19, 2 22, 2 33 C8 35, 13 33, 16 38 C21 37, 25 35, 30 33" stroke="#ff1f6d" stroke-width="2.4"/></g><g class="sr-wing-mid-r"><path d="M51 29 C64 19, 78 22, 78 33 C72 35, 67 33, 64 38 C59 37, 55 35, 50 33" stroke="#ff1f6d" stroke-width="2.4"/></g><ellipse cx="40" cy="31" rx="18" ry="11" stroke="#f5d27a" stroke-width="2" stroke-dasharray="4 3"/><g class="sr-eye"><path d="M24 31 Q40 16 56 31 Q40 46 24 31 Z" fill="#0b0706" stroke="#f5d27a" stroke-width="2.4"/><circle cx="40" cy="31" r="6.5" fill="#ff1f6d" stroke="#39ff14" stroke-width="1.6"/><circle cx="40" cy="31" r="2.5" fill="#fff"/></g></svg>`
     : v === 0
@@ -2027,8 +1861,7 @@
   }
 
   function updateBossHud() {
-    const hud = $('z3-boss-hud');
-    if (!hud) return;
+    const hud = $('z3-boss-hud'); if (!hud) return;
     if (!activeBoss || activeBoss.dead) { hud.classList.add('hidden'); return; }
     hud.classList.remove('hidden');
     if ($('z3-boss-hp-txt')) $('z3-boss-hp-txt').textContent = `HP: ${activeBoss.hp} / 3`;
@@ -2054,8 +1887,7 @@
       if (boss.dead) return;
       boss.hp--;
       playSfx(boss.hp > 0 ? 'zap' : 'relic');
-      el.classList.add('is-hit');
-      setTimeout(() => el.classList.remove('is-hit'), 160);
+      el.classList.add('is-hit'); setTimeout(() => el.classList.remove('is-hit'), 160);
       for (let k = 0; k < 10; k++) spawnSeraphSpark(boss.x + rand(-34, 34), boss.y + rand(-28, 28), k % 2 ? '#f5d27a' : '#ff1f6d', true);
       if (boss.hp <= 0) {
         boss.dead = true; activeBoss = null;
@@ -2064,15 +1896,14 @@
         seraphKills += 3; lsSet(KEYS.kills, seraphKills); syncKillBadge();
         unlockRelic('boss_slayer');
         showToast('👑 GILDED ARCH-SERAPH BANISHED!', 'You purified Sector 09 (+3 Banishes)!', '#f5d27a');
+        if (!seraphs.length) setTimeout(initSeraphims, 3200);
       } else {
         boss.tx = rand(60, vw - 60); boss.ty = rand(90, vh - 100);
         boss.vx = rand(-140, 140); boss.vy = rand(-110, 110);
       }
       updateBossHud();
     });
-    activeBoss = boss;
-    seraphs.push(boss);
-    updateBossHud();
+    activeBoss = boss; seraphs.push(boss); updateBossHud();
     playSfx('boss');
     showToast('⚠ GILDED ARCH-SERAPH SUMMONED!', 'Strike it 3 times to banish it!', '#ff1f6d');
   }
@@ -2091,6 +1922,7 @@
     seraphKills++; lsSet(KEYS.kills, seraphKills); syncKillBadge();
     if (seraphKills >= 5) unlockRelic('seraph_slayer');
     if (seraphKills % 7 === 0 && !activeBoss) spawnArchSeraphBoss();
+    else if (!seraphs.length) setTimeout(initSeraphims, 3800);
   }
 
   function pickWp() {
@@ -2112,7 +1944,7 @@
       el.innerHTML = buildSeraphSVG(i % 3, m, p, false);
       seraphLayer.appendChild(el);
       const st = pickWp(), tg = pickWp();
-      const obj = { el, isBoss: false, dead: false, x: st.x, y: st.y, vx: rand(-30, 30), vy: rand(-24, 24), tx: tg.x, ty: tg.y, speed: mob ? rand(46, 72) : rand(38, 66), scale: rand(.84, 1.12), bobPhase: rand(0, 6.28), bobFreq: rand(2.2, 3.6), facing: 1, m, p, sparkTimer: rand(1.1, 2.8), retargetTimer: rand(2.4, 5.4) };
+      const obj = { el, isBoss: false, dead: false, x: st.x, y: st.y, vx: rand(-30, 30), vy: rand(-24, 24), tx: tg.x, ty: tg.y, speed: mob ? rand(46, 72) : rand(38, 66), scale: rand(.86, 1.14), bobPhase: rand(0, 6.28), bobFreq: rand(2.2, 3.6), facing: 1, m, p, sparkTimer: rand(1.1, 2.8), retargetTimer: rand(2.4, 5.4) };
       el.addEventListener('pointerdown', (e) => { e.stopPropagation(); killSeraph(obj); });
       seraphs.push(obj);
     }
@@ -2141,7 +1973,7 @@
       if (s.y > vh - 46) { s.y = vh - 46; s.vy = -Math.abs(s.vy); }
       if (Math.abs(s.vx) > 6) s.facing = s.vx >= 0 ? 1 : -1;
       const bob = Math.sin(t * s.bobFreq + s.bobPhase) * 6.5;
-      const hw = s.isBoss ? 59 : 36, hh = s.isBoss ? 49 : 30;
+      const hw = s.isBoss ? 60 : 37, hh = s.isBoss ? 50 : 31;
       s.el.style.transform = `translate3d(${(s.x - hw).toFixed(1)}px,${(s.y - hh + bob).toFixed(1)}px,0) scale(${(s.scale * s.facing).toFixed(2)},${s.scale.toFixed(2)}) rotate(${Math.max(-18, Math.min(18, s.vx * .14 * s.facing)).toFixed(1)}deg)`;
       if ((s.sparkTimer -= dt) <= 0) { s.sparkTimer = rand(mob ? 1.8 : 1.2, mob ? 3.6 : 2.8); spawnSeraphSpark(s.x, s.y + bob, Math.random() < .5 ? s.m : s.p); }
     }
@@ -2152,7 +1984,7 @@
     requestAnimationFrame(animTick);
     if (document.hidden || calmOn) { animLast = ts; return; }
     if (!animLast) animLast = ts;
-    if (vw < 768 && (ts - animLast) < 32) return; // Smooth ~30fps cap on mobile
+    if (vw < 768 && (ts - animLast) < 32) return;
     const dt = Math.min(.05, Math.max(.001, (ts - animLast) / 1000));
     animLast = ts; animElapsed += dt;
     drawOccultVeil(dt, animElapsed);
@@ -2160,7 +1992,7 @@
   }
 
   /* =========================================================================
-     19. HACKER CLI TERMINAL (↑/↓ HISTORY) + KONAMI CODE (↑↑↓↓←→←→BA)
+     19. HACKER CLI TERMINAL (↑/↓ HISTORY + 'console') & KONAMI CODE
      ========================================================================= */
   const cliOut = $('cli-output'), cliIn = $('cli-input');
   const cliHistory = [];
@@ -2199,28 +2031,21 @@
   });
 
   cliIn?.addEventListener('keydown', (e) => {
-    if (e.key === 'ArrowUp' && cliHistory.length) {
-      e.preventDefault();
-      cliHistIdx = cliHistIdx <= 0 ? cliHistory.length - 1 : cliHistIdx - 1;
-      cliIn.value = cliHistory[cliHistIdx];
-    } else if (e.key === 'ArrowDown' && cliHistory.length) {
-      e.preventDefault();
-      cliHistIdx = cliHistIdx >= cliHistory.length - 1 ? 0 : cliHistIdx + 1;
-      cliIn.value = cliHistory[cliHistIdx];
-    }
+    if (e.key === 'ArrowUp' && cliHistory.length) { e.preventDefault(); cliHistIdx = cliHistIdx <= 0 ? cliHistory.length - 1 : cliHistIdx - 1; cliIn.value = cliHistory[cliHistIdx]; }
+    else if (e.key === 'ArrowDown' && cliHistory.length) { e.preventDefault(); cliHistIdx = cliHistIdx >= cliHistory.length - 1 ? 0 : cliHistIdx + 1; cliIn.value = cliHistory[cliHistIdx]; }
   });
 
   $('cli-form')?.addEventListener('submit', (e) => {
     e.preventDefault();
     const raw = cliIn?.value.trim(); if (!raw) return;
-    cliHistory.push(raw); cliHistIdx = cliHistory.length;
-    cliIn.value = '';
+    cliHistory.push(raw); cliHistIdx = cliHistory.length; cliIn.value = '';
     const cmd = raw.toLowerCase();
     logCli(`$ ${raw}`); playSfx('click');
 
-    if (cmd === 'help') logCli('COMMANDS: help | neofetch | ls | cat manifesto.txt | whoami | badges | boss | tarot | aura | chaos | bios | sync | resetads | seraph | veil | konami | secret | theme acid|rust|pink|cyan | clear');
+    if (cmd === 'help') logCli('COMMANDS: help | console | neofetch | ls | cat manifesto.txt | whoami | badges | boss | tarot | aura | chaos | bios | sync | resetads | seraph | veil | konami | secret | theme acid|rust|pink|cyan | clear');
+    else if (cmd === 'console' || cmd === 'cms' || cmd === 'admin') { logCli('>> Opening Operator CMS (./console.html)...'); location.href = './console.html'; }
     else if (cmd === 'clear') { if (cliOut) { cliOut.textContent = ''; cliOut.classList.add('hidden'); } }
-    else if (cmd === 'ls') logCli('index.html   styles.css   app.js   console.html   feed.xml   data/updates.json');
+    else if (cmd === 'ls') logCli('index.html   styles.css   app.js   console.html   404.html   feed.xml   data/updates.json');
     else if (cmd === 'whoami') logCli(`${currentUserId} // GUEST VISITOR IN SECTOR 09 (RELICS: ${unlockedRelics.size}/${RELIC_DEFS.length})`);
     else if (cmd === 'cat manifesto.txt') logCli((siteData.directory?.manifestoParagraphs || []).join('\n\n'));
     else if (cmd === 'neofetch') {
@@ -2235,7 +2060,7 @@
     else if (cmd === 'bios') { runBiosBoot(true); logCli('>> Replaying salvaged BIOS POST sequence...'); }
     else if (cmd === 'sync') { logCli('>> Re-fetching ./data/updates.json...'); fetchUpdatesJson(true); }
     else if (cmd === 'resetads') { resetAllAds(); logCli('>> All dismissed inline & pop-up ads restored.'); }
-    else if (cmd === 'seraph' || cmd === 'seraphs') { if (!seraphs.length) initSeraphims(); else seraphLayer?.classList.toggle('hidden'); logCli('>> Seraphim flock toggled.'); }
+    else if (cmd === 'seraph' || cmd === 'seraphs' || cmd === 'cherubim') { if (!seraphs.length) initSeraphims(); else seraphLayer?.classList.toggle('hidden'); logCli('>> Cherubim/Seraphim flock toggled.'); }
     else if (cmd === 'veil' || cmd === 'margins') { veilCanvas?.classList.toggle('hidden'); logCli('>> Occult margin veil toggled.'); }
     else if (cmd === 'konami') { triggerKonamiVault(); logCli('>> KONAMI GLITCH VAULT OPENED.'); }
     else if (cmd === 'secret') { unlockRelic('root_access'); logCli('>> [BACKDOOR UNLOCKED] "ᛟ Long live the weird web & permanent personal shrines. ᛟ"'); }
@@ -2249,7 +2074,7 @@
   });
 
   /* =========================================================================
-     20. MOBILE VIEW OPTIMIZER (< 1024px) — UNTOUCHED ON DESKTOP
+     20. MOBILE VIEW OPTIMIZER (< 1024px ONLY — PRESERVES DESKTOP 100%)
      ========================================================================= */
   const mobileMQ = window.matchMedia('(max-width: 1023px)');
   const mobBackdrop = $('z3-mob-sheet-backdrop'), mobTitle = $('z3-mob-sheet-title'), mobBody = $('z3-mob-sheet-body');
@@ -2314,8 +2139,7 @@
     ['section-stamps-wall', true], ['section-sigil-radar', true], ['section-blackbox-chat', false], ['section-visitor-log', true]
   ];
   accordionSpecs.forEach(([id, defCol]) => {
-    const el = $(id), hdr = el?.firstElementChild;
-    if (!el || !hdr) return;
+    const el = $(id), hdr = el?.firstElementChild; if (!el || !hdr) return;
     hdr.classList.add('z3-mob-collapsible-hdr');
     const ch = document.createElement('span'); ch.className = 'z3-mob-chevron'; ch.textContent = '▾';
     hdr.appendChild(ch);
@@ -2323,10 +2147,7 @@
     if (mobileMQ.matches && defCol) el.classList.add('z3-mob-collapsed');
   });
   mobileMQ.addEventListener?.('change', () => {
-    if (!mobileMQ.matches) {
-      closeMobSheet();
-      accordionSpecs.forEach(([id]) => $(id)?.classList.remove('z3-mob-collapsed'));
-    }
+    if (!mobileMQ.matches) { closeMobSheet(); accordionSpecs.forEach(([id]) => $(id)?.classList.remove('z3-mob-collapsed')); }
   });
 
   /* =========================================================================
@@ -2339,11 +2160,9 @@
         if (json) {
           applySiteData(json, false);
           if (notify) showToast('ᛟ NODE RE-SYNCED', 'Loaded latest data/updates.json!', '#39ff14');
-        } else {
-          applySiteData(FALLBACK_SITE_DATA, true);
-        }
+        } else applySiteData(FALLBACK_DATA, true);
       })
-      .catch(() => applySiteData(FALLBACK_SITE_DATA, true));
+      .catch(() => applySiteData(FALLBACK_DATA, true));
   }
 
   let resizeT = null;
@@ -2351,10 +2170,7 @@
     updateTelemetry();
     if (!$('tab-locker')?.classList.contains('hidden')) clampLockerItems();
     clearTimeout(resizeT);
-    resizeT = setTimeout(() => {
-      buildOccultScene();
-      if (chaosOn) { resizeMatrix(); startChaosMode(); }
-    }, 220);
+    resizeT = setTimeout(() => { buildOccultScene(); if (chaosOn) { resizeMatrix(); startChaosMode(); } }, 220);
   });
 
   syncRelicsUI();
@@ -2363,6 +2179,6 @@
   requestAnimationFrame(animTick);
   runBiosBoot(false);
   fetchUpdatesJson(false).finally(() => {
-    setTimeout(() => { if (!document.hidden && !calmOn) spawnRandomPopup(); schedulePopups(); }, 2600);
+    setTimeout(() => { if (!document.hidden && !calmOn) spawnRandomPopup(); schedulePopups(); }, 2500);
   });
 })();
