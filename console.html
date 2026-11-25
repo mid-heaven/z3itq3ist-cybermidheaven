@@ -1,0 +1,1284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>z3itq3ist // OPERATOR CMS &amp; ARCHIVE CONSOLE</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23050607'/%3E%3Crect x='3' y='3' width='58' height='58' rx='6' fill='none' stroke='%23f5d27a' stroke-width='3'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-size='36' font-family='monospace' fill='%2339ff14'%3E%E1%9B%9F%3C/text%3E%3C/svg%3E">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Share+Tech+Mono&family=Special+Elite&display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            typewriter: ['"Courier Prime"', '"Courier New"', 'monospace'],
+            display:    ['"Special Elite"', '"Courier Prime"', 'monospace'],
+            tech:       ['"Share Tech Mono"', '"Courier Prime"', 'monospace']
+          },
+          colors: {
+            void: '#050607', scrap: '#0b0d0f', iron: '#131618',
+            bone: '#d8d5c8', ash: '#7b827b',
+            acid: '#39ff14', pink: '#ff1f6d', cyan: '#00f0ff', rust: '#d48c28', gold: '#f5d27a'
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    body {
+      background-color: #050607; color: #d8d5c8; font-family: 'Courier Prime', monospace;
+      background-image:
+        radial-gradient(ellipse at 14% 12%, rgba(57,255,20,.07) 0%, transparent 44%),
+        radial-gradient(ellipse at 86% 22%, rgba(255,31,109,.08) 0%, transparent 42%),
+        repeating-linear-gradient(0deg, rgba(216,213,200,.024) 0 1px, transparent 1px 24px),
+        repeating-linear-gradient(90deg, rgba(57,255,20,.018) 0 1px, transparent 1px 24px);
+      background-attachment: fixed;
+    }
+    .cyber-panel { position: relative; background: linear-gradient(168deg, rgba(16,20,22,.97), rgba(6,8,9,.99)); border: 1px solid rgba(212,140,40,.55); box-shadow: 4px 5px 0 rgba(0,0,0,.92), inset 0 0 22px rgba(0,0,0,.86); }
+    .cyber-panel::before, .cyber-panel::after { content: ""; position: absolute; width: 10px; height: 10px; pointer-events: none; }
+    .cyber-panel::before { top: -1px; left: -1px; border-top: 2px solid #39ff14; border-left: 2px solid #39ff14; }
+    .cyber-panel::after  { bottom: -1px; right: -1px; border-bottom: 2px solid #ff1f6d; border-right: 2px solid #ff1f6d; }
+    .field-input { width: 100%; background: #060809; border: 1px solid rgba(212,140,40,.45); border-radius: 2px; padding: 6px 9px; color: #e8e5d8; font-size: 13px; outline: none; transition: border-color .15s, box-shadow .15s; }
+    .field-input:focus { border-color: #39ff14; box-shadow: 0 0 0 1px rgba(57,255,20,.35); }
+    .field-label { display: block; font-family: 'Share Tech Mono', monospace; font-size: 10px; letter-spacing: .11em; text-transform: uppercase; margin-bottom: 3px; }
+    .main-tab-btn.is-active { background: rgba(57,255,20,.18); border-color: #39ff14; color: #39ff14; box-shadow: 0 0 12px rgba(57,255,20,.24); }
+    .sub-tab-btn.is-active { background: rgba(0,240,255,.18); border-color: #00f0ff; color: #00f0ff; }
+    .ad-pill.is-selected { border-color: #39ff14; background: rgba(57,255,20,.22); color: #39ff14; }
+    .drop-zone.is-dragover { border-color: #39ff14; background: rgba(57,255,20,.12); }
+    @media (max-width: 767px) { .field-input { font-size: 16px; } }
+  </style>
+</head>
+<body class="min-h-screen px-2.5 py-4 sm:px-5 selection:bg-acid selection:text-void">
+
+  <input id="quick-upload-input" type="file" accept="image/*" class="hidden">
+
+  <div class="max-w-7xl mx-auto space-y-4">
+
+    <!-- HEADER -->
+    <header class="cyber-panel rounded-sm p-4 sm:p-5 flex flex-col md:flex-row md:items-center justify-between gap-3 border-acid/65">
+      <div>
+        <div class="font-tech text-[11px] text-gold tracking-[0.2em]">ᛟ GITHUB PAGES // OPERATOR CMS, MEDIA UPLOADER &amp; RSS PUBLISHER</div>
+        <h1 class="font-display text-2xl sm:text-3xl text-acid tracking-[0.12em] mt-1">z3itq3ist // OPERATOR CONSOLE</h1>
+        <p class="text-xs text-ash mt-1">Edit <strong class="text-bone">Zine &amp; Status</strong>, <strong class="text-cyan">All 6 Directory Portals</strong>, <strong class="text-pink">All 20 Ads</strong>, <strong class="text-rust">Operator Tag</strong>, <strong class="text-gold">Images/GIFs</strong> &amp; <strong class="text-acid">feed.xml</strong>.</p>
+      </div>
+      <div class="flex flex-wrap items-center gap-2 font-tech text-[11px]">
+        <span id="conn-badge" class="px-2.5 py-1 rounded-sm border border-rust text-rust bg-void font-bold">● DISCONNECTED</span>
+        <a href="./" class="px-2.5 py-1 rounded-sm border border-acid/80 bg-void text-acid hover:bg-acid hover:text-void font-bold transition">↗ LIVE SITE</a>
+        <a id="btn-pages-actions" href="https://github.com" target="_blank" rel="noopener noreferrer" class="hidden px-2.5 py-1 rounded-sm border border-gold/80 bg-void text-gold hover:bg-gold hover:text-void font-bold transition">⚡ DEPLOYS ↗</a>
+        <button id="btn-export-json" type="button" class="px-2.5 py-1 rounded-sm border border-cyan/70 bg-void text-cyan hover:bg-cyan hover:text-void font-bold transition">↓ BACKUP .JSON</button>
+      </div>
+    </header>
+
+    <!-- 01. GITHUB UPLINK -->
+    <section class="cyber-panel rounded-sm overflow-hidden">
+      <div class="bg-[#09120c] border-b border-acid/45 px-4 py-2 flex items-center justify-between font-tech text-xs">
+        <span class="text-acid font-bold tracking-[0.16em]">⌖ 01 // GITHUB PAGES REPOSITORY UPLINK</span>
+        <button id="btn-toggle-config" type="button" class="text-gold hover:underline text-[11px]">[ HIDE / SHOW ]</button>
+      </div>
+      <div id="config-panel" class="p-3.5 space-y-3">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
+          <div><label for="gh-user" class="field-label text-cyan">GitHub Username</label><input id="gh-user" type="text" class="field-input" placeholder="e.g. yourname"></div>
+          <div><label for="gh-repo" class="field-label text-cyan">Repository Name</label><input id="gh-repo" type="text" class="field-input" placeholder="e.g. yourname.github.io"></div>
+          <div><label for="gh-branch" class="field-label text-rust">Branch</label><input id="gh-branch" type="text" class="field-input" value="main"></div>
+          <div><label for="gh-path" class="field-label text-rust">JSON Data Path</label><input id="gh-path" type="text" class="field-input" value="data/updates.json"></div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-12 gap-2.5 items-end">
+          <div class="sm:col-span-8">
+            <label for="gh-token" class="field-label text-pink">Fine-Grained Token (Stored ONLY Locally In Your Browser)</label>
+            <input id="gh-token" type="password" autocomplete="off" class="field-input" placeholder="github_pat_...">
+          </div>
+          <div class="sm:col-span-4 flex gap-2 font-tech">
+            <button id="btn-save-sync" type="button" class="flex-1 py-2 px-3 rounded-sm bg-acid/20 border border-acid text-acid hover:bg-acid hover:text-void font-bold text-xs tracking-wider transition">[ SAVE &amp; SYNC ]</button>
+            <button id="btn-clear-token" type="button" class="py-2 px-3 rounded-sm border border-pink/70 bg-void text-pink hover:bg-pink hover:text-void font-bold text-xs transition">WIPE</button>
+          </div>
+        </div>
+        <div id="status-console" class="rounded-sm border border-rust/35 bg-void px-3 py-2 font-tech text-[11px] text-ash min-h-[34px] flex items-center">
+          &gt;&gt; Enter your GitHub username, repo name &amp; Fine-Grained Token (Contents: Read &amp; Write), then press [ SAVE &amp; SYNC ].
+        </div>
+      </div>
+    </section>
+
+    <!-- MAIN WORKSPACE -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
+
+      <!-- LEFT 8 COLS: 6-TAB EDITOR -->
+      <section class="lg:col-span-8 cyber-panel rounded-sm overflow-hidden">
+        <div class="bg-[#080d0c] border-b border-rust/45 p-2.5 grid grid-cols-2 sm:grid-cols-3 gap-1.5 font-tech text-[11px]">
+          <button type="button" data-main-tab="status" class="main-tab-btn is-active py-2 px-2 rounded-sm border border-rust/45 bg-void text-bone font-bold tracking-wider transition">ᛟ 01 // STATUS &amp; ZINE</button>
+          <button type="button" data-main-tab="directory" class="main-tab-btn py-2 px-2 rounded-sm border border-rust/45 bg-void text-bone font-bold tracking-wider transition">⌖ 02 // DIRECTORY</button>
+          <button type="button" data-main-tab="ads" class="main-tab-btn py-2 px-2 rounded-sm border border-rust/45 bg-void text-bone font-bold tracking-wider transition">⛨ 03 // ALL 20 ADS</button>
+          <button type="button" data-main-tab="operator" class="main-tab-btn py-2 px-2 rounded-sm border border-rust/45 bg-void text-bone font-bold tracking-wider transition">✦ 04 // OPERATOR</button>
+          <button type="button" data-main-tab="media" class="main-tab-btn py-2 px-2 rounded-sm border border-rust/45 bg-void text-bone font-bold tracking-wider transition">↑ 05 // MEDIA UPLOAD</button>
+          <button type="button" data-main-tab="integrations" class="main-tab-btn py-2 px-2 rounded-sm border border-rust/45 bg-void text-bone font-bold tracking-wider transition">⚙ 06 // INTEGRATIONS</button>
+        </div>
+
+        <div class="p-4 space-y-4">
+
+          <!-- TAB 1: STATUS & ZINE -->
+          <div id="panel-status" class="main-tab-panel space-y-4">
+            <div class="rounded-sm border border-acid/40 bg-void/75 p-3.5 space-y-3">
+              <div class="flex items-center justify-between border-b border-rust/30 pb-1.5 font-tech">
+                <span class="text-acid text-xs font-bold tracking-wider">● CURRENTLY_LOG // LIVE HEADER STATUS</span>
+                <span class="text-[10px] text-ash">Auto-overridden by Last.fm if configured</span>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <div><label class="field-label text-cyan" for="cur-listening">♪ Listening</label><input id="cur-listening" type="text" class="field-input"></div>
+                <div><label class="field-label text-rust" for="cur-reading">⛨ Reading</label><input id="cur-reading" type="text" class="field-input"></div>
+                <div><label class="field-label text-pink" for="cur-watching">▣ Watching</label><input id="cur-watching" type="text" class="field-input"></div>
+                <div><label class="field-label text-acid" for="cur-fuel">☕ Fuel</label><input id="cur-fuel" type="text" class="field-input"></div>
+              </div>
+              <div><label class="field-label text-gold" for="cur-mood">☽ Current Mood / Status Quote</label><input id="cur-mood" type="text" class="field-input"></div>
+            </div>
+
+            <div class="rounded-sm border border-cyan/45 bg-void/75 p-3.5 space-y-3">
+              <div class="flex flex-wrap items-center justify-between gap-1 border-b border-rust/30 pb-1.5 font-tech">
+                <span class="text-cyan text-xs font-bold tracking-wider">⌖ NEW ZINE POST / ARCHIVE DISPATCH</span>
+                <span class="text-[10px] text-gold">Markdown: # H1, **bold**, *italic*, &gt; quote, - list</span>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                <div>
+                  <label class="field-label text-pink" for="entry-cat">Category</label>
+                  <select id="entry-cat" class="field-input font-tech text-acid">
+                    <option value="DISPATCH">DISPATCH (ZINE)</option><option value="STATUS">STATUS</option>
+                    <option value="BOOK_NOTE">BOOK_NOTE</option><option value="VHS_LOG">VHS_LOG</option>
+                    <option value="MUSIC">MUSIC</option><option value="RELIC">RELIC</option>
+                  </select>
+                </div>
+                <div class="sm:col-span-2"><label class="field-label text-bone" for="entry-title">Headline / Zine Title</label><input id="entry-title" type="text" maxlength="120" class="field-input" placeholder="e.g. Midnight Signal &amp; Found Tapes"></div>
+              </div>
+              <div><label class="field-label text-gold" for="entry-tags">Tags (Comma-separated)</label><input id="entry-tags" type="text" class="field-input" placeholder="zine, nocturnal, music"></div>
+              <div><label class="field-label text-bone" for="entry-body">Body (Opens in Zine Reader on Live Site)</label><textarea id="entry-body" rows="5" class="field-input resize-y font-typewriter" placeholder="# Heading&#10;&#10;Write your zine post or log entry..."></textarea></div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <div>
+                  <label class="field-label text-rust" for="entry-image">Header Photo / GIF</label>
+                  <div class="flex gap-1.5">
+                    <input id="entry-image" type="text" class="field-input" placeholder="images/post.jpg or https://...">
+                    <button type="button" data-quick-upload="entry-image" class="px-2.5 rounded-sm border border-gold text-gold hover:bg-gold hover:text-void font-tech font-bold text-xs shrink-0">↑</button>
+                  </div>
+                </div>
+                <div><label class="field-label text-cyan" for="entry-link">Attached Link (Optional)</label><input id="entry-link" type="url" class="field-input" placeholder="https://..."></div>
+              </div>
+            </div>
+
+            <button type="button" data-publish-scope="status" class="publish-btn w-full py-3 px-4 rounded-sm bg-acid/20 border-2 border-acid text-acid hover:bg-acid hover:text-void font-tech font-bold text-xs sm:text-sm tracking-[0.16em] transition">
+              [ ⛨ PUBLISH STATUS, ZINE POST &amp; RSS → GITHUB PAGES ]
+            </button>
+          </div>
+
+          <!-- TAB 2: DIRECTORY PORTALS -->
+          <div id="panel-directory" class="main-tab-panel hidden space-y-4">
+            <div class="flex flex-wrap gap-1.5 font-tech text-[10px] border-b border-rust/35 pb-2.5">
+              <button type="button" data-sub-tab="manifesto" class="sub-tab-btn is-active px-2.5 py-1.5 rounded-sm border border-rust/45 bg-void text-bone font-bold">ᛟ MANIFESTO &amp; TICKERS</button>
+              <button type="button" data-sub-tab="media" class="sub-tab-btn px-2.5 py-1.5 rounded-sm border border-rust/45 bg-void text-bone font-bold">♪ MEDIA_VAULT</button>
+              <button type="button" data-sub-tab="tv" class="sub-tab-btn px-2.5 py-1.5 rounded-sm border border-rust/45 bg-void text-bone font-bold">▣ PIRATE_TV</button>
+              <button type="button" data-sub-tab="gifs" class="sub-tab-btn px-2.5 py-1.5 rounded-sm border border-rust/45 bg-void text-bone font-bold">✦ OCCULT_GIFS</button>
+              <button type="button" data-sub-tab="locker" class="sub-tab-btn px-2.5 py-1.5 rounded-sm border border-rust/45 bg-void text-bone font-bold">✂ CYBER_LOCKER</button>
+              <button type="button" data-sub-tab="relays" class="sub-tab-btn px-2.5 py-1.5 rounded-sm border border-rust/45 bg-void text-bone font-bold">⛨ SIGNAL_RELAYS</button>
+            </div>
+
+            <div id="sub-manifesto" class="sub-tab-panel space-y-3">
+              <div class="rounded-sm border border-gold/45 bg-void/75 p-3 space-y-2.5">
+                <div class="font-tech text-xs text-gold font-bold">✦ HERO SCROLLING MARQUEE TICKERS</div>
+                <div><label class="field-label text-ash" for="meta-ticker-top">Top Hero Ticker</label><input id="meta-ticker-top" type="text" class="field-input text-xs"></div>
+                <div><label class="field-label text-ash" for="meta-ticker-bot">Bottom Hero Ticker</label><input id="meta-ticker-bot" type="text" class="field-input text-xs"></div>
+              </div>
+              <div class="rounded-sm border border-acid/45 bg-void/75 p-3 space-y-2.5">
+                <div class="font-tech text-xs text-acid font-bold">ᛟ MANIFESTO TEXT &amp; PINNED BROADCAST</div>
+                <div><label class="field-label text-pink" for="dir-manifesto-note">Pinned Pink Broadcast Note (Blank = hidden)</label><input id="dir-manifesto-note" type="text" class="field-input text-xs"></div>
+                <div><label class="field-label text-bone" for="dir-manifesto-paras">Manifesto Paragraphs (Separate with a blank line)</label><textarea id="dir-manifesto-paras" rows="5" class="field-input text-xs"></textarea></div>
+              </div>
+              <div class="rounded-sm border border-pink/45 bg-void/75 p-3 space-y-2">
+                <div class="font-tech text-xs text-pink font-bold">⛨ ENCRYPTED_FRAGMENT.DAT // DECRYPTABLE CIPHERS (1 PER LINE)</div>
+                <textarea id="dir-ciphers" rows="4" class="field-input font-tech text-xs"></textarea>
+              </div>
+            </div>
+
+            <div id="sub-media" class="sub-tab-panel hidden space-y-4">
+              <div class="rounded-sm border border-acid/45 bg-void/75 p-3 space-y-2.5">
+                <div class="font-tech text-xs text-acid font-bold border-b border-rust/30 pb-1">♪ SPOTIFY PIRATE BROADCAST</div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <div><label class="field-label text-acid" for="cur-spotify">Spotify Playlist / Track URL (Auto-Embeds)</label><input id="cur-spotify" type="url" class="field-input"></div>
+                  <div><label class="field-label text-cyan" for="cur-spotify-profile">Spotify Profile URL</label><input id="cur-spotify-profile" type="url" class="field-input"></div>
+                </div>
+                <div><label class="field-label text-bone" for="cur-spotify-notes">Liner Notes Caption</label><input id="cur-spotify-notes" type="text" class="field-input"></div>
+              </div>
+              <div class="rounded-sm border border-rust/55 bg-void/75 p-3 space-y-3">
+                <div class="flex items-center justify-between border-b border-rust/30 pb-1.5 font-tech">
+                  <span class="text-rust text-xs font-bold">ᛟ GRIMOIRE_LOG // BOOKS</span>
+                  <button id="btn-add-book" type="button" class="px-2 py-0.5 rounded-sm border border-acid text-acid hover:bg-acid hover:text-void text-[10px] font-bold">[ + ADD BOOK ]</button>
+                </div>
+                <div id="books-editor-list" class="space-y-3"></div>
+              </div>
+              <div class="rounded-sm border border-pink/50 bg-void/75 p-3 space-y-3">
+                <div class="flex items-center justify-between border-b border-rust/30 pb-1.5 font-tech">
+                  <span class="text-pink text-xs font-bold">▣ BOOTLEG_VHS // SERIES &amp; MOVIES</span>
+                  <button id="btn-add-vhs" type="button" class="px-2 py-0.5 rounded-sm border border-pink text-pink hover:bg-pink hover:text-void text-[10px] font-bold">[ + ADD VHS ]</button>
+                </div>
+                <div id="vhs-editor-list" class="space-y-3"></div>
+              </div>
+            </div>
+
+            <div id="sub-tv" class="sub-tab-panel hidden space-y-3">
+              <div class="text-xs font-tech text-ash">Paste any standard YouTube link (<code class="text-cyan">watch?v=...</code>, <code class="text-cyan">youtu.be/...</code>, or Shorts) — auto-converts to embed!</div>
+              <div id="tv-editor-list" class="space-y-3"></div>
+            </div>
+
+            <div id="sub-gifs" class="sub-tab-panel hidden space-y-3">
+              <div class="text-xs font-tech text-ash">Upload a custom GIF via <code class="text-gold">[↑]</code> or leave blank to keep the built-in animated cyber-pagan SVG relic.</div>
+              <div id="gifs-editor-list" class="grid grid-cols-1 sm:grid-cols-2 gap-3"></div>
+            </div>
+
+            <div id="sub-locker" class="sub-tab-panel hidden space-y-3">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="rounded-sm border border-acid/40 bg-void/75 p-3 space-y-2">
+                  <div class="font-tech text-xs text-acid font-bold">POLAROID #01</div>
+                  <div class="flex gap-1.5"><input id="lock-p1-img" type="text" class="field-input text-xs" placeholder="images/polaroid1.jpg"><button type="button" data-quick-upload="lock-p1-img" class="px-2.5 rounded-sm border border-gold text-gold hover:bg-gold hover:text-void font-tech font-bold text-xs">↑</button></div>
+                  <input id="lock-p1-cap" type="text" class="field-input text-xs" placeholder="Caption #1">
+                </div>
+                <div class="rounded-sm border border-pink/40 bg-void/75 p-3 space-y-2">
+                  <div class="font-tech text-xs text-pink font-bold">POLAROID #02</div>
+                  <div class="flex gap-1.5"><input id="lock-p2-img" type="text" class="field-input text-xs" placeholder="images/polaroid2.jpg"><button type="button" data-quick-upload="lock-p2-img" class="px-2.5 rounded-sm border border-gold text-gold hover:bg-gold hover:text-void font-tech font-bold text-xs">↑</button></div>
+                  <input id="lock-p2-cap" type="text" class="field-input text-xs" placeholder="Caption #2">
+                </div>
+              </div>
+              <div class="rounded-sm border border-rust/45 bg-void/75 p-3 space-y-2">
+                <div class="font-tech text-xs text-rust font-bold">BODEGA RECEIPT</div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <input id="lock-rec-hdr" type="text" class="field-input text-xs" placeholder="SECTOR 09 BODEGA">
+                  <input id="lock-rec-total" type="text" class="field-input text-xs" placeholder="SOUL_OK">
+                </div>
+                <textarea id="lock-rec-items" rows="3" class="field-input font-tech text-xs" placeholder="Item Name | Price"></textarea>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="rounded-sm border border-acid/40 bg-void/75 p-3 space-y-2">
+                  <div class="font-tech text-xs text-acid font-bold">✂ ZINE CLIPPING QUOTE</div>
+                  <textarea id="lock-zine-quote" rows="3" class="field-input text-xs"></textarea>
+                </div>
+                <div class="rounded-sm border border-pink/40 bg-void/75 p-3 space-y-2">
+                  <div class="font-tech text-xs text-pink font-bold">ADMIT ONE TICKET STUB</div>
+                  <input id="lock-tix-no" type="text" class="field-input text-xs" placeholder="NO. 0666">
+                  <input id="lock-tix-title" type="text" class="field-input text-xs" placeholder="Event / Film Title">
+                  <input id="lock-tix-date" type="text" class="field-input text-xs" placeholder="DATE // ROW Z">
+                </div>
+              </div>
+            </div>
+
+            <div id="sub-relays" class="sub-tab-panel hidden space-y-3">
+              <div class="rounded-sm border border-rust/55 bg-void/75 p-3 space-y-2.5">
+                <div class="font-tech text-xs text-rust font-bold">ᛟ SUBSTACK DISPATCH (+ 88x31 STAMP LINK)</div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <input id="rel-sub-title" type="text" class="field-input text-xs" placeholder="Latest Essay Title">
+                  <input id="rel-sub-date" type="text" class="field-input text-xs" placeholder="NOV 25, 2026">
+                </div>
+                <input id="rel-sub-url" type="url" class="field-input text-xs" placeholder="https://yourname.substack.com">
+                <textarea id="rel-sub-teaser" rows="2" class="field-input text-xs" placeholder="Essay teaser..."></textarea>
+              </div>
+              <div class="rounded-sm border border-pink/45 bg-void/75 p-3 space-y-2.5">
+                <div class="font-tech text-xs text-pink font-bold">✦ INSTAGRAM (+ 3 THUMBS + 88x31 STAMP LINK)</div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <input id="rel-ig-handle" type="text" class="field-input text-xs" placeholder="handle (no @)">
+                  <input id="rel-ig-url" type="url" class="field-input text-xs" placeholder="https://instagram.com/...">
+                </div>
+                <input id="rel-ig-bio" type="text" class="field-input text-xs" placeholder="Short caption">
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+                  <div class="flex gap-1"><input id="rel-ig-1" type="text" class="field-input text-xs" placeholder="Photo 1"><button type="button" data-quick-upload="rel-ig-1" class="px-2 border border-gold text-gold font-tech text-xs">↑</button></div>
+                  <div class="flex gap-1"><input id="rel-ig-2" type="text" class="field-input text-xs" placeholder="Photo 2"><button type="button" data-quick-upload="rel-ig-2" class="px-2 border border-gold text-gold font-tech text-xs">↑</button></div>
+                  <div class="flex gap-1"><input id="rel-ig-3" type="text" class="field-input text-xs" placeholder="Photo 3"><button type="button" data-quick-upload="rel-ig-3" class="px-2 border border-gold text-gold font-tech text-xs">↑</button></div>
+                </div>
+              </div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="rounded-sm border border-cyan/45 bg-void/75 p-3 space-y-2">
+                  <div class="font-tech text-xs text-cyan font-bold">▣ TIKTOK (+ 88x31)</div>
+                  <input id="rel-tt-handle" type="text" class="field-input text-xs" placeholder="handle">
+                  <input id="rel-tt-url" type="url" class="field-input text-xs" placeholder="https://tiktok.com/@...">
+                  <input id="rel-tt-bio" type="text" class="field-input text-xs" placeholder="Caption">
+                </div>
+                <div class="rounded-sm border border-acid/45 bg-void/75 p-3 space-y-2">
+                  <div class="font-tech text-xs text-acid font-bold">⛨ FACEBOOK (+ 88x31)</div>
+                  <input id="rel-fb-handle" type="text" class="field-input text-xs" placeholder="slug">
+                  <input id="rel-fb-url" type="url" class="field-input text-xs" placeholder="https://facebook.com/...">
+                  <input id="rel-fb-bio" type="text" class="field-input text-xs" placeholder="Caption">
+                </div>
+              </div>
+              <div class="rounded-sm border border-cyan/35 bg-void/75 p-3 space-y-2">
+                <div class="font-tech text-xs text-cyan font-bold">⌖ DEADNET PORTALS (1 per line: Label | URL | Tag)</div>
+                <textarea id="rel-deadnet" rows="3" class="field-input font-tech text-xs"></textarea>
+              </div>
+            </div>
+
+            <div class="pt-1 space-y-2">
+              <input id="dir-changelog-note" type="text" class="field-input text-xs" placeholder="Optional archive note...">
+              <button type="button" data-publish-scope="directory" class="publish-btn w-full py-3 px-4 rounded-sm bg-cyan/20 border-2 border-cyan text-cyan hover:bg-cyan hover:text-void font-tech font-bold text-xs sm:text-sm tracking-[0.16em] transition">
+                [ ⌖ PUBLISH DIRECTORY, MANIFESTO &amp; TICKERS → GITHUB PAGES ]
+              </button>
+            </div>
+          </div>
+
+          <!-- TAB 3: ALL 20 ADS (15 POP-UPS + 5 NEON INLINE) -->
+          <div id="panel-ads" class="main-tab-panel hidden space-y-4">
+            <div class="flex flex-wrap gap-1.5 font-tech text-xs border-b border-rust/35 pb-2.5">
+              <button type="button" data-ad-sub="popup15" class="ad-sub-btn px-3 py-1.5 rounded-sm border border-pink bg-pink/20 text-pink font-bold">⛨ 15 POP-UP ADS</button>
+              <button type="button" data-ad-sub="inline5" class="ad-sub-btn px-3 py-1.5 rounded-sm border border-rust/45 bg-void text-bone font-bold">⚡ 5 NEON INLINE ADS</button>
+            </div>
+
+            <div id="ad-sub-popup15" class="space-y-4">
+              <div class="flex flex-wrap items-center justify-between gap-2 font-tech text-xs">
+                <span class="text-pink font-bold">SELECT POP-UP SLOT (1 – 15)</span>
+                <span id="ads-enabled-summary" class="text-[11px] text-acid">15 / 15 ACTIVE</span>
+              </div>
+              <div id="ads-slot-pills" class="grid grid-cols-5 gap-1.5 font-tech text-[11px]"></div>
+              <div class="grid grid-cols-1 md:grid-cols-12 gap-3 items-start">
+                <div class="md:col-span-7 rounded-sm border border-pink/45 bg-void/80 p-3.5 space-y-2.5">
+                  <div class="flex items-center justify-between border-b border-rust/30 pb-1.5 font-tech">
+                    <span id="ad-edit-badge" class="text-acid text-xs font-bold">EDITING AD_01</span>
+                    <label class="inline-flex items-center gap-1.5 text-[11px] text-gold cursor-pointer"><input id="ad-f-enabled" type="checkbox" class="accent-[#39ff14]"><span>ENABLED</span></label>
+                  </div>
+                  <div class="grid grid-cols-2 gap-2.5">
+                    <div>
+                      <label class="field-label text-cyan" for="ad-f-size">Size</label>
+                      <select id="ad-f-size" class="field-input font-tech text-xs">
+                        <option value="xs">xs (185px)</option><option value="sm">sm (230px)</option><option value="md">md (278px)</option>
+                        <option value="lg">lg (340px)</option><option value="wide">wide (396px)</option><option value="tall">tall (222px)</option>
+                      </select>
+                    </div>
+                    <div>
+                      <label class="field-label text-pink" for="ad-f-theme">Theme</label>
+                      <select id="ad-f-theme" class="field-input font-tech text-xs">
+                        <option value="acid">acid</option><option value="pink">pink</option><option value="cyan">cyan</option><option value="amber">amber</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div><label class="field-label text-rust" for="ad-f-win">Titlebar</label><input id="ad-f-win" type="text" class="field-input text-xs"></div>
+                  <div><label class="field-label text-acid" for="ad-f-head">Headline</label><input id="ad-f-head" type="text" class="field-input text-xs"></div>
+                  <div><label class="field-label text-bone" for="ad-f-copy">Copy</label><textarea id="ad-f-copy" rows="2" class="field-input text-xs"></textarea></div>
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                    <div><label class="field-label text-gold" for="ad-f-cta">CTA Text</label><input id="ad-f-cta" type="text" class="field-input text-xs"></div>
+                    <div><label class="field-label text-cyan" for="ad-f-url">Destination URL</label><input id="ad-f-url" type="url" class="field-input text-xs"></div>
+                  </div>
+                  <div>
+                    <label class="field-label text-pink" for="ad-f-img">Custom GIF / Image</label>
+                    <div class="flex gap-1.5">
+                      <input id="ad-f-img" type="text" class="field-input text-xs" placeholder="gifs/popup01.gif">
+                      <button type="button" data-quick-upload="ad-f-img" class="px-2.5 rounded-sm border border-gold text-gold hover:bg-gold hover:text-void font-tech font-bold text-xs">↑</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="md:col-span-5 rounded-sm border border-rust/40 bg-[#040506] p-3 space-y-2">
+                  <div class="font-tech text-[10px] text-gold tracking-widest">LIVE POP-UP PREVIEW</div>
+                  <div id="ad-live-preview" class="rounded-sm overflow-hidden border border-acid bg-scrap"></div>
+                </div>
+              </div>
+              <div class="space-y-2">
+                <input id="ads-changelog-note" type="text" class="field-input text-xs" placeholder="Optional archive note for 15 Pop-Up Ads...">
+                <button type="button" data-publish-scope="ads" class="publish-btn w-full py-3 px-4 rounded-sm bg-pink/20 border-2 border-pink text-pink hover:bg-pink hover:text-void font-tech font-bold text-xs sm:text-sm tracking-[0.16em] transition">
+                  [ ⛨ PUBLISH ALL 15 POP-UP ADS → GITHUB PAGES ]
+                </button>
+              </div>
+            </div>
+
+            <div id="ad-sub-inline5" class="hidden space-y-4">
+              <div id="inline-ads-editor-list" class="space-y-3"></div>
+              <div class="space-y-2">
+                <input id="inline-changelog-note" type="text" class="field-input text-xs" placeholder="Optional archive note for 5 Inline Ads...">
+                <button type="button" data-publish-scope="inline" class="publish-btn w-full py-3 px-4 rounded-sm bg-gold/20 border-2 border-gold text-gold hover:bg-gold hover:text-void font-tech font-bold text-xs sm:text-sm tracking-[0.16em] transition">
+                  [ ⚡ PUBLISH ALL 5 NEON INLINE ADS → GITHUB PAGES ]
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 4: OPERATOR TAG -->
+          <div id="panel-operator" class="main-tab-panel hidden space-y-4">
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-4 items-start">
+              <div class="md:col-span-5 rounded-sm border border-rust/70 bg-void overflow-hidden shadow-[4px_5px_0_rgba(0,0,0,.9)]">
+                <div class="bg-[#181106] border-b border-rust/60 px-3 py-2 flex items-center justify-between font-tech text-xs">
+                  <span class="text-rust font-bold tracking-[0.16em]">ᛟ OPERATOR_TAG</span>
+                  <span id="op-prev-badge" class="text-[10px] text-acid">VERIFIED</span>
+                </div>
+                <div class="p-3 space-y-2.5 text-xs">
+                  <div class="flex items-center gap-3">
+                    <div id="op-prev-avatar" class="w-16 h-16 shrink-0 rounded-sm border border-pink/70 bg-scrap p-1 flex items-center justify-center overflow-hidden"></div>
+                    <div class="space-y-0.5 font-tech text-[11px] min-w-0">
+                      <div class="truncate"><span class="text-ash">ALIAS:</span> <span id="op-prev-alias" class="text-acid font-bold">z3itq3ist</span></div>
+                      <div class="truncate"><span class="text-ash">CLASS:</span> <span id="op-prev-class" class="text-pink">TECHNO-PAGAN</span></div>
+                      <div class="truncate"><span class="text-ash">SECTOR:</span> <span id="op-prev-sector" class="text-cyan">WASTELAND_09</span></div>
+                      <div class="truncate"><span class="text-ash">SIGIL:</span> <span id="op-prev-sigil" class="text-rust">ᛟ ⛨ ☽ ⌖</span></div>
+                    </div>
+                  </div>
+                  <div class="pt-2 border-t border-rust/30 space-y-1.5 font-tech text-[10px]">
+                    <div class="flex justify-between"><span class="text-ash">GRID_INTEGRITY</span><span id="op-prev-grid-txt" class="text-acid">78%</span></div>
+                    <div class="w-full h-2 bg-scrap border border-acid/40 p-0.5"><div id="op-prev-grid-bar" class="h-full bg-acid" style="width:78%"></div></div>
+                    <div class="flex justify-between pt-0.5"><span class="text-ash">OCCULT_CHARGE</span><span id="op-prev-occ-txt" class="text-pink">92%</span></div>
+                    <div class="w-full h-2 bg-scrap border border-pink/40 p-0.5"><div id="op-prev-occ-bar" class="h-full bg-pink" style="width:92%"></div></div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="md:col-span-7 rounded-sm border border-rust/45 bg-void/80 p-3.5 space-y-2.5">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <div><label class="field-label text-acid" for="op-alias">Alias</label><input id="op-alias" type="text" class="field-input"></div>
+                  <div><label class="field-label text-gold" for="op-badge">Badge</label><input id="op-badge" type="text" class="field-input"></div>
+                  <div><label class="field-label text-pink" for="op-class">Class</label><input id="op-class" type="text" class="field-input"></div>
+                  <div><label class="field-label text-cyan" for="op-sector">Sector</label><input id="op-sector" type="text" class="field-input"></div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                  <div><label class="field-label text-rust" for="op-sigil">Sigil Glyphs</label><input id="op-sigil" type="text" class="field-input"></div>
+                  <div>
+                    <label class="field-label text-pink" for="op-avatar">Avatar Photo / GIF</label>
+                    <div class="flex gap-1.5">
+                      <input id="op-avatar" type="text" class="field-input" placeholder="images/avatar.png">
+                      <button type="button" data-quick-upload="op-avatar" class="px-2.5 rounded-sm border border-gold text-gold hover:bg-gold hover:text-void font-tech font-bold text-xs">↑</button>
+                    </div>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 gap-2.5 pt-1">
+                  <div><label class="field-label text-acid" for="op-grid-pct">Grid % (<span id="op-grid-num">78</span>%)</label><input id="op-grid-pct" type="range" min="0" max="100" value="78" class="w-full accent-[#39ff14]"></div>
+                  <div><label class="field-label text-acid" for="op-grid-status">Grid Label</label><input id="op-grid-status" type="text" class="field-input"></div>
+                  <div><label class="field-label text-pink" for="op-occ-pct">Occult % (<span id="op-occ-num">92</span>%)</label><input id="op-occ-pct" type="range" min="0" max="100" value="92" class="w-full accent-[#ff1f6d]"></div>
+                  <div><label class="field-label text-pink" for="op-occ-status">Occult Label</label><input id="op-occ-status" type="text" class="field-input"></div>
+                </div>
+              </div>
+            </div>
+            <div class="space-y-2">
+              <input id="op-changelog-note" type="text" class="field-input text-xs" placeholder="Optional archive note for Operator Tag...">
+              <button type="button" data-publish-scope="operator" class="publish-btn w-full py-3 px-4 rounded-sm bg-rust/20 border-2 border-rust text-gold hover:bg-rust hover:text-void font-tech font-bold text-xs sm:text-sm tracking-[0.16em] transition">
+                [ ✦ PUBLISH OPERATOR TAG → GITHUB PAGES ]
+              </button>
+            </div>
+          </div>
+
+          <!-- TAB 5: DRAG-AND-DROP GITHUB MEDIA UPLOADER -->
+          <div id="panel-media" class="main-tab-panel hidden space-y-4">
+            <div class="rounded-sm border border-gold/55 bg-void/85 p-4 space-y-3">
+              <div class="flex flex-wrap items-center justify-between gap-2 font-tech">
+                <span class="text-gold text-xs font-bold tracking-wider">↑ DIRECT GITHUB IMAGE &amp; GIF UPLOADER</span>
+                <select id="upload-folder" class="field-input w-40 py-1 text-xs font-tech text-acid">
+                  <option value="images">images/ (Photos)</option>
+                  <option value="gifs">gifs/ (Animated GIFs)</option>
+                </select>
+              </div>
+              <div id="media-drop-zone" class="drop-zone border-2 border-dashed border-rust/60 rounded-sm p-6 text-center space-y-2 cursor-pointer transition">
+                <div class="text-2xl text-acid">↑</div>
+                <div class="font-tech text-xs text-bone">DRAG &amp; DROP IMAGES / GIFS HERE — OR CLICK TO BROWSE</div>
+                <div class="text-[10px] font-tech text-ash">Commits directly to your GitHub repo and gives you the ready-to-paste relative path.</div>
+                <input id="media-file-input" type="file" accept="image/*" multiple class="hidden">
+              </div>
+              <div id="uploaded-media-list" class="space-y-2"></div>
+            </div>
+          </div>
+
+          <!-- TAB 6: INTEGRATIONS & RSS FEED -->
+          <div id="panel-integrations" class="main-tab-panel hidden space-y-4">
+            <div class="rounded-sm border border-acid/45 bg-void/80 p-3.5 space-y-2.5">
+              <div class="font-tech text-xs text-acid font-bold">ᛟ SITE META &amp; RSS FEED.XML SETTINGS</div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <div><label class="field-label text-ash" for="meta-title">Browser &amp; RSS Title</label><input id="meta-title" type="text" class="field-input text-xs"></div>
+                <div><label class="field-label text-cyan" for="meta-url">Live GitHub Pages URL</label><input id="meta-url" type="url" class="field-input text-xs" placeholder="https://yourname.github.io/"></div>
+              </div>
+              <div><label class="field-label text-ash" for="meta-desc">Site &amp; RSS Description</label><input id="meta-desc" type="text" class="field-input text-xs"></div>
+            </div>
+
+            <div class="rounded-sm border border-cyan/45 bg-void/80 p-3.5 space-y-2.5">
+              <div class="font-tech text-xs text-cyan font-bold">♪ OPTIONAL: LIVE LAST.FM NOW SCROBBLING</div>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <div><label class="field-label text-ash" for="int-lfm-user">Last.fm Username</label><input id="int-lfm-user" type="text" class="field-input text-xs" placeholder="Leave blank to use manual Listening"></div>
+                <div><label class="field-label text-ash" for="int-lfm-key">Last.fm Public API Key</label><input id="int-lfm-key" type="text" class="field-input text-xs" placeholder="32-char read-only key"></div>
+              </div>
+            </div>
+
+            <div class="rounded-sm border border-pink/45 bg-void/80 p-3.5 space-y-2.5">
+              <div class="font-tech text-xs text-pink font-bold">⛨ OPTIONAL: PERMANENT GITHUB GISCUS GUESTBOOK</div>
+              <p class="text-[10px] font-tech text-ash">Enable Discussions on your repo, visit <a href="https://giscus.app" target="_blank" rel="noopener noreferrer" class="text-cyan underline">giscus.app</a>, and paste the 4 values below:</p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                <div><label class="field-label text-ash" for="int-gis-repo">Repo (user/repo)</label><input id="int-gis-repo" type="text" class="field-input text-xs" placeholder="yourname/yourname.github.io"></div>
+                <div><label class="field-label text-ash" for="int-gis-repoid">data-repo-id</label><input id="int-gis-repoid" type="text" class="field-input text-xs"></div>
+                <div><label class="field-label text-ash" for="int-gis-cat">Category Name</label><input id="int-gis-cat" type="text" class="field-input text-xs" value="General"></div>
+                <div><label class="field-label text-ash" for="int-gis-catid">data-category-id</label><input id="int-gis-catid" type="text" class="field-input text-xs"></div>
+              </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row gap-2">
+              <button type="button" data-publish-scope="integrations" class="publish-btn flex-1 py-3 px-4 rounded-sm bg-gold/20 border-2 border-gold text-gold hover:bg-gold hover:text-void font-tech font-bold text-xs tracking-[0.14em] transition">
+                [ ⚙ SAVE INTEGRATIONS &amp; SITE META ]
+              </button>
+              <button id="btn-gen-rss-only" type="button" class="py-3 px-4 rounded-sm bg-acid/15 border-2 border-acid text-acid hover:bg-acid hover:text-void font-tech font-bold text-xs tracking-[0.12em] transition">
+                [ ⚡ REBUILD FEED.XML NOW ]
+              </button>
+            </div>
+          </div>
+
+          <!-- GLOBAL PUBLISH OPTIONS -->
+          <div class="pt-3 border-t border-dashed border-rust/40 flex flex-wrap items-center justify-between gap-3 font-tech text-xs">
+            <div class="flex flex-wrap items-center gap-4">
+              <label class="inline-flex items-center gap-1.5 text-bone/90 cursor-pointer"><input id="opt-auto-archive" type="checkbox" checked class="accent-[#39ff14]"><span>Log in Archive Vault</span></label>
+              <label class="inline-flex items-center gap-1.5 text-gold cursor-pointer"><input id="opt-auto-rss" type="checkbox" checked class="accent-[#f5d27a]"><span>Auto-update feed.xml</span></label>
+            </div>
+            <button type="button" data-publish-scope="all" class="publish-btn px-3.5 py-1.5 rounded-sm border border-gold bg-gold/15 text-gold hover:bg-gold hover:text-void font-bold text-[11px] tracking-widest transition">
+              [ ⚡ PUSH ALL SECTIONS AT ONCE ]
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT 4 COLS: PERMANENT ARCHIVE VAULT -->
+      <section class="lg:col-span-4 cyber-panel rounded-sm overflow-hidden">
+        <div class="bg-[#071418] border-b border-cyan/55 px-4 py-2.5 flex items-center justify-between font-tech text-xs">
+          <span class="text-cyan font-bold tracking-[0.16em]">ᛟ ARCHIVE VAULT</span>
+          <span id="archive-count" class="px-2 py-0.5 rounded-sm bg-void border border-acid/60 text-acid text-[10px] font-bold">0 LOGGED</span>
+        </div>
+        <div class="p-3 space-y-2.5">
+          <div class="flex gap-2">
+            <input id="archive-search" type="text" class="field-input text-xs py-1.5" placeholder="Search all past inputs...">
+            <select id="archive-filter" class="field-input font-tech text-xs py-1.5 w-32 shrink-0 text-gold">
+              <option value="ALL">ALL</option><option value="DISPATCH">DISPATCH</option><option value="STATUS">STATUS</option>
+              <option value="DIRECTORY">DIRECTORY</option><option value="ADS_15">ADS_15</option><option value="INLINE_5">INLINE_5</option>
+              <option value="OPERATOR">OPERATOR</option><option value="BOOK_NOTE">BOOK_NOTE</option><option value="VHS_LOG">VHS_LOG</option>
+              <option value="MUSIC">MUSIC</option><option value="RELIC">RELIC</option>
+            </select>
+          </div>
+          <div id="archive-list" class="space-y-2.5 max-h-[700px] overflow-y-auto pr-1">
+            <div class="rounded-sm border border-dashed border-rust/40 bg-void p-5 text-center text-xs font-tech text-ash">
+              Sync with GitHub above to load your permanent archive.
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+
+  <script>
+  (() => {
+    'use strict';
+    const $ = (id) => document.getElementById(id);
+    const $$ = (sel, root = document) => Array.from(root.querySelectorAll(sel));
+    const STORAGE_KEY = 'z3itq3ist_gh_pages_cms_v3';
+    const esc = (s) => String(s ?? '').replace(/[&<>"']/g, (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m]));
+    const escXml = (s) => String(s ?? '').replace(/[<>&'"]/g, (m) => ({ '<': '&lt;', '>': '&gt;', '&': '&amp;', "'": '&apos;', '"': '&quot;' }[m]));
+
+    const SKULL_SVG = `<svg viewBox="0 0 80 80" class="w-full h-full"><circle cx="40" cy="40" r="34" fill="none" stroke="#d48c28" stroke-width="1.2" stroke-dasharray="5 3"/><path d="M24,34 C24,18 56,18 56,34 C56,44 50,49 50,55 L50,62 L30,62 L30,55 C30,49 24,44 24,34 Z" fill="#131618" stroke="#d8d5c8" stroke-width="1.6"/><circle cx="33" cy="36" r="4.5" fill="#39ff14"/><rect x="42" y="32" width="9" height="7" fill="#ff1f6d"/></svg>`;
+
+    const DEFAULT_INLINE = [
+      { id: 'inline-1', enabled: true, marquee: '🦐🪩 FREE BRAIN RAM DOWNLOAD!! 紧急通知 999% 🧀🦖', head: '⚡ OVERCLOCK YOUR SOUL 999%!! 🛸', sub: 'SALVAGED CYBER-BARGAIN • 100% HAUNTED PIXELS', cta: 'CLAIM NOW ↗', url: 'https://example.com/inline-ad-1', img: '' },
+      { id: 'inline-2', enabled: true, marquee: '🗿 ALERT!! 경고 // 警告 🪱', head: 'HAUNTED MODEM UPGRADE!! 999% SPEED 🛸', sub: '', cta: 'DOWNLOAD NOW >>', url: 'https://example.com/inline-ad-2', img: '' },
+      { id: 'inline-3', enabled: true, marquee: '', head: 'SECRET MIXTAPE DROP // 秘密磁带 🪩', sub: 'Edit all 5 inline banners in console.html!', cta: 'OPEN PORTAL ↗', url: 'https://example.com/inline-ad-3', img: '' },
+      { id: 'inline-4', enabled: true, marquee: '🧠 MEGA DEAL!! 奇迹 // 기적 🚽', head: 'BUY 1 PIXEL GET 99 GHOSTS!! 🫧🦖', sub: '', cta: 'ENTER!! 💎↗', url: 'https://example.com/inline-ad-4', img: '' },
+      { id: 'inline-5', enabled: true, marquee: '🛸🤡 LAST CHANCE!! 最后机会 🧀🦖 9999% FREE BONUS 🪩', head: '🗿 ULTIMATE CHAOS SHOP!! 终极商店 🧃🔥', sub: '🚨 CLICK BEFORE THE MOON EXPLODES!!', cta: '', url: 'https://example.com/inline-ad-5', img: '' }
+    ];
+
+    const DEFAULT_POPUPS = Array.from({ length: 15 }, (_, i) => {
+      const n = String(i + 1).padStart(2, '0');
+      const sizes = ['sm', 'wide', 'md', 'tall', 'xs', 'lg'];
+      const themes = ['acid', 'pink', 'cyan', 'amber'];
+      return { id: `ad-${n}`, enabled: true, size: sizes[i % sizes.length], theme: themes[i % themes.length], win: `AD_${n} // SECTOR_09.EXE`, head: `POP-UP AD #${n}`, copy: 'Edit headline, copy, URL & GIF in console.html.', cta: 'OPEN ↗', url: `https://example.com/ad-${n}`, img: '' };
+    });
+
+    function createDefaultData() {
+      return {
+        schemaVersion: 3,
+        siteMeta: {
+          siteTitle: 'z3itq3ist // SECTOR 09 CYBER-OCCULT NODE',
+          siteUrl: location.href.replace(/console\.html.*$/i, ''),
+          siteDesc: 'Hand-welded cyber-occult static shrine, zine archive & weird-web node.',
+          heroTickerTop: 'ᛟ SALVAGED RELAY // SECTOR 09 ONLINE ⛨ WELCOME TO THE WEIRD WEB ☽ NO ALGORITHMS // PURE STATIC & PAGAN HTML ⌖',
+          heroTickerBottom: "✦ CLICK FLYING SERAPHIMS TO BANISH THEM (7 = ARCH-SERAPH BOSS) ⌖ TYPE 'neofetch' IN TERMINAL ⛨ TRY KONAMI CODE ᛟ"
+        },
+        integrations: { lastfmUser: '', lastfmApiKey: '', giscusRepo: '', giscusRepoId: '', giscusCategory: 'General', giscusCategoryId: '' },
+        current: { listening: '', reading: '', watching: '', fuel: '', mood: '', spotifyEmbed: '', spotifyProfileUrl: '', spotifyLinerNotes: '', updatedAt: '' },
+        operator: { badge: 'VERIFIED', avatarUrl: '', alias: 'z3itq3ist', opClass: 'TECHNO-PAGAN', sector: 'WASTELAND_09', sigil: 'ᛟ ⛨ ☽ ⌖', gridPct: 78, gridStatus: 'SCRAPPED', occultPct: 92, occultStatus: 'VOLATILE' },
+        directory: {
+          manifestoNote: '',
+          manifestoParagraphs: ['You have drifted off the sterile corporate highway and tuned into z3itq3ist.'],
+          ciphers: ['ᛟ [DECRYPTED 01/04]: Long live hand-coded HTML and weird shrines.'],
+          books: [], vhs: [],
+          tvChannels: [
+            { ch: 'CH 01', label: 'MIDNIGHT MIX', title: 'MIDNIGHT TRANSMISSION // DARK SYNTHWAVE', embed: 'https://www.youtube.com/embed/nMGxbYwkOPA?rel=0', note: '3AM dark synthwave.' },
+            { ch: 'CH 02', label: 'VHS TOKYO',    title: 'TOKYO NOSTALGIA // VHS VAPORWAVE',      embed: 'https://www.youtube.com/embed/1XAUDIGSQEE?rel=0', note: 'CRT vaporwave tape.' },
+            { ch: 'CH 03', label: 'ARCADE RUIN',  title: 'ABANDONED ARCADE AMBIENT',              embed: 'https://www.youtube.com/embed/yXsG4IUxXlo?rel=0', note: 'Haunted neon cabinets.' },
+            { ch: 'CH 04', label: '80S HORROR',   title: 'LATE NIGHT ARCADE // 80S HORROR',       embed: 'https://www.youtube.com/embed/gH6IzaznZFI?rel=0', note: 'Midnight cassette loop.' }
+          ],
+          gifs: Array.from({ length: 6 }, (_, i) => ({ slot: i + 1, label: `RELIC_0${i + 1}.GIF`, url: '' })),
+          locker: { polaroid1Img: '', polaroid1Cap: '', polaroid2Img: '', polaroid2Cap: '', receiptHeader: 'SECTOR 09 BODEGA', receiptItems: '1x ICED COFFEE | $4.04', receiptTotal: 'SOUL_OK', zineQuote: '', ticketNo: 'NO. 0666', ticketTitle: '', ticketDate: '' },
+          relays: { substackTitle: '', substackDate: '', substackTeaser: '', substackUrl: '', igHandle: '', igUrl: '', igBio: '', igImg1: '', igImg2: '', igImg3: '', ttHandle: '', ttUrl: '', ttBio: '', fbHandle: '', fbUrl: '', fbBio: '', deadnetLinks: '' }
+        },
+        inlineAds: DEFAULT_INLINE.map((a) => ({ ...a })),
+        popupAds: DEFAULT_POPUPS.map((a) => ({ ...a })),
+        archive: []
+      };
+    }
+
+    let repoData = createDefaultData();
+    let currentFileSha = null;
+    let selectedAdIdx = 0;
+    let quickUploadCallback = null;
+
+    function toBase64Utf8(str) {
+      const bytes = new TextEncoder().encode(str);
+      let bin = '';
+      for (let i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+      return btoa(bin);
+    }
+    function fromBase64Utf8(b64) {
+      const bin = atob(b64.replace(/\s/g, ''));
+      return new TextDecoder().decode(Uint8Array.from(bin, (c) => c.charCodeAt(0)));
+    }
+    function fileToBase64(file) {
+      return new Promise((resolve, reject) => {
+        const fr = new FileReader();
+        fr.onload = () => resolve(String(fr.result || '').split(',')[1] || '');
+        fr.onerror = reject;
+        fr.readAsDataURL(file);
+      });
+    }
+    function normalizeSpotifyUrl(raw) {
+      const u = (raw || '').trim();
+      if (!u || u.startsWith('https://open.spotify.com/embed/')) return u;
+      const m = u.match(/open\.spotify\.com\/(track|playlist|album|episode|show)\/([a-zA-Z0-9]+)/);
+      return m ? `https://open.spotify.com/embed/${m[1]}/${m[2]}?utm_source=generator&theme=0` : u;
+    }
+    function normalizeYouTubeUrl(raw) {
+      const u = (raw || '').trim();
+      if (!u || u.includes('youtube.com/embed/')) return u;
+      const m = u.match(/(?:[?&]v=|youtu\.be\/|youtube\.com\/shorts\/)([a-zA-Z0-9_-]{6,})/);
+      return m ? `https://www.youtube.com/embed/${m[1]}?rel=0` : u;
+    }
+
+    function mergeData(p) {
+      const def = createDefaultData(), d = p || {};
+      return {
+        schemaVersion: 3,
+        siteMeta:     { ...def.siteMeta, ...(d.siteMeta || {}) },
+        integrations: { ...def.integrations, ...(d.integrations || {}) },
+        current:      { ...def.current, ...(d.current || {}) },
+        operator:     { ...def.operator, ...(d.operator || {}) },
+        directory: {
+          manifestoNote: d.directory?.manifestoNote ?? '',
+          manifestoParagraphs: Array.isArray(d.directory?.manifestoParagraphs) ? d.directory.manifestoParagraphs : def.directory.manifestoParagraphs,
+          ciphers: Array.isArray(d.directory?.ciphers) ? d.directory.ciphers : def.directory.ciphers,
+          books: Array.isArray(d.directory?.books) ? d.directory.books : [],
+          vhs: Array.isArray(d.directory?.vhs) ? d.directory.vhs : [],
+          tvChannels: Array.isArray(d.directory?.tvChannels) && d.directory.tvChannels.length === 4 ? d.directory.tvChannels : def.directory.tvChannels,
+          gifs: Array.isArray(d.directory?.gifs) && d.directory.gifs.length === 6 ? d.directory.gifs : def.directory.gifs,
+          locker: { ...def.directory.locker, ...(d.directory?.locker || {}) },
+          relays: { ...def.directory.relays, ...(d.directory?.relays || {}) }
+        },
+        inlineAds: DEFAULT_INLINE.map((b, i) => ({ ...b, ...(Array.isArray(d.inlineAds) ? d.inlineAds[i] : {}) })),
+        popupAds:  DEFAULT_POPUPS.map((b, i) => ({ ...b, ...(Array.isArray(d.popupAds) ? d.popupAds[i] : {}) })),
+        archive:   Array.isArray(d.archive) ? d.archive : []
+      };
+    }
+
+    /* =====================================================================
+       STATUS, CONFIG & TABS
+       ===================================================================== */
+    function setStatus(msg, tone = 'ash') {
+      const cols = { acid: 'text-acid', pink: 'text-pink', cyan: 'text-cyan', gold: 'text-gold', ash: 'text-ash' };
+      const el = $('status-console');
+      el.className = `rounded-sm border border-rust/35 bg-void px-3 py-2 font-tech text-[11px] min-h-[34px] flex items-center ${cols[tone] || 'text-ash'}`;
+      el.textContent = `>> ${msg}`;
+    }
+    function setBadge(ok, txt) {
+      const b = $('conn-badge');
+      b.textContent = txt || (ok ? '● SYNCED' : '● DISCONNECTED');
+      b.className = ok ? 'px-2.5 py-1 rounded-sm border border-acid text-acid bg-acid/15 font-bold' : 'px-2.5 py-1 rounded-sm border border-rust text-rust bg-void font-bold';
+    }
+    function getCfg() {
+      return {
+        user: $('gh-user').value.trim(), repo: $('gh-repo').value.trim(),
+        branch: $('gh-branch').value.trim() || 'main',
+        path: ($('gh-path').value.trim() || 'data/updates.json').replace(/^\/+/, ''),
+        token: $('gh-token').value.trim()
+      };
+    }
+    function saveCfg() {
+      const c = getCfg();
+      if (c.user && c.repo) {
+        $('btn-pages-actions').href = `https://github.com/${encodeURIComponent(c.user)}/${encodeURIComponent(c.repo)}/actions`;
+        $('btn-pages-actions').classList.remove('hidden');
+      }
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(c)); } catch {}
+      return c;
+    }
+    function loadCfg() {
+      try {
+        const s = JSON.parse(localStorage.getItem(STORAGE_KEY) || 'null');
+        if (s) {
+          if (s.user) $('gh-user').value = s.user;
+          if (s.repo) $('gh-repo').value = s.repo;
+          if (s.branch) $('gh-branch').value = s.branch;
+          if (s.path) $('gh-path').value = s.path;
+          if (s.token) $('gh-token').value = s.token;
+          if (s.user && s.repo) {
+            $('btn-pages-actions').href = `https://github.com/${encodeURIComponent(s.user)}/${encodeURIComponent(s.repo)}/actions`;
+            $('btn-pages-actions').classList.remove('hidden');
+          }
+          return s;
+        }
+      } catch {}
+      // Auto-guess username & repo when hosted on *.github.io
+      const m = location.hostname.match(/^([a-z0-9-]+)\.github\.io$/i);
+      if (m) {
+        const u = m[1];
+        const seg = location.pathname.split('/').filter(Boolean)[0];
+        $('gh-user').value = u;
+        $('gh-repo').value = (seg && !seg.endsWith('.html')) ? seg : `${u}.github.io`;
+      }
+      return null;
+    }
+
+    $$('.main-tab-btn').forEach((b) => b.addEventListener('click', () => {
+      $$('.main-tab-btn').forEach((x) => x.classList.toggle('is-active', x === b));
+      $$('.main-tab-panel').forEach((p) => p.classList.toggle('hidden', p.id !== `panel-${b.dataset.mainTab}`));
+    }));
+    $$('.sub-tab-btn').forEach((b) => b.addEventListener('click', () => {
+      $$('.sub-tab-btn').forEach((x) => x.classList.toggle('is-active', x === b));
+      $$('.sub-tab-panel').forEach((p) => p.classList.toggle('hidden', p.id !== `sub-${b.dataset.subTab}`));
+    }));
+    $$('.ad-sub-btn').forEach((b) => b.addEventListener('click', () => {
+      const t = b.dataset.adSub;
+      $$('.ad-sub-btn').forEach((x) => {
+        const on = x === b;
+        x.classList.toggle('border-pink', on); x.classList.toggle('bg-pink/20', on); x.classList.toggle('text-pink', on);
+        x.classList.toggle('border-rust/45', !on); x.classList.toggle('bg-void', !on); x.classList.toggle('text-bone', !on);
+      });
+      $('ad-sub-popup15').classList.toggle('hidden', t !== 'popup15');
+      $('ad-sub-inline5').classList.toggle('hidden', t !== 'inline5');
+    }));
+
+    /* =====================================================================
+       GITHUB CONTENTS API HELPERS (JSON + MEDIA + FEED.XML)
+       ===================================================================== */
+    function ghFileUrl(cfg, relPath) {
+      const clean = relPath.replace(/^\/+/, '').split('/').map(encodeURIComponent).join('/');
+      return `https://api.github.com/repos/${encodeURIComponent(cfg.user)}/${encodeURIComponent(cfg.repo)}/contents/${clean}`;
+    }
+
+    async function ghPutFile(relPath, base64Content, commitMsg, knownSha = undefined) {
+      const cfg = saveCfg();
+      if (!cfg.user || !cfg.repo || !cfg.token) throw new Error('Configure GitHub username, repo & token first.');
+      let sha = knownSha;
+      if (sha === undefined) {
+        try {
+          const head = await fetch(`${ghFileUrl(cfg, relPath)}?ref=${encodeURIComponent(cfg.branch)}&_=${Date.now()}`, {
+            cache: 'no-store', headers: { Accept: 'application/vnd.github+json', Authorization: `Bearer ${cfg.token}` }
+          });
+          sha = head.ok ? (await head.json()).sha : null;
+        } catch { sha = null; }
+      }
+      const body = { message: commitMsg, branch: cfg.branch, content: base64Content };
+      if (sha) body.sha = sha;
+      const res = await fetch(ghFileUrl(cfg, relPath), {
+        method: 'PUT',
+        headers: { Accept: 'application/vnd.github+json', Authorization: `Bearer ${cfg.token}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+      const out = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(out.message || `HTTP ${res.status}`);
+      return out.content?.sha || null;
+    }
+
+    async function uploadImageToGitHub(file, forcedFolder = null) {
+      const folder = forcedFolder || (file.type === 'image/gif' || /\.gif$/i.test(file.name) ? 'gifs' : $('upload-folder')?.value || 'images');
+      const safeName = `${Date.now().toString(36)}-${file.name.toLowerCase().replace(/[^a-z0-9._-]/g, '_')}`;
+      const relPath = `${folder}/${safeName}`;
+      setStatus(`Uploading ${file.name} → ${relPath}...`, 'cyan');
+      const b64 = await fileToBase64(file);
+      await ghPutFile(relPath, b64, `media: upload ${relPath}`);
+      setStatus(`Uploaded! Path ready: ${relPath}`, 'acid');
+      const item = document.createElement('div');
+      item.className = 'rounded-sm border border-acid/45 bg-scrap p-2 flex items-center justify-between gap-2 font-tech text-xs';
+      item.innerHTML = `<span class="text-acid truncate">${esc(relPath)}</span><button type="button" class="px-2 py-0.5 border border-cyan text-cyan hover:bg-cyan hover:text-void text-[10px] font-bold">COPY PATH</button>`;
+      item.querySelector('button').addEventListener('click', () => { navigator.clipboard?.writeText(relPath).catch(() => {}); setStatus(`Copied "${relPath}" to clipboard!`, 'gold'); });
+      $('uploaded-media-list')?.prepend(item);
+      return relPath;
+    }
+
+    function triggerQuickUpload(onDone) {
+      quickUploadCallback = onDone;
+      $('quick-upload-input').value = '';
+      $('quick-upload-input').click();
+    }
+    $('quick-upload-input').addEventListener('change', async (e) => {
+      const file = e.target.files?.[0];
+      if (!file || !quickUploadCallback) return;
+      try {
+        const path = await uploadImageToGitHub(file);
+        quickUploadCallback(path);
+      } catch (err) { setStatus(`Upload failed: ${err.message}`, 'pink'); }
+      quickUploadCallback = null;
+    });
+    $$('[data-quick-upload]').forEach((btn) => btn.addEventListener('click', () => {
+      const target = $(btn.dataset.quickUpload);
+      if (!target) return;
+      triggerQuickUpload((p) => { target.value = p; target.dispatchEvent(new Event('input')); });
+    }));
+
+    // Drag & Drop Media Zone (Tab 5)
+    const dropZone = $('media-drop-zone'), mediaIn = $('media-file-input');
+    dropZone.addEventListener('click', () => mediaIn.click());
+    dropZone.addEventListener('dragover', (e) => { e.preventDefault(); dropZone.classList.add('is-dragover'); });
+    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('is-dragover'));
+    dropZone.addEventListener('drop', async (e) => {
+      e.preventDefault(); dropZone.classList.remove('is-dragover');
+      for (const f of Array.from(e.dataTransfer.files || [])) {
+        try { await uploadImageToGitHub(f, $('upload-folder').value); } catch (err) { setStatus(`Upload failed: ${err.message}`, 'pink'); }
+      }
+    });
+    mediaIn.addEventListener('change', async (e) => {
+      for (const f of Array.from(e.target.files || [])) {
+        try { await uploadImageToGitHub(f, $('upload-folder').value); } catch (err) { setStatus(`Upload failed: ${err.message}`, 'pink'); }
+      }
+      mediaIn.value = '';
+    });
+
+    /* =====================================================================
+       RSS FEED.XML GENERATOR
+       ===================================================================== */
+    function buildRssXml() {
+      const m = repoData.siteMeta || {};
+      const baseUrl = (m.siteUrl || location.href.replace(/console\.html.*$/i, '')).replace(/\/?$/, '/');
+      const itemsXml = (repoData.archive || []).slice(0, 25).map((item) => {
+        const pub = item.createdAt ? new Date(item.createdAt).toUTCString() : new Date().toUTCString();
+        const link = item.link || `${baseUrl}#${encodeURIComponent(item.id || '')}`;
+        return `    <item>\n      <title>${escXml(item.title || item.category || 'Update')}</title>\n      <link>${escXml(link)}</link>\n      <guid isPermaLink="false">${escXml(item.id || pub)}</guid>\n      <pubDate>${escXml(pub)}</pubDate>\n      <category>${escXml(item.category || 'DISPATCH')}</category>\n      <description>${escXml(item.body || '')}</description>\n    </item>`;
+      }).join('\n');
+      return `<?xml version="1.0" encoding="UTF-8"?>\n<rss version="2.0">\n  <channel>\n    <title>${escXml(m.siteTitle || 'z3itq3ist // SECTOR 09')}</title>\n    <link>${escXml(baseUrl)}</link>\n    <description>${escXml(m.siteDesc || 'Cyber-occult indie web archive.')}</description>\n    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>\n${itemsXml}\n  </channel>\n</rss>\n`;
+    }
+
+    /* =====================================================================
+       DYNAMIC EDITORS: BOOKS, VHS, TV, GIFS, 15 POP-UPS, 5 INLINE, OPERATOR
+       ===================================================================== */
+    function renderBooksEditor() {
+      const box = $('books-editor-list'); box.innerHTML = '';
+      if (!repoData.directory.books.length) { box.innerHTML = `<div class="text-xs font-tech text-ash text-center py-2">No books yet. Click [ + ADD BOOK ].</div>`; return; }
+      repoData.directory.books.forEach((bk, idx) => {
+        const c = document.createElement('div');
+        c.className = 'rounded-sm border border-rust/40 bg-scrap p-2.5 space-y-2';
+        c.innerHTML = `
+          <div class="flex items-center justify-between font-tech text-[10px]"><span class="text-acid font-bold">BOOK #${idx + 1}</span><button type="button" data-rm class="text-pink font-bold">[ REMOVE ]</button></div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <input data-bk="title" class="field-input text-xs sm:col-span-2" value="${esc(bk.title)}" placeholder="Title">
+            <input data-bk="status" class="field-input text-xs" value="${esc(bk.status)}" placeholder="READING">
+            <input data-bk="author" class="field-input text-xs" value="${esc(bk.author)}" placeholder="Author">
+            <input data-bk="format" class="field-input text-xs" value="${esc(bk.format)}" placeholder="Format">
+            <select data-bk="accent" class="field-input text-xs font-tech">${['acid','pink','cyan','rust'].map((x) => `<option value="${x}" ${bk.accent === x ? 'selected' : ''}>${x.toUpperCase()}</option>`).join('')}</select>
+            <div class="flex gap-1 sm:col-span-2"><input data-bk="cover" class="field-input text-xs" value="${esc(bk.cover)}" placeholder="images/book.jpg"><button type="button" data-up class="px-2 border border-gold text-gold font-tech text-xs">↑</button></div>
+            <input data-bk="progressPct" type="number" min="0" max="100" class="field-input text-xs" value="${Number(bk.progressPct) || 0}" placeholder="%">
+          </div>
+          <input data-bk="progressLabel" class="field-input text-xs" value="${esc(bk.progressLabel)}" placeholder="PAGE 184 / 320">
+          <textarea data-bk="notes" rows="2" class="field-input text-xs" placeholder="Margin notes...">${esc(bk.notes)}</textarea>
+        `;
+        c.querySelectorAll('[data-bk]').forEach((inp) => inp.addEventListener('input', () => {
+          const k = inp.dataset.bk;
+          repoData.directory.books[idx][k] = k === 'progressPct' ? Math.max(0, Math.min(100, Number(inp.value) || 0)) : inp.value;
+        }));
+        c.querySelector('[data-up]').addEventListener('click', () => triggerQuickUpload((p) => { repoData.directory.books[idx].cover = p; renderBooksEditor(); }));
+        c.querySelector('[data-rm]').addEventListener('click', () => { repoData.directory.books.splice(idx, 1); renderBooksEditor(); });
+        box.appendChild(c);
+      });
+    }
+
+    function renderVhsEditor() {
+      const box = $('vhs-editor-list'); box.innerHTML = '';
+      if (!repoData.directory.vhs.length) { box.innerHTML = `<div class="text-xs font-tech text-ash text-center py-2">No VHS entries yet. Click [ + ADD VHS ].</div>`; return; }
+      repoData.directory.vhs.forEach((v, idx) => {
+        const c = document.createElement('div');
+        c.className = 'rounded-sm border border-pink/40 bg-scrap p-2.5 space-y-2';
+        c.innerHTML = `
+          <div class="flex items-center justify-between font-tech text-[10px]"><span class="text-pink font-bold">VHS #${idx + 1}</span><button type="button" data-rm class="text-pink font-bold">[ REMOVE ]</button></div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <select data-v="type" class="field-input text-xs font-tech"><option value="series" ${v.type === 'series' ? 'selected' : ''}>SERIES</option><option value="movie" ${v.type === 'movie' ? 'selected' : ''}>MOVIE</option></select>
+            <input data-v="title" class="field-input text-xs sm:col-span-2" value="${esc(v.title)}" placeholder="Title">
+            <input data-v="year" class="field-input text-xs" value="${esc(v.year)}" placeholder="Year">
+            <input data-v="status" class="field-input text-xs" value="${esc(v.status)}" placeholder="WATCHING">
+            <input data-v="rating" class="field-input text-xs" value="${esc(v.rating)}" placeholder="4.5 / 5 ☠">
+            <input data-v="genre" class="field-input text-xs" value="${esc(v.genre)}" placeholder="Genre">
+            <input data-v="progress" class="field-input text-xs" value="${esc(v.progress)}" placeholder="S01 E05">
+            <select data-v="accent" class="field-input text-xs font-tech">${['pink','acid','cyan','rust'].map((x) => `<option value="${x}" ${v.accent === x ? 'selected' : ''}>${x.toUpperCase()}</option>`).join('')}</select>
+          </div>
+          <textarea data-v="notes" rows="2" class="field-input text-xs" placeholder="Review notes...">${esc(v.notes)}</textarea>
+          <input data-v="quote" class="field-input text-xs" value="${esc(v.quote)}" placeholder="Favorite quote">
+        `;
+        c.querySelectorAll('[data-v]').forEach((inp) => inp.addEventListener('input', () => { repoData.directory.vhs[idx][inp.dataset.v] = inp.value; }));
+        c.querySelector('[data-rm]').addEventListener('click', () => { repoData.directory.vhs.splice(idx, 1); renderVhsEditor(); });
+        box.appendChild(c);
+      });
+    }
+
+    function renderTvEditor() {
+      const box = $('tv-editor-list'); box.innerHTML = '';
+      repoData.directory.tvChannels.forEach((ch, idx) => {
+        const c = document.createElement('div');
+        c.className = 'rounded-sm border border-cyan/40 bg-void/80 p-3 space-y-2';
+        c.innerHTML = `
+          <div class="font-tech text-xs text-pink font-bold">▣ ${esc(ch.ch || `CH 0${idx + 1}`)}</div>
+          <div class="grid grid-cols-1 sm:grid-cols-3 gap-2">
+            <input data-tv="label" class="field-input text-xs" value="${esc(ch.label)}" placeholder="Button Label">
+            <input data-tv="title" class="field-input text-xs sm:col-span-2" value="${esc(ch.title)}" placeholder="Video Title">
+          </div>
+          <input data-tv="embed" type="url" class="field-input text-xs" value="${esc(ch.embed)}" placeholder="YouTube URL">
+          <input data-tv="note" class="field-input text-xs" value="${esc(ch.note)}" placeholder="Broadcast Note">
+        `;
+        c.querySelectorAll('[data-tv]').forEach((inp) => inp.addEventListener('input', () => {
+          const k = inp.dataset.tv;
+          repoData.directory.tvChannels[idx][k] = k === 'embed' ? normalizeYouTubeUrl(inp.value) : inp.value;
+        }));
+        box.appendChild(c);
+      });
+    }
+
+    function renderGifsEditor() {
+      const box = $('gifs-editor-list'); box.innerHTML = '';
+      repoData.directory.gifs.forEach((g, idx) => {
+        const c = document.createElement('div');
+        c.className = 'rounded-sm border border-acid/35 bg-void/80 p-3 space-y-2';
+        c.innerHTML = `
+          <div class="font-tech text-[11px] text-acid font-bold">STICKER #0${idx + 1}</div>
+          <input data-gf="label" class="field-input text-xs" value="${esc(g.label)}" placeholder="Label">
+          <div class="flex gap-1.5"><input data-gf="url" class="field-input text-xs" value="${esc(g.url)}" placeholder="gifs/sticker.gif"><button type="button" data-up class="px-2.5 border border-gold text-gold font-tech text-xs">↑</button></div>
+        `;
+        c.querySelectorAll('[data-gf]').forEach((inp) => inp.addEventListener('input', () => { repoData.directory.gifs[idx][inp.dataset.gf] = inp.value; }));
+        c.querySelector('[data-up]').addEventListener('click', () => triggerQuickUpload((p) => { repoData.directory.gifs[idx].url = p; renderGifsEditor(); }));
+        box.appendChild(c);
+      });
+    }
+
+    /* 15 Pop-Up Ads + 5 Inline Ads */
+    const AD_COLS = { acid: ['#39ff14', '#09160a'], pink: ['#ff1f6d', '#1c0811'], cyan: ['#00f0ff', '#07171c'], amber: ['#d48c28', '#1c1308'] };
+    function renderAdsPills() {
+      const wrap = $('ads-slot-pills'); wrap.innerHTML = '';
+      $('ads-enabled-summary').textContent = `${repoData.popupAds.filter((a) => a.enabled !== false).length} / 15 ACTIVE`;
+      repoData.popupAds.forEach((ad, i) => {
+        const [col] = AD_COLS[ad.theme] || AD_COLS.pink;
+        const b = document.createElement('button');
+        b.type = 'button';
+        b.className = `ad-pill px-2 py-1.5 rounded-sm border border-rust/45 bg-void text-bone font-bold flex items-center justify-between ${i === selectedAdIdx ? 'is-selected' : ''} ${ad.enabled === false ? 'opacity-45' : ''}`;
+        b.innerHTML = `<span>#${String(i + 1).padStart(2, '0')}</span><span style="width:7px;height:7px;border-radius:999px;background:${col};display:inline-block"></span>`;
+        b.addEventListener('click', () => { selectedAdIdx = i; hydrateAdForm(); renderAdsPills(); });
+        wrap.appendChild(b);
+      });
+    }
+    function renderAdPreview() {
+      const ad = repoData.popupAds[selectedAdIdx]; if (!ad) return;
+      const [col, bg] = AD_COLS[ad.theme] || AD_COLS.pink;
+      const p = $('ad-live-preview'); p.style.borderColor = col;
+      p.innerHTML = `
+        <div style="background:${bg};border-bottom:1px solid ${col};color:${col}" class="px-2.5 py-1 flex justify-between font-tech text-[10px] font-bold"><span class="truncate">${esc(ad.win)}</span><span>X</span></div>
+        <div class="p-2.5 space-y-2 ${ad.enabled === false ? 'opacity-45' : ''}">
+          <div style="border-color:${col};color:${col}" class="h-20 rounded-sm border border-dashed bg-void flex items-center justify-center overflow-hidden font-tech text-[10px]">${ad.img ? `<img src="${esc(ad.img)}" class="w-full h-full object-cover">` : `[ ${esc(ad.id.toUpperCase())} ]`}</div>
+          <div style="color:${col}" class="font-display text-xs">${esc(ad.head)}</div>
+          <p class="text-[11px] text-bone/80">${esc(ad.copy)}</p>
+          ${ad.cta ? `<span style="background:${col}" class="inline-block px-2 py-0.5 text-void font-tech font-bold text-[10px]">${esc(ad.cta)}</span>` : ''}
+        </div>`;
+    }
+    function hydrateAdForm() {
+      const ad = repoData.popupAds[selectedAdIdx]; if (!ad) return;
+      $('ad-edit-badge').textContent = `EDITING ${ad.id.toUpperCase()} (${selectedAdIdx + 1}/15)`;
+      $('ad-f-enabled').checked = ad.enabled !== false;
+      $('ad-f-size').value = ad.size || 'md'; $('ad-f-theme').value = ad.theme || 'acid';
+      $('ad-f-win').value = ad.win || ''; $('ad-f-head').value = ad.head || '';
+      $('ad-f-copy').value = ad.copy || ''; $('ad-f-cta').value = ad.cta || '';
+      $('ad-f-url').value = ad.url || ''; $('ad-f-img').value = ad.img || '';
+      renderAdPreview();
+    }
+    ['ad-f-enabled','ad-f-size','ad-f-theme','ad-f-win','ad-f-head','ad-f-copy','ad-f-cta','ad-f-url','ad-f-img'].forEach((id) => {
+      $(id).addEventListener('input', () => {
+        const ad = repoData.popupAds[selectedAdIdx]; if (!ad) return;
+        ad.enabled = $('ad-f-enabled').checked; ad.size = $('ad-f-size').value; ad.theme = $('ad-f-theme').value;
+        ad.win = $('ad-f-win').value; ad.head = $('ad-f-head').value; ad.copy = $('ad-f-copy').value;
+        ad.cta = $('ad-f-cta').value; ad.url = $('ad-f-url').value; ad.img = $('ad-f-img').value;
+        renderAdPreview(); renderAdsPills();
+      });
+    });
+
+    function renderInlineAdsEditor() {
+      const box = $('inline-ads-editor-list'); box.innerHTML = '';
+      repoData.inlineAds.forEach((ia, idx) => {
+        const c = document.createElement('div');
+        c.className = 'rounded-sm border border-gold/45 bg-void/80 p-3 space-y-2';
+        c.innerHTML = `
+          <div class="flex items-center justify-between font-tech text-xs">
+            <span class="text-gold font-bold">⚡ INLINE AD #0${idx + 1} (${esc(ia.id)})</span>
+            <label class="inline-flex items-center gap-1.5 text-[11px] text-acid cursor-pointer"><input data-ia="enabled" type="checkbox" ${ia.enabled !== false ? 'checked' : ''} class="accent-[#39ff14]"><span>ENABLED</span></label>
+          </div>
+          <input data-ia="marquee" class="field-input text-xs" value="${esc(ia.marquee)}" placeholder="Scrolling marquee ticker text (optional)">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+            <input data-ia="head" class="field-input text-xs" value="${esc(ia.head)}" placeholder="Main Headline">
+            <input data-ia="sub" class="field-input text-xs" value="${esc(ia.sub)}" placeholder="Subtitle / copy">
+            <input data-ia="cta" class="field-input text-xs" value="${esc(ia.cta)}" placeholder="CTA Button text">
+            <input data-ia="url" type="url" class="field-input text-xs" value="${esc(ia.url)}" placeholder="Destination URL">
+          </div>
+          <div class="flex gap-1.5"><input data-ia="img" class="field-input text-xs" value="${esc(ia.img)}" placeholder="Custom GIF path (gifs/inline.gif)"><button type="button" data-up class="px-2.5 border border-gold text-gold font-tech text-xs">↑</button></div>
+        `;
+        c.querySelectorAll('[data-ia]').forEach((inp) => inp.addEventListener('input', () => {
+          const k = inp.dataset.ia;
+          repoData.inlineAds[idx][k] = k === 'enabled' ? inp.checked : inp.value;
+        }));
+        c.querySelector('[data-up]').addEventListener('click', () => triggerQuickUpload((p) => { repoData.inlineAds[idx].img = p; renderInlineAdsEditor(); }));
+        box.appendChild(c);
+      });
+    }
+
+    /* Operator Live Preview */
+    function renderOpPreview() {
+      const op = repoData.operator;
+      $('op-prev-badge').textContent = op.badge || 'VERIFIED';
+      $('op-prev-alias').textContent = op.alias || 'z3itq3ist';
+      $('op-prev-class').textContent = op.opClass || 'TECHNO-PAGAN';
+      $('op-prev-sector').textContent = op.sector || 'WASTELAND_09';
+      $('op-prev-sigil').textContent = op.sigil || 'ᛟ ⛨ ☽ ⌖';
+      $('op-prev-grid-txt').textContent = `${op.gridPct}% [${op.gridStatus || 'OK'}]`;
+      $('op-prev-grid-bar').style.width = `${op.gridPct}%`;
+      $('op-prev-occ-txt').textContent = `${op.occultPct}% [${op.occultStatus || 'OK'}]`;
+      $('op-prev-occ-bar').style.width = `${op.occultPct}%`;
+      $('op-grid-num').textContent = op.gridPct; $('op-occ-num').textContent = op.occultPct;
+      const av = $('op-prev-avatar');
+      if (op.avatarUrl) { av.innerHTML = `<img src="${esc(op.avatarUrl)}" class="w-full h-full object-cover">`; av.querySelector('img').onerror = () => { av.innerHTML = SKULL_SVG; }; }
+      else av.innerHTML = SKULL_SVG;
+    }
+    ['op-alias','op-badge','op-class','op-sector','op-sigil','op-avatar','op-grid-pct','op-grid-status','op-occ-pct','op-occ-status'].forEach((id) => {
+      $(id).addEventListener('input', () => {
+        repoData.operator = {
+          alias: $('op-alias').value.trim(), badge: $('op-badge').value.trim(), opClass: $('op-class').value.trim(),
+          sector: $('op-sector').value.trim(), sigil: $('op-sigil').value.trim(), avatarUrl: $('op-avatar').value.trim(),
+          gridPct: Number($('op-grid-pct').value) || 0, gridStatus: $('op-grid-status').value.trim(),
+          occultPct: Number($('op-occ-pct').value) || 0, occultStatus: $('op-occ-status').value.trim()
+        };
+        renderOpPreview();
+      });
+    });
+
+    /* =====================================================================
+       HYDRATE & COLLECT ALL FORMS
+       ===================================================================== */
+    function hydrateAll() {
+      const m = repoData.siteMeta, ig = repoData.integrations, c = repoData.current, lk = repoData.directory.locker, r = repoData.directory.relays, op = repoData.operator;
+      $('meta-title').value = m.siteTitle || ''; $('meta-url').value = m.siteUrl || ''; $('meta-desc').value = m.siteDesc || '';
+      $('meta-ticker-top').value = m.heroTickerTop || ''; $('meta-ticker-bot').value = m.heroTickerBottom || '';
+      $('int-lfm-user').value = ig.lastfmUser || ''; $('int-lfm-key').value = ig.lastfmApiKey || '';
+      $('int-gis-repo').value = ig.giscusRepo || ''; $('int-gis-repoid').value = ig.giscusRepoId || '';
+      $('int-gis-cat').value = ig.giscusCategory || 'General'; $('int-gis-catid').value = ig.giscusCategoryId || '';
+
+      $('cur-listening').value = c.listening || ''; $('cur-reading').value = c.reading || ''; $('cur-watching').value = c.watching || '';
+      $('cur-fuel').value = c.fuel || ''; $('cur-mood').value = c.mood || '';
+      $('cur-spotify').value = c.spotifyEmbed || ''; $('cur-spotify-profile').value = c.spotifyProfileUrl || ''; $('cur-spotify-notes').value = c.spotifyLinerNotes || '';
+
+      $('dir-manifesto-note').value = repoData.directory.manifestoNote || '';
+      $('dir-manifesto-paras').value = (repoData.directory.manifestoParagraphs || []).join('\n\n');
+      $('dir-ciphers').value = (repoData.directory.ciphers || []).join('\n');
+
+      $('lock-p1-img').value = lk.polaroid1Img || ''; $('lock-p1-cap').value = lk.polaroid1Cap || '';
+      $('lock-p2-img').value = lk.polaroid2Img || ''; $('lock-p2-cap').value = lk.polaroid2Cap || '';
+      $('lock-rec-hdr').value = lk.receiptHeader || ''; $('lock-rec-items').value = lk.receiptItems || ''; $('lock-rec-total').value = lk.receiptTotal || '';
+      $('lock-zine-quote').value = lk.zineQuote || ''; $('lock-tix-no').value = lk.ticketNo || ''; $('lock-tix-title').value = lk.ticketTitle || ''; $('lock-tix-date').value = lk.ticketDate || '';
+
+      $('rel-sub-title').value = r.substackTitle || ''; $('rel-sub-date').value = r.substackDate || ''; $('rel-sub-teaser').value = r.substackTeaser || ''; $('rel-sub-url').value = r.substackUrl || '';
+      $('rel-ig-handle').value = r.igHandle || ''; $('rel-ig-url').value = r.igUrl || ''; $('rel-ig-bio').value = r.igBio || '';
+      $('rel-ig-1').value = r.igImg1 || ''; $('rel-ig-2').value = r.igImg2 || ''; $('rel-ig-3').value = r.igImg3 || '';
+      $('rel-tt-handle').value = r.ttHandle || ''; $('rel-tt-url').value = r.ttUrl || ''; $('rel-tt-bio').value = r.ttBio || '';
+      $('rel-fb-handle').value = r.fbHandle || ''; $('rel-fb-url').value = r.fbUrl || ''; $('rel-fb-bio').value = r.fbBio || '';
+      $('rel-deadnet').value = r.deadnetLinks || '';
+
+      $('op-alias').value = op.alias || ''; $('op-badge').value = op.badge || ''; $('op-class').value = op.opClass || '';
+      $('op-sector').value = op.sector || ''; $('op-sigil').value = op.sigil || ''; $('op-avatar').value = op.avatarUrl || '';
+      $('op-grid-pct').value = op.gridPct ?? 78; $('op-grid-status').value = op.gridStatus || '';
+      $('op-occ-pct').value = op.occultPct ?? 92; $('op-occ-status').value = op.occultStatus || '';
+
+      renderBooksEditor(); renderVhsEditor(); renderTvEditor(); renderGifsEditor();
+      renderAdsPills(); hydrateAdForm(); renderInlineAdsEditor(); renderOpPreview(); renderArchive();
+    }
+
+    function collectAll() {
+      const nowIso = new Date().toISOString();
+      repoData.siteMeta = {
+        siteTitle: $('meta-title').value.trim(), siteUrl: $('meta-url').value.trim(), siteDesc: $('meta-desc').value.trim(),
+        heroTickerTop: $('meta-ticker-top').value.trim(), heroTickerBottom: $('meta-ticker-bot').value.trim()
+      };
+      repoData.integrations = {
+        lastfmUser: $('int-lfm-user').value.trim(), lastfmApiKey: $('int-lfm-key').value.trim(),
+        giscusRepo: $('int-gis-repo').value.trim(), giscusRepoId: $('int-gis-repoid').value.trim(),
+        giscusCategory: $('int-gis-cat').value.trim() || 'General', giscusCategoryId: $('int-gis-catid').value.trim()
+      };
+      repoData.current = {
+        listening: $('cur-listening').value.trim(), reading: $('cur-reading').value.trim(), watching: $('cur-watching').value.trim(),
+        fuel: $('cur-fuel').value.trim(), mood: $('cur-mood').value.trim(),
+        spotifyEmbed: normalizeSpotifyUrl($('cur-spotify').value), spotifyProfileUrl: $('cur-spotify-profile').value.trim(),
+        spotifyLinerNotes: $('cur-spotify-notes').value.trim(), updatedAt: nowIso
+      };
+      repoData.directory.manifestoNote = $('dir-manifesto-note').value.trim();
+      repoData.directory.manifestoParagraphs = $('dir-manifesto-paras').value.split(/\n\s*\n/).map((s) => s.trim()).filter(Boolean);
+      repoData.directory.ciphers = $('dir-ciphers').value.split('\n').map((s) => s.trim()).filter(Boolean);
+      repoData.directory.locker = {
+        polaroid1Img: $('lock-p1-img').value.trim(), polaroid1Cap: $('lock-p1-cap').value.trim(),
+        polaroid2Img: $('lock-p2-img').value.trim(), polaroid2Cap: $('lock-p2-cap').value.trim(),
+        receiptHeader: $('lock-rec-hdr').value.trim(), receiptItems: $('lock-rec-items').value.trim(), receiptTotal: $('lock-rec-total').value.trim(),
+        zineQuote: $('lock-zine-quote').value.trim(), ticketNo: $('lock-tix-no').value.trim(), ticketTitle: $('lock-tix-title').value.trim(), ticketDate: $('lock-tix-date').value.trim()
+      };
+      repoData.directory.relays = {
+        substackTitle: $('rel-sub-title').value.trim(), substackDate: $('rel-sub-date').value.trim(), substackTeaser: $('rel-sub-teaser').value.trim(), substackUrl: $('rel-sub-url').value.trim(),
+        igHandle: $('rel-ig-handle').value.trim(), igUrl: $('rel-ig-url').value.trim(), igBio: $('rel-ig-bio').value.trim(),
+        igImg1: $('rel-ig-1').value.trim(), igImg2: $('rel-ig-2').value.trim(), igImg3: $('rel-ig-3').value.trim(),
+        ttHandle: $('rel-tt-handle').value.trim(), ttUrl: $('rel-tt-url').value.trim(), ttBio: $('rel-tt-bio').value.trim(),
+        fbHandle: $('rel-fb-handle').value.trim(), fbUrl: $('rel-fb-url').value.trim(), fbBio: $('rel-fb-bio').value.trim(),
+        deadnetLinks: $('rel-deadnet').value.trim()
+      };
+      return nowIso;
+    }
+
+    /* =====================================================================
+       SYNC, ARCHIVE VAULT & PUBLISH
+       ===================================================================== */
+    async function syncFromGitHub() {
+      const cfg = saveCfg();
+      if (!cfg.user || !cfg.repo || !cfg.token) { setStatus('Enter GitHub username, repo name & token first.', 'pink'); setBadge(false); return; }
+      setStatus(`Syncing ${cfg.user}/${cfg.repo} (${cfg.path})...`, 'cyan');
+      try {
+        const res = await fetch(`${ghFileUrl(cfg, cfg.path)}?ref=${encodeURIComponent(cfg.branch)}&_=${Date.now()}`, {
+          cache: 'no-store', headers: { Accept: 'application/vnd.github+json', Authorization: `Bearer ${cfg.token}` }
+        });
+        if (res.status === 404) {
+          currentFileSha = null; repoData = createDefaultData(); hydrateAll();
+          setBadge(true, '● READY (NEW FILE)'); setStatus(`Connected! "${cfg.path}" will be created on your first publish.`, 'gold'); return;
+        }
+        if (!res.ok) throw new Error((await res.json().catch(() => ({}))).message || `HTTP ${res.status}`);
+        const payload = await res.json();
+        currentFileSha = payload.sha;
+        repoData = mergeData(JSON.parse(fromBase64Utf8(payload.content || '{}')));
+        hydrateAll();
+        setBadge(true, `● SYNCED (${repoData.archive.length})`);
+        setStatus(`Synced! Loaded all 20 Ads, Directory, Operator Tag & ${repoData.archive.length} archive logs.`, 'acid');
+      } catch (err) { setBadge(false, '● SYNC ERROR'); setStatus(`Sync failed: ${err.message}`, 'pink'); }
+    }
+
+    function renderArchive() {
+      const list = $('archive-list'), q = ($('archive-search').value || '').trim().toLowerCase(), f = $('archive-filter').value || 'ALL';
+      const all = repoData.archive || [];
+      $('archive-count').textContent = `${all.length} LOGGED`;
+      const filt = all.filter((it) => (f === 'ALL' || (it.category || 'DISPATCH') === f) && (!q || `${it.title || ''} ${it.body || ''} ${(it.tags || []).join(' ')}`.toLowerCase().includes(q)));
+      if (!filt.length) { list.innerHTML = `<div class="rounded-sm border border-dashed border-rust/40 bg-void p-5 text-center text-xs font-tech text-ash">No archived inputs match.</div>`; return; }
+      list.innerHTML = '';
+      filt.forEach((it) => {
+        const card = document.createElement('article');
+        card.className = 'rounded-sm border border-rust/40 border-l-2 border-l-acid bg-void p-2.5 space-y-1.5';
+        const dt = it.createdAt ? new Date(it.createdAt).toLocaleString([], { year: 'numeric', month: 'short', day: '2-digit', hour: '2-digit', minute: '2-digit' }) : '';
+        card.innerHTML = `
+          <div class="flex items-center justify-between gap-1 font-tech text-[10px]">
+            <div class="flex items-center gap-1.5 min-w-0"><span class="px-1.5 py-0.5 border border-cyan/70 text-cyan bg-cyan/10 font-bold shrink-0">${esc(it.category || 'DISPATCH')}</span><span class="text-ash truncate">${esc(dt)}</span></div>
+            <div class="flex gap-1.5 shrink-0">${it.restoreData ? `<button type="button" data-load class="text-gold hover:underline font-bold">[LOAD]</button>` : ''}<button type="button" data-del class="text-ash hover:text-pink font-bold">[DEL]</button></div>
+          </div>
+          ${it.title ? `<div class="font-display text-xs text-bone">${esc(it.title)}</div>` : ''}
+          ${it.body ? `<p class="text-[11px] text-bone/80 whitespace-pre-wrap line-clamp-3">${esc(it.body)}</p>` : ''}
+        `;
+        card.querySelector('[data-load]')?.addEventListener('click', () => {
+          const rd = it.restoreData; if (!rd) return;
+          if (rd.current) repoData.current = { ...repoData.current, ...rd.current };
+          if (rd.operator) repoData.operator = { ...repoData.operator, ...rd.operator };
+          if (rd.popupAds) repoData.popupAds = rd.popupAds.map((a) => ({ ...a }));
+          if (rd.inlineAds) repoData.inlineAds = rd.inlineAds.map((a) => ({ ...a }));
+          if (rd.directory) repoData.directory = JSON.parse(JSON.stringify(rd.directory));
+          hydrateAll(); setStatus(`Restored snapshot "${it.title}" into editor! Click Publish to deploy.`, 'gold');
+        });
+        card.querySelector('[data-del]')?.addEventListener('click', async () => {
+          if (!confirm('Delete this archive record from GitHub?')) return;
+          const prev = [...repoData.archive];
+          repoData.archive = repoData.archive.filter((e) => e.id !== it.id);
+          try {
+            currentFileSha = await ghPutFile(getCfg().path, toBase64Utf8(JSON.stringify(repoData, null, 2)), `archive: remove ${it.id}`, undefined);
+            renderArchive(); setBadge(true, `● SYNCED (${repoData.archive.length})`); setStatus('Archive entry deleted.', 'gold');
+          } catch (err) { repoData.archive = prev; setStatus(`Delete failed: ${err.message}`, 'pink'); }
+        });
+        list.appendChild(card);
+      });
+    }
+
+    async function publishScope(scope) {
+      const btns = $$('.publish-btn'); btns.forEach((b) => { b.disabled = true; b.classList.add('opacity-60'); });
+      const backup = JSON.parse(JSON.stringify(repoData));
+      const nowIso = collectAll();
+      let msg = `update(${scope})`;
+
+      if ($('opt-auto-archive').checked) {
+        if (scope === 'status') {
+          const cat = $('entry-cat').value || 'DISPATCH';
+          const title = $('entry-title').value.trim() || `${cat} UPDATE`;
+          const body = $('entry-body').value.trim();
+          const tags = $('entry-tags').value.split(',').map((t) => t.trim()).filter(Boolean);
+          msg = `zine(${cat.toLowerCase()}): ${title.slice(0, 50)}`;
+          repoData.archive.unshift({
+            id: 'log-' + Date.now().toString(36), createdAt: nowIso, category: cat, title, tags, body,
+            image: $('entry-image').value.trim(), link: $('entry-link').value.trim(),
+            snapshot: { listening: repoData.current.listening, reading: repoData.current.reading, watching: repoData.current.watching, mood: repoData.current.mood },
+            restoreData: { current: { ...repoData.current } }
+          });
+        } else if (scope === 'directory') {
+          const note = $('dir-changelog-note').value.trim() || `Directory updated (${repoData.directory.books.length} books, ${repoData.directory.vhs.length} VHS, 4 TV CH).`;
+          msg = `directory: ${note.slice(0, 55)}`;
+          repoData.archive.unshift({ id: 'dir-' + Date.now().toString(36), createdAt: nowIso, category: 'DIRECTORY', title: 'DIRECTORY PORTALS UPDATE', body: note, restoreData: { directory: JSON.parse(JSON.stringify(repoData.directory)) } });
+        } else if (scope === 'ads') {
+          const note = $('ads-changelog-note').value.trim() || `Updated 15 Pop-Up Ads (${repoData.popupAds.filter((a) => a.enabled !== false).length}/15 active).`;
+          msg = `ads: ${note.slice(0, 55)}`;
+          repoData.archive.unshift({ id: 'ads-' + Date.now().toString(36), createdAt: nowIso, category: 'ADS_15', title: '15 POP-UP ADS SAVED', body: note, restoreData: { popupAds: repoData.popupAds.map((a) => ({ ...a })) } });
+        } else if (scope === 'inline') {
+          const note = $('inline-changelog-note').value.trim() || `Updated 5 Neon Inline Ads.`;
+          msg = `inline-ads: ${note.slice(0, 55)}`;
+          repoData.archive.unshift({ id: 'in-' + Date.now().toString(36), createdAt: nowIso, category: 'INLINE_5', title: '5 NEON INLINE ADS SAVED', body: note, restoreData: { inlineAds: repoData.inlineAds.map((a) => ({ ...a })) } });
+        } else if (scope === 'operator') {
+          const op = repoData.operator;
+          const note = $('op-changelog-note').value.trim() || `Alias: ${op.alias} | Grid: ${op.gridPct}% | Occult: ${op.occultPct}%`;
+          msg = `operator: ${op.alias || 'update'}`;
+          repoData.archive.unshift({ id: 'op-' + Date.now().toString(36), createdAt: nowIso, category: 'OPERATOR', title: `OPERATOR TAG // ${op.alias}`, body: note, image: op.avatarUrl || '', restoreData: { operator: { ...op } } });
+        } else if (scope === 'all') {
+          msg = 'site: full node publish';
+          repoData.archive.unshift({ id: 'all-' + Date.now().toString(36), createdAt: nowIso, category: 'DISPATCH', title: 'FULL NODE SYNC', body: 'Published Status, Directory, All 20 Ads, Operator & Integrations.', restoreData: { current: { ...repoData.current }, operator: { ...repoData.operator }, directory: JSON.parse(JSON.stringify(repoData.directory)), popupAds: repoData.popupAds.map((a) => ({ ...a })), inlineAds: repoData.inlineAds.map((a) => ({ ...a })) } });
+        }
+      }
+
+      setStatus(`Committing ${getCfg().path} to GitHub Pages...`, 'cyan');
+      try {
+        currentFileSha = await ghPutFile(getCfg().path, toBase64Utf8(JSON.stringify(repoData, null, 2)), msg, undefined);
+        if ($('opt-auto-rss').checked) {
+          setStatus('Updating RSS feed.xml...', 'gold');
+          await ghPutFile('feed.xml', toBase64Utf8(buildRssXml()), 'rss: update feed.xml', undefined);
+        }
+        if (scope === 'status') { $('entry-title').value = ''; $('entry-tags').value = ''; $('entry-body').value = ''; $('entry-image').value = ''; $('entry-link').value = ''; }
+        $('dir-changelog-note').value = ''; $('ads-changelog-note').value = ''; $('inline-changelog-note').value = ''; $('op-changelog-note').value = '';
+        renderArchive(); setBadge(true, `● SYNCED (${repoData.archive.length})`);
+        setStatus('Published to GitHub Pages! Live site updates in ~30–40 seconds.', 'acid');
+      } catch (err) {
+        repoData = backup;
+        setStatus(`Publish failed: ${err.message}`, 'pink');
+      } finally {
+        btns.forEach((b) => { b.disabled = false; b.classList.remove('opacity-60'); });
+      }
+    }
+
+    $$('.publish-btn').forEach((b) => b.addEventListener('click', () => publishScope(b.dataset.publishScope || 'all')));
+    $('btn-gen-rss-only').addEventListener('click', async () => {
+      collectAll(); setStatus('Rebuilding feed.xml...', 'cyan');
+      try { await ghPutFile('feed.xml', toBase64Utf8(buildRssXml()), 'rss: rebuild feed.xml', undefined); setStatus('feed.xml rebuilt and live!', 'acid'); }
+      catch (err) { setStatus(`RSS build failed: ${err.message}`, 'pink'); }
+    });
+    $('btn-add-book').addEventListener('click', () => { repoData.directory.books.push({ title: 'NEW BOOK', author: 'Author', format: 'Physical', status: 'READING', accent: 'acid', cover: '', progressLabel: 'PAGE 1 / 200', progressPct: 5, notes: '' }); renderBooksEditor(); });
+    $('btn-add-vhs').addEventListener('click', () => { repoData.directory.vhs.push({ type: 'movie', title: 'NEW TITLE', year: '2026', status: 'WATCHING', genre: 'Genre', progress: '', rating: '4.0 / 5 ☠', accent: 'pink', notes: '', quote: '' }); renderVhsEditor(); });
+    $('btn-toggle-config').addEventListener('click', () => $('config-panel').classList.toggle('hidden'));
+    $('btn-save-sync').addEventListener('click', syncFromGitHub);
+    $('btn-clear-token').addEventListener('click', () => { $('gh-token').value = ''; try { localStorage.removeItem(STORAGE_KEY); } catch {} setBadge(false, '● WIPED'); setStatus('Saved token wiped from this browser.', 'gold'); });
+    $('archive-search').addEventListener('input', renderArchive);
+    $('archive-filter').addEventListener('change', renderArchive);
+    $('btn-export-json').addEventListener('click', () => {
+      collectAll();
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(new Blob([JSON.stringify(repoData, null, 2)], { type: 'application/json' }));
+      a.download = `z3itq3ist-backup-${new Date().toISOString().slice(0, 10)}.json`;
+      a.click(); URL.revokeObjectURL(a.href);
+    });
+
+    hydrateAll();
+    const saved = loadCfg();
+    if (saved?.user && saved?.repo && saved?.token) syncFromGitHub();
+  })();
+  </script>
+</body>
+</html>
