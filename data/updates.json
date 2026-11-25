@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 3,
+  "siteMeta": {
+    "siteTitle": "z3itq3ist // SECTOR 09",
+    "siteUrl": "https://YOUR_USERNAME.github.io/",
+    "siteDesc": "Hand-welded cyber-occult static shrine, zine archive & weird-web node.",
+    "heroTickerTop": "ᛟ SALVAGED RELAY // SECTOR 09 ONLINE ⛨ WELCOME TO THE WEIRD WEB ☽ NO ALGORITHMS // PURE STATIC & PAGAN HTML ⌖ LONG LIVE INDIE CYBERSPACE ✦",
+    "heroTickerBottom": "✦ CLICK FLYING SERAPHIMS TO BANISH THEM (7 = ARCH-SERAPH BOSS) ⌖ TYPE 'neofetch' IN TERMINAL ⛨ TRY KONAMI CODE ↑↑↓↓←→←→BA ᛟ"
+  },
+  "integrations": {
+    "lastfmUser": "",
+    "lastfmApiKey": "",
+    "giscusRepo": "",
+    "giscusRepoId": "",
+    "giscusCategory": "General",
+    "giscusCategoryId": ""
+  },
+  "current": {
+    "listening": "[Artist - Track Name Placeholder]",
+    "reading": "[Current Book Title Placeholder]",
+    "watching": "[Current Series / Film Placeholder]",
+    "fuel": "[Iced Coffee / Tea / Energy Drink]",
+    "mood": "Maxed-out GitHub Pages cyber-occult node online!",
+    "spotifyEmbed": "https://open.spotify.com/embed/playlist/37i9dQZF1DXdxcBWuJkbcy?utm_source=generator&theme=0",
+    "spotifyProfileUrl": "https://open.spotify.com/user/YOUR_SPOTIFY_ID",
+    "spotifyLinerNotes": "3AM raindrive static & post-punk rituals.",
+    "updatedAt": "2026-11-25T00:00:00.000Z"
+  },
+  "operator": {
+    "badge": "VERIFIED",
+    "avatarUrl": "",
+    "alias": "z3itq3ist",
+    "opClass": "TECHNO-PAGAN",
+    "sector": "WASTELAND_09",
+    "sigil": "ᛟ ⛨ ☽ ⌖",
+    "gridPct": 78,
+    "gridStatus": "SCRAPPED",
+    "occultPct": 92,
+    "occultStatus": "VOLATILE"
+  },
+  "directory": {
+    "manifestoNote": "",
+    "manifestoParagraphs": [
+      "You have drifted off the sterile corporate highway and tuned into z3itq3ist — a hand-welded digital altar built from salvaged markup, late-night static, esoteric notebooks, and bootleg signals.",
+      "No feeds, no engagement bait, no smooth minimalist cages. Everything here is stitched together by hand and archived permanently on GitHub.",
+      "Use the Sector Directory to raid my Spotify & grimoire rack, flip Pirate TV channels, pull a 3-Card Tarot spread, light the Digital Altar, rearrange the Cyber-Locker, or leave static in the Blackbox Chat."
+    ],
+    "ciphers": [
+      "ᛟ [DECRYPTED 01/04]: The weird web never died—it just went underground behind rusted firewalls.",
+      "☽ [DECRYPTED 02/04]: Every broken link is a ghost door. Banish 7 seraphims to summon the Gilded Arch-Seraph.",
+      "⛨ [DECRYPTED 03/04]: Try the Konami Code (↑↑↓↓←→←→BA) to unlock the hidden Glitch Vault & 4th synth frequency.",
+      "⌖ [DECRYPTED 04/04]: Long live hand-coded HTML, weird shrines, and permanent personal archives."
+    ],
+    "books": [
+      {
+        "title": "[PLACEHOLDER BOOK TITLE #1]",
+        "author": "[Author Name #1]",
+        "format": "Physical / E-book",
+        "status": "READING",
+        "accent": "acid",
+        "cover": "https://placehold.co/90x132/0b0d0f/39ff14?text=BOOK+01",
+        "progressLabel": "PAGE 184 / 320",
+        "progressPct": 58,
+        "notes": "[@ 18%] First impressions on the prose.\n[@ 58%] Mid-book reaction."
+      },
+      {
+        "title": "[PLACEHOLDER BOOK TITLE #2]",
+        "author": "[Author Name #2]",
+        "format": "Essays / Manga",
+        "status": "SIDE READ",
+        "accent": "pink",
+        "cover": "https://placehold.co/90x132/0b0d0f/ff1f6d?text=BOOK+02",
+        "progressLabel": "PAGE 42 / 210",
+        "progressPct": 20,
+        "notes": "[@ 20%] Highlighted quote or hot take."
+      }
+    ],
+    "vhs": [
+      {
+        "type": "series",
+        "title": "[PLACEHOLDER SERIES #1]",
+        "year": "2026",
+        "status": "WATCHING",
+        "genre": "Sci-Fi / Psychological",
+        "progress": "S01 E05",
+        "rating": "4.5 / 5 
