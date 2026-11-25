@@ -7,17 +7,17 @@
   <meta name="description" content="Hand-welded cyber-occult static shrine, zine archive, pirate TV, tarot oracle & weird-web node.">
   <meta name="theme-color" content="#39ff14">
 
-  <!-- Discord / Instagram / Social Preview Embed Tags -->
+  <!-- Social Preview Embed Tags -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="z3itq3ist // SECTOR 09 CYBER-OCCULT NODE">
   <meta property="og:description" content="Salvaged HTML altar, live archive, pirate TV, 3-card tarot oracle & indie-web static.">
   <meta property="og:image" content="https://placehold.co/1200x630/050607/39ff14?text=z3itq3ist+%2F%2F+SECTOR+09">
   <meta name="twitter:card" content="summary_large_image">
 
-  <!-- Custom Glowing Acid-Green ᛟ SVG Favicon -->
+  <!-- Glowing Acid-Green ᛟ SVG Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23050607'/%3E%3Crect x='3' y='3' width='58' height='58' rx='6' fill='none' stroke='%2339ff14' stroke-width='3'/%3E%3Ctext x='32' y='45' text-anchor='middle' font-size='38' font-family='monospace' fill='%2339ff14'%3E%E1%9B%9F%3C/text%3E%3C/svg%3E">
 
-  <!-- Indie-Web RSS Auto-Discovery (Updated Automatically by console.html) -->
+  <!-- RSS Auto-Discovery -->
   <link rel="alternate" type="application/rss+xml" title="z3itq3ist // Sector 09 RSS Feed" href="./feed.xml">
 
   <!-- Fonts & Tailwind -->
@@ -45,17 +45,15 @@
     };
   </script>
 
-  <!-- Separated Master Stylesheet -->
+  <!-- Separated Master Stylesheet (Phase 1) -->
   <link rel="stylesheet" href="./styles.css">
 
-  <!-- Tone.js Audio Synth & Foley Engine -->
+  <!-- Tone.js Synth & Foley Audio Engine -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.js" defer></script>
 </head>
 <body data-display="crt" class="min-h-screen text-bone selection:bg-acid selection:text-void">
 
-  <!-- =======================================================================
-       RETRO BIOS POST BOOT SEQUENCE (PLAYS ONCE PER SESSION, SKIPPABLE)
-       ======================================================================= -->
+  <!-- RETRO BIOS POST BOOT SEQUENCE (PLAYS ONCE PER SESSION, SKIPPABLE) -->
   <div id="z3-bios-overlay" class="is-hidden" aria-live="polite">
     <div class="z3-bios-shell space-y-3">
       <div class="flex items-center justify-between border-b border-acid/45 pb-2 text-xs">
@@ -70,15 +68,14 @@
     </div>
   </div>
 
-  <!-- =======================================================================
-       FIXED AMBIENT, FX, TOAST & BOSS HUD LAYERS
-       ======================================================================= -->
+  <!-- FIXED AMBIENT, CHERUBIM/SERAPHIM, CHAOS TEAR & TOAST LAYERS -->
   <div class="crt-overlay" aria-hidden="true"></div>
   <div id="matrix-rain-wrapper" class="fixed inset-0 z-[5] pointer-events-none hidden" aria-hidden="true">
     <canvas id="matrix-rain-canvas"></canvas>
   </div>
   <div id="z3-occult-veil-layer" aria-hidden="true"><canvas id="z3-occult-veil-canvas"></canvas></div>
   <div id="z3-seraph-layer" aria-hidden="true"></div>
+  <div id="z3-chaos-tear-layer" aria-hidden="true"></div>
   <div id="chaos-ghost-layer" class="fixed inset-0 z-[55] pointer-events-none overflow-hidden" aria-hidden="true"></div>
   <div id="top-bar-ghost-layer" class="fixed inset-0 z-[59] pointer-events-none overflow-hidden" aria-hidden="true"></div>
   <div id="rune-trail-layer" class="fixed inset-0 z-[61] pointer-events-none overflow-hidden" aria-hidden="true"></div>
@@ -86,7 +83,7 @@
   <div id="z3-ad-popup-layer" aria-live="polite"></div>
   <div id="z3-toast-stack" aria-live="polite"></div>
 
-  <!-- Rare Gilded Arch-Seraph Boss Bar (Appears Automatically at 7+ Banishes or CLI 'boss') -->
+  <!-- GILDED ARCH-SERAPH BOSS HUD (SPAWNS AT 7 BANISHES OR CLI 'boss') -->
   <div id="z3-boss-hud" class="hidden fixed top-14 left-1/2 -translate-x-1/2 z-[84] w-[min(340px,92vw)] rounded-sm border-2 border-gold bg-[#140a04]/95 px-3 py-2 font-tech shadow-[0_0_28px_rgba(245,210,122,.45)]">
     <div class="flex items-center justify-between text-[10px] font-bold">
       <span class="text-gold anim-gif-blink">⚠ GILDED ARCH-SERAPH DETECTED</span>
@@ -97,9 +94,7 @@
     </div>
   </div>
 
-  <!-- =======================================================================
-       TOP TELEMETRY & CONTROL BAR (UPGRADED RACK)
-       ======================================================================= -->
+  <!-- TOP TELEMETRY & CONTROL BAR -->
   <div id="top-telemetry-bar" class="sticky top-0 z-50 bg-[#050607]/95 border-b-2 border-acid/65 shadow-[0_4px_20px_rgba(0,0,0,.88)] px-2.5 sm:px-3 py-1.5 font-tech">
     <div class="max-w-7xl mx-auto flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center justify-between gap-1.5 sm:gap-2 text-[11px] sm:text-xs">
       <div class="flex items-center justify-between sm:justify-start gap-2 sm:gap-3">
@@ -108,28 +103,24 @@
         </span>
         <span class="hidden md:inline text-rust/60">|</span>
         <span id="live-clock" data-ghost="00:00:00" style="animation-delay:1.4s" class="top-glitch-target text-rust font-bold tracking-wider">00:00:00</span>
-        <span id="seraph-kill-badge" title="Click flying seraphims to banish! Banish 7 to summon the Arch-Seraph Boss." class="px-1.5 py-0.5 rounded-sm border border-gold/55 bg-void text-gold text-[10px] font-bold">✦ BANISHED: 00</span>
+        <span id="seraph-kill-badge" title="Click flying cherubims/seraphims to banish! Banish 7 to summon the Arch-Seraph Boss." class="px-1.5 py-0.5 rounded-sm border border-gold/55 bg-void text-gold text-[10px] font-bold">✦ BANISHED: 00</span>
       </div>
       <div class="flex items-center justify-between sm:justify-end gap-1.5 overflow-x-auto no-scrollbar pb-0.5 sm:pb-0">
         <button id="btn-display-mode" type="button" data-ghost="DISP: CRT" title="Cycle Display Mode: CRT → PHOSPHOR → AMBER → CLEAN" class="top-glitch-target shrink-0 px-2 py-1 rounded-sm border border-acid/75 bg-scrap text-acid hover:bg-acid hover:text-void transition text-[10px] font-bold">DISP: CRT</button>
         <button id="btn-sfx-toggle" type="button" data-ghost="SFX: ON" title="Toggle Retro UI Foley Sounds" class="top-glitch-target shrink-0 px-2 py-1 rounded-sm border border-gold/75 bg-scrap text-gold hover:bg-gold hover:text-void transition text-[10px] font-bold">SFX: ON</button>
-        <button id="btn-calm-toggle" type="button" data-ghost="CALM: OFF" title="Low-Power / Reduced Motion Mode" class="top-glitch-target shrink-0 px-2 py-1 rounded-sm border border-rust/75 bg-scrap text-rust hover:bg-rust hover:text-void transition text-[10px] font-bold">CALM: OFF</button>
+        <button id="btn-calm-toggle" type="button" data-ghost="CALM: OFF" title="Manual Low-Power / Reduced Motion Mode" class="top-glitch-target shrink-0 px-2 py-1 rounded-sm border border-rust/75 bg-scrap text-rust hover:bg-rust hover:text-void transition text-[10px] font-bold">CALM: OFF</button>
         <button id="btn-relics-open" type="button" data-ghost="🏆 0/7" title="Open Hidden Relic Achievements Case" class="top-glitch-target shrink-0 px-2 py-1 rounded-sm border border-gold bg-gold/15 text-gold hover:bg-gold hover:text-void transition text-[10px] font-bold">🏆 0/7</button>
         <button id="btn-trail-status" type="button" data-ghost="✦ TRAIL" title="Rune cursor trail — click for rune burst!" class="top-glitch-target shrink-0 px-2 py-1 rounded-sm border border-acid bg-acid text-void hover:brightness-110 transition text-[10px] font-bold">✦ TRAIL</button>
-        <button id="btn-overdrive" type="button" data-ghost="CHAOS: OFF" class="top-glitch-target shrink-0 px-2 py-1 rounded-sm border border-pink/85 bg-scrap text-pink hover:bg-pink hover:text-void transition text-[10px] font-bold">CHAOS: OFF</button>
+        <button id="btn-overdrive" type="button" data-ghost="CHAOS: OFF" title="Unleash Wild Glitch Chaos Overdrive (ESC to stop)" class="top-glitch-target shrink-0 px-2 py-1 rounded-sm border border-pink/85 bg-scrap text-pink hover:bg-pink hover:text-void transition text-[10px] font-bold">CHAOS: OFF</button>
         <button id="btn-top-audio" type="button" data-ghost="♪ MUTED" class="top-glitch-target shrink-0 px-2 py-1 rounded-sm border border-cyan/75 bg-scrap text-cyan hover:bg-cyan hover:text-void transition text-[10px] font-bold">♪ MUTED</button>
       </div>
     </div>
   </div>
 
-  <!-- =======================================================================
-       MAIN PAGE CONTAINER
-       ======================================================================= -->
+  <!-- MAIN PAGE CONTAINER -->
   <div class="relative z-20 max-w-7xl mx-auto px-2 sm:px-4 py-3 sm:py-4 space-y-3.5 sm:space-y-4">
 
-    <!-- =====================================================================
-         SOVEREIGN CYBER-OCCULT HERO SHRINE
-         ===================================================================== -->
+    <!-- SOVEREIGN CYBER-OCCULT HERO SHRINE -->
     <header id="hero-shrine" class="cyber-panel hero-shrine rounded-sm overflow-hidden">
       <div class="bg-[#060908] border-b border-gold/45 py-1 overflow-hidden text-[10px] font-tech text-gold tracking-[0.18em]">
         <div id="hero-ticker-top" class="marquee-track flex gap-8">
@@ -217,15 +208,13 @@
 
       <div class="bg-[#090609] border-t border-pink/40 py-1 overflow-hidden text-[10px] font-tech text-cyan tracking-[0.16em]">
         <div id="hero-ticker-bottom" class="marquee-track marquee-reverse flex gap-8">
-          <span>✦ CLICK FLYING SERAPHIMS TO BANISH THEM (7 = ARCH-SERAPH BOSS) ⌖ TYPE 'neofetch' IN TERMINAL ⛨ TRY KONAMI CODE ↑↑↓↓←→←→BA ᛟ</span>
-          <span>✦ CLICK FLYING SERAPHIMS TO BANISH THEM (7 = ARCH-SERAPH BOSS) ⌖ TYPE 'neofetch' IN TERMINAL ⛨ TRY KONAMI CODE ↑↑↓↓←→←→BA ᛟ</span>
+          <span>✦ CLICK FLYING CHERUBIMS &amp; SERAPHIMS TO BANISH THEM (7 = ARCH-SERAPH BOSS) ⌖ TYPE 'neofetch' IN TERMINAL ⛨ TRY KONAMI CODE ↑↑↓↓←→←→BA ᛟ</span>
+          <span>✦ CLICK FLYING CHERUBIMS &amp; SERAPHIMS TO BANISH THEM (7 = ARCH-SERAPH BOSS) ⌖ TYPE 'neofetch' IN TERMINAL ⛨ TRY KONAMI CODE ↑↑↓↓←→←→BA ᛟ</span>
         </div>
       </div>
     </header>
 
-    <!-- =====================================================================
-         CMS-CONTROLLED INLINE AD #1: TOP LEADERBOARD
-         ===================================================================== -->
+    <!-- INLINE AD #1: TOP LEADERBOARD -->
     <section data-dismiss-ad="inline-1" class="dismissible-ad relative rounded-sm border-2 ad-strobe ad-bg-hazard overflow-hidden">
       <div class="ad-bg-electric text-void font-tech font-bold text-[10px] py-0.5 overflow-hidden border-b border-black pr-9">
         <div class="inline-ad-marquee ad-marquee-fast flex gap-6 tracking-widest">
@@ -250,9 +239,7 @@
       </a>
     </section>
 
-    <!-- =====================================================================
-         3-COLUMN ORGANIZED CHAOS GRID
-         ===================================================================== -->
+    <!-- 3-COLUMN ORGANIZED CHAOS GRID -->
     <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-5 items-start">
 
       <!-- LEFT SIDEBAR -->
@@ -291,7 +278,7 @@
           </div>
         </nav>
 
-        <!-- 2. SIGNAL DECK (3 TRACKS + SECRET 4TH KONAMI TRACK) -->
+        <!-- 2. SIGNAL DECK (3 TRACKS + SECRET KONAMI 4TH TRACK) -->
         <section id="section-signal-deck" class="cyber-panel cyber-focal rounded-sm overflow-hidden scroll-mt-28">
           <div class="scrap-hdr scrap-hdr-cyan border-b border-cyan/55 px-3 py-2 flex items-center justify-between font-tech">
             <span class="text-cyan font-bold tracking-[0.16em]">⟐ SIGNAL_DECK</span>
@@ -307,7 +294,6 @@
               <button type="button" data-track="acid" class="track-btn py-1.5 rounded-sm border border-rust/40 bg-void text-ash hover:text-bone transition">ACID_HEX</button>
               <button type="button" data-track="static" class="track-btn py-1.5 rounded-sm border border-rust/40 bg-void text-ash hover:text-bone transition">RITUAL_FM</button>
             </div>
-            <!-- Secret 4th Track (Unlocked by Konami Code!) -->
             <button id="btn-track-konami" type="button" data-track="konami" class="track-btn hidden w-full py-1.5 rounded-sm border border-gold bg-gold/15 text-gold font-tech text-[10px] font-bold tracking-widest">
               ★ SECRET: KONAMI_HEX [UNLOCKED] ★
             </button>
@@ -351,7 +337,7 @@
           </div>
         </section>
 
-        <!-- 4. CMS-CONTROLLED INLINE AD #2 -->
+        <!-- 4. INLINE AD #2 -->
         <section data-dismiss-ad="inline-2" class="dismissible-ad relative rounded-sm border-2 ad-strobe bg-gradient-to-b from-[#2b0038] via-[#002e38] to-[#331400] overflow-hidden">
           <div class="bg-[#ffff00] text-void px-2 py-1 flex items-center justify-between font-tech text-[10px] font-bold">
             <span class="inline-ad-marquee anim-gif-blink">🗿 ALERT!! 경고 // 警告 🪱</span>
@@ -371,7 +357,7 @@
           </a>
         </section>
 
-        <!-- 5. ENLARGED 88x31 STAMPS WALL -->
+        <!-- 5. ENLARGED 88x31 STAMPS WALL + OPERATOR CMS LINK -->
         <section id="section-stamps-wall" class="cyber-panel rounded-sm overflow-hidden">
           <div class="scrap-hdr scrap-hdr-pink border-b border-pink/55 px-3 py-2 flex items-center justify-between font-tech">
             <span class="text-pink font-bold tracking-[0.16em]">◈ 88x31_STAMPS</span>
@@ -405,7 +391,7 @@
         </section>
       </aside>
 
-      <!-- CENTER CONSOLE: ELEVATED SOVEREIGN MAIN ISLAND -->
+      <!-- CENTER CONSOLE: ELEVATED SOVEREIGN MAIN ISLAND (ALL 6 TABS PRE-FILLED) -->
       <main class="lg:col-span-6 space-y-4 lg:space-y-5 order-1 lg:order-2 relative z-30">
         <div id="main-island-anchor" class="main-island-wrap">
           <div class="cyber-panel main-island rounded-sm overflow-hidden">
@@ -422,7 +408,9 @@
               </div>
             </div>
 
-            <!-- TAB 1: MANIFESTO.TXT -->
+            <!-- ===============================================================
+                 PORTAL 01: MANIFESTO.TXT (PRE-POPULATED)
+                 =============================================================== -->
             <div id="tab-manifesto" class="tab-panel p-3.5 sm:p-5 md:p-6 space-y-4">
               <div class="rounded-sm overflow-hidden border-2 border-rust/80 z3-wb-box">
                 <div class="caution-tape h-2 w-full border-b border-black"></div>
@@ -445,18 +433,32 @@
                 <span class="px-2 py-0.5 border border-dashed border-cyan/70 text-cyan bg-cyan/10 rotate-1">⌖ TECH-FORWARD RELIC</span>
               </div>
 
-              <!-- Live Currently Log (+ Optional Last.fm Now Scrobbling) -->
+              <!-- Pre-Filled Currently Log (Synced Live by app.js) -->
               <div id="currently-status-box" class="rounded-sm border border-acid/45 bg-void/90 p-3 space-y-2">
-                <div class="text-xs font-tech text-ash">Syncing live status...</div>
+                <div class="flex items-center justify-between border-b border-rust/30 pb-1 font-tech text-[10px]">
+                  <span class="text-acid font-bold tracking-widest">● CURRENTLY_LOG // GITHUB PAGES LIVE</span>
+                  <span class="text-ash">UPDATED: LIVE</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-[11px] font-typewriter">
+                  <div><span class="text-cyan font-tech font-bold">♪ LISTENING:</span> <span id="cur-listen-val" class="text-bone">Signal Deck // Nocturnal Static</span></div>
+                  <div><span class="text-rust font-tech font-bold">⛨ READING:</span> <span class="text-bone">Salvaged Grimoire Vol. 01</span></div>
+                  <div><span class="text-pink font-tech font-bold">▣ WATCHING:</span> <span class="text-bone">Pirate TV CH 01 // Dark Synthwave</span></div>
+                  <div><span class="text-acid font-tech font-bold">☕ FUEL:</span> <span class="text-bone">Iced Coffee // 3AM</span></div>
+                  <div class="sm:col-span-2"><span class="text-bone/70 font-tech font-bold">☽ MOOD:</span> <span class="text-acid italic">"Maxed-out GitHub Pages cyber-occult node online!"</span></div>
+                </div>
               </div>
 
-              <!-- Pinned Broadcast Note -->
+              <!-- Optional Pinned Broadcast Note -->
               <div id="z3-manifesto-pinned-note" class="hidden rounded-sm border border-pink/55 bg-pink/10 px-3 py-2 text-xs font-typewriter text-bone"></div>
 
-              <!-- Manifesto Paragraphs (CMS Editable) -->
-              <div id="manifesto-paragraphs" class="space-y-3 text-xs sm:text-sm leading-relaxed text-bone/90 font-typewriter"></div>
+              <!-- Pre-Filled Manifesto Paragraphs -->
+              <div id="manifesto-paragraphs" class="space-y-3 text-xs sm:text-sm leading-relaxed text-bone/90 font-typewriter">
+                <p><span class="text-acid font-tech font-bold">&gt; BOOT_SEQUENCE:</span> You have drifted off the sterile corporate highway and tuned into z3itq3ist — a hand-welded digital altar built from salvaged markup, late-night static, esoteric notebooks, and bootleg signals.</p>
+                <p>No feeds, no engagement bait, no smooth minimalist cages. Everything here is stitched together by hand and archived permanently on GitHub.</p>
+                <p>Use the Sector Directory to raid my Spotify &amp; grimoire rack, flip Pirate TV channels, pull a 3-Card Tarot spread, light the Digital Altar, rearrange the Cyber-Locker, or leave static in the Blackbox Chat.</p>
+              </div>
 
-              <!-- Encrypted Cipher Decryptor (CMS Editable) -->
+              <!-- Encrypted Cipher Decryptor -->
               <div class="rounded-sm border border-dashed border-pink/55 bg-void/90 p-3 space-y-2">
                 <div class="flex flex-wrap items-center justify-between gap-2 font-tech text-xs">
                   <span class="text-pink font-bold tracking-wider">⛨ ENCRYPTED_FRAGMENT.DAT</span>
@@ -465,13 +467,26 @@
                 <p id="cipher-output" class="text-xs font-tech text-acid/90 tracking-wider break-words">0x5A 0x33 0x49 0x54 // CLICK TO CYCLE DECRYPTED TRANSMISSIONS...</p>
               </div>
 
-              <!-- Live Searchable Zine & Update Archive (Click any card for Full Zine Reader!) -->
+              <!-- Pre-Filled Zine & Update Archive (Hydrated Live by app.js) -->
               <div id="z3-github-archive-box" class="rounded-sm border border-cyan/50 bg-void/95 p-3.5 space-y-3 shadow-[0_0_16px_rgba(0,240,255,.12)]">
-                <div class="text-xs font-tech text-cyan">ᛟ Loading permanent zine &amp; update archive...</div>
+                <div class="flex items-center justify-between border-b border-rust/35 pb-2 font-tech">
+                  <span class="text-cyan font-bold text-xs tracking-widest">ᛟ ZINE &amp; UPDATE ARCHIVE // 1</span>
+                  <span class="text-[10px] text-gold">CLICK TO READ</span>
+                </div>
+                <article class="rounded-sm border border-rust/35 border-l-2 border-l-cyan bg-scrap/95 p-2.5 space-y-1">
+                  <div class="flex items-center justify-between font-tech text-[10px]">
+                    <span class="px-1.5 py-0.5 border border-cyan text-cyan bg-cyan/10 font-bold">DISPATCH</span>
+                    <span class="text-ash">SECTOR 09 REBUILD</span>
+                  </div>
+                  <h4 class="font-display text-xs sm:text-sm text-bone tracking-wide">SECTOR 09 MAXED-OUT REBUILD ONLINE</h4>
+                  <p class="text-[11px] text-bone/75 font-typewriter">All 19 interactive modules, flying Chibi Cherubims/Seraphims, Wild Chaos Glitches &amp; GitHub CMS online.</p>
+                </article>
               </div>
             </div>
 
-            <!-- TAB 2: MEDIA_VAULT -->
+            <!-- ===============================================================
+                 PORTAL 02: MEDIA_VAULT (SPOTIFY + BOOKS + VHS PRE-POPULATED)
+                 =============================================================== -->
             <div id="tab-media" class="tab-panel hidden p-3.5 sm:p-5 md:p-6 space-y-5">
               <div class="rounded-sm border border-acid/50 bg-void/90 p-3.5 space-y-2.5">
                 <div class="flex flex-wrap items-center justify-between gap-2 border-b border-rust/35 pb-1.5 font-tech">
@@ -479,17 +494,53 @@
                   <a id="spotify-profile-link" href="https://open.spotify.com/" target="_blank" rel="noopener noreferrer" class="text-[10px] text-cyan hover:underline">PROFILE ↗</a>
                 </div>
                 <iframe id="spotify-embed-iframe" style="border-radius:4px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXdxcBWuJkbcy?utm_source=generator&theme=0" width="100%" height="152" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-                <div id="spotify-liner-notes" class="text-xs text-bone/85 font-typewriter"></div>
+                <div id="spotify-liner-notes" class="text-xs text-bone/85 font-typewriter"><span class="text-acid font-tech font-bold">&gt; LINER_NOTES:</span> 3AM raindrive static &amp; post-punk rituals.</div>
               </div>
 
+              <!-- Pre-Filled Books List -->
               <div class="space-y-3">
                 <div class="flex items-center justify-between border-b border-rust/40 pb-1.5 font-tech">
                   <span class="text-rust font-bold text-xs tracking-widest">ᛟ GRIMOIRE_LOG // CURRENT READS</span>
-                  <span class="text-[10px] text-ash">SYNCED</span>
+                  <span class="text-[10px] text-ash">EDIT IN CONSOLE</span>
                 </div>
-                <div id="books-list" class="space-y-3"></div>
+                <div id="books-list" class="space-y-3">
+                  <article class="rounded-sm border border-acid/45 bg-void/95 p-3">
+                    <div class="flex flex-col sm:flex-row gap-3">
+                      <img src="https://placehold.co/90x132/0b0d0f/39ff14?text=BOOK+01" alt="Book 01" class="w-20 h-28 sm:w-24 sm:h-32 object-cover rounded-sm border border-acid/45 shrink-0 self-start">
+                      <div class="flex-1 min-w-0 space-y-1.5">
+                        <div class="flex flex-wrap items-center justify-between gap-1">
+                          <h3 class="font-display text-sm text-bone tracking-wide">[PLACEHOLDER BOOK TITLE #1]</h3>
+                          <span class="text-[10px] font-tech px-1.5 py-0.5 border border-acid text-acid bg-acid/10">READING</span>
+                        </div>
+                        <div class="text-[11px] font-tech text-ash">BY: <span class="text-cyan">[Author Name #1]</span> • FORMAT: <span class="text-rust">Physical / E-book</span></div>
+                        <div class="space-y-1 pt-1">
+                          <div class="flex justify-between text-[10px] font-tech"><span class="text-acid">PAGE 184 / 320</span><span class="text-acid font-bold">58%</span></div>
+                          <div class="w-full h-2.5 bg-scrap border border-acid/45 p-0.5"><div class="h-full bg-gradient-to-r from-acid to-cyan" style="width:58%"></div></div>
+                        </div>
+                        <div class="mt-2 bg-scrap border border-rust/30 rounded-sm p-2 text-[11px] font-typewriter text-bone/85">[@ 58%] Edit books &amp; upload covers anytime in console.html.</div>
+                      </div>
+                    </div>
+                  </article>
+                  <article class="rounded-sm border border-pink/45 bg-void/95 p-3">
+                    <div class="flex flex-col sm:flex-row gap-3">
+                      <img src="https://placehold.co/90x132/0b0d0f/ff1f6d?text=BOOK+02" alt="Book 02" class="w-20 h-28 sm:w-24 sm:h-32 object-cover rounded-sm border border-pink/45 shrink-0 self-start">
+                      <div class="flex-1 min-w-0 space-y-1.5">
+                        <div class="flex flex-wrap items-center justify-between gap-1">
+                          <h3 class="font-display text-sm text-bone tracking-wide">[PLACEHOLDER BOOK TITLE #2]</h3>
+                          <span class="text-[10px] font-tech px-1.5 py-0.5 border border-pink text-pink bg-pink/10">SIDE READ</span>
+                        </div>
+                        <div class="text-[11px] font-tech text-ash">BY: <span class="text-cyan">[Author Name #2]</span> • FORMAT: <span class="text-rust">Essays / Manga</span></div>
+                        <div class="space-y-1 pt-1">
+                          <div class="flex justify-between text-[10px] font-tech"><span class="text-pink">PAGE 42 / 210</span><span class="text-pink font-bold">20%</span></div>
+                          <div class="w-full h-2.5 bg-scrap border border-pink/45 p-0.5"><div class="h-full bg-gradient-to-r from-pink to-rust" style="width:20%"></div></div>
+                        </div>
+                      </div>
+                    </div>
+                  </article>
+                </div>
               </div>
 
+              <!-- Pre-Filled Bootleg VHS Watchlist -->
               <div class="space-y-3">
                 <div class="flex flex-wrap items-center justify-between gap-2 border-b border-pink/40 pb-1.5 font-tech">
                   <span class="text-pink font-bold text-xs tracking-widest">▣ BOOTLEG_VHS // WATCHLIST</span>
@@ -499,30 +550,66 @@
                     <button type="button" data-vhs-filter="movie" class="vhs-filter-btn px-2 py-0.5 rounded-sm border border-rust/40 bg-void text-ash">MOVIES</button>
                   </div>
                 </div>
-                <div id="vhs-list" class="space-y-2"></div>
+                <div id="vhs-list" class="space-y-2">
+                  <div class="vhs-card rounded-sm border border-l-4 border-rust/35 border-l-pink bg-void/95 overflow-hidden" data-vhs-type="series">
+                    <button type="button" class="vhs-toggle-btn w-full px-3 py-2.5 flex flex-wrap items-center justify-between gap-2 text-left hover:bg-iron/70 transition">
+                      <div>
+                        <div class="flex flex-wrap items-center gap-2"><span class="font-display text-xs sm:text-sm text-bone">[PLACEHOLDER SERIES #1]</span><span class="text-[10px] font-tech text-ash">(2026)</span><span class="text-[9px] font-tech px-1.5 py-0.5 border border-pink bg-pink/10 text-pink">[WATCHING]</span></div>
+                        <div class="text-[10px] font-tech text-ash mt-0.5">SERIES • Sci-Fi / Psychological • <span class="text-cyan">S01 E05</span></div>
+                      </div>
+                      <div class="text-right font-tech shrink-0"><div class="text-xs text-pink font-bold">4.5 / 5 ☠</div><div class="text-[9px] text-ash">FLIP ▾</div></div>
+                    </button>
+                    <div class="vhs-review hidden border-t border-dashed border-rust/35 bg-scrap px-3 py-2.5 space-y-1 text-[11px] font-typewriter">
+                      <p class="text-bone/90"><span class="text-pink font-tech font-bold">NOTES:</span> What hooks you about this show, cinematography, or theories.</p>
+                      <p class="text-ash italic">"Placeholder favorite line."</p>
+                    </div>
+                  </div>
+                  <div class="vhs-card rounded-sm border border-l-4 border-rust/35 border-l-acid bg-void/95 overflow-hidden" data-vhs-type="movie">
+                    <button type="button" class="vhs-toggle-btn w-full px-3 py-2.5 flex flex-wrap items-center justify-between gap-2 text-left hover:bg-iron/70 transition">
+                      <div>
+                        <div class="flex flex-wrap items-center gap-2"><span class="font-display text-xs sm:text-sm text-bone">[PLACEHOLDER MOVIE #1]</span><span class="text-[10px] font-tech text-ash">(1999)</span><span class="text-[9px] font-tech px-1.5 py-0.5 border border-acid bg-acid/10 text-acid">[OBSESSED]</span></div>
+                        <div class="text-[10px] font-tech text-ash mt-0.5">MOVIE • Cult / Cyber-Horror</div>
+                      </div>
+                      <div class="text-right font-tech shrink-0"><div class="text-xs text-acid font-bold">5.0 / 5 ☠</div><div class="text-[9px] text-ash">FLIP ▾</div></div>
+                    </button>
+                    <div class="vhs-review hidden border-t border-dashed border-rust/35 bg-scrap px-3 py-2.5 space-y-1 text-[11px] font-typewriter">
+                      <p class="text-bone/90"><span class="text-acid font-tech font-bold">NOTES:</span> Why this film permanently rewired your brain.</p>
+                      <p class="text-ash italic">"Favorite movie quote."</p>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            <!-- TAB 3: PIRATE_TV -->
+            <!-- ===============================================================
+                 PORTAL 03: PIRATE_TV (4 VERIFIED CHANNELS PRE-POPULATED)
+                 =============================================================== -->
             <div id="tab-tv" class="tab-panel hidden p-3.5 sm:p-5 md:p-6 space-y-4">
               <div class="flex flex-wrap items-center justify-between gap-2 border-b border-pink/40 pb-2 font-tech">
                 <span class="text-pink font-bold text-xs tracking-widest">▣ PIRATE_TV // CRT BROADCAST DECK</span>
                 <span id="tv-channel-badge" class="text-[10px] text-acid font-bold">CH 01 // SIGNAL_LOCKED</span>
               </div>
               <div class="rounded-sm border-2 border-rust/70 bg-void p-2 space-y-2 shadow-[inset_0_0_24px_rgba(0,0,0,.95)]">
-                <div id="tv-now-title" class="font-display text-xs sm:text-sm text-cyan px-1">[VIDEO 01]</div>
+                <div id="tv-now-title" class="font-display text-xs sm:text-sm text-cyan px-1">MIDNIGHT TRANSMISSION // DARK SYNTHWAVE</div>
                 <div class="relative aspect-video w-full rounded-sm overflow-hidden border border-acid/45 bg-black">
-                  <iframe id="pirate-tv-iframe" class="w-full h-full" src="https://www.youtube.com/embed/jfKfPfyJRdk?rel=0" title="Pirate TV Channel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                  <iframe id="pirate-tv-iframe" class="w-full h-full" src="https://www.youtube.com/embed/nMGxbYwkOPA?rel=0" title="Pirate TV Channel" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                   <div id="tv-static-overlay" class="hidden absolute inset-0 pointer-events-none z-10"></div>
                 </div>
-                <div id="tv-now-note" class="text-[11px] font-typewriter text-bone/80 px-1"></div>
+                <div id="tv-now-note" class="text-[11px] font-typewriter text-bone/80 px-1">The Last Operator // 3AM dark synthwave transmission.</div>
               </div>
-              <div id="tv-channels-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-2 font-tech text-xs"></div>
+              <div id="tv-channels-grid" class="grid grid-cols-2 sm:grid-cols-4 gap-2 font-tech text-xs">
+                <button type="button" data-tv-idx="0" class="tv-ch-btn py-2 px-2 rounded-sm border border-acid bg-acid/20 text-acid font-bold">[ CH 01 ]<br><span class="text-[9px] opacity-80">MIDNIGHT MIX</span></button>
+                <button type="button" data-tv-idx="1" class="tv-ch-btn py-2 px-2 rounded-sm border border-rust/45 bg-void text-bone/80 hover:border-cyan">[ CH 02 ]<br><span class="text-[9px] opacity-80">VHS TOKYO</span></button>
+                <button type="button" data-tv-idx="2" class="tv-ch-btn py-2 px-2 rounded-sm border border-rust/45 bg-void text-bone/80 hover:border-cyan">[ CH 03 ]<br><span class="text-[9px] opacity-80">ARCADE RUIN</span></button>
+                <button type="button" data-tv-idx="3" class="tv-ch-btn py-2 px-2 rounded-sm border border-rust/45 bg-void text-bone/80 hover:border-cyan">[ CH 04 ]<br><span class="text-[9px] opacity-80">80S HORROR</span></button>
+              </div>
             </div>
 
-            <!-- TAB 4: 3-CARD TAROT ORACLE, DIGITAL ALTAR & OCCULT GIFS -->
+            <!-- ===============================================================
+                 PORTAL 04: ORACLE, DIGITAL ALTAR & 6 RELIC STICKERS (PRE-FILLED)
+                 =============================================================== -->
             <div id="tab-gifs" class="tab-panel hidden p-3.5 sm:p-5 md:p-6 space-y-5">
-              <!-- Upgraded 1-Card / 3-Card Tarot Spread + Copy for Chat -->
+              <!-- 1-Card / 3-Card Tarot Deck -->
               <div class="rounded-sm border border-pink/55 bg-void/95 p-3.5 space-y-3">
                 <div class="flex flex-wrap items-center justify-between gap-2 border-b border-rust/35 pb-2 font-tech">
                   <span class="text-pink font-bold text-xs tracking-widest">✦ MAJOR_ARCANA // ORACLE DECK</span>
@@ -530,7 +617,7 @@
                     <button id="btn-tarot-1" type="button" class="px-2 py-0.5 rounded-sm border border-cyan bg-cyan/20 text-cyan font-bold">1-CARD</button>
                     <button id="btn-tarot-3" type="button" class="px-2 py-0.5 rounded-sm border border-rust/50 bg-scrap text-ash font-bold">3-CARD SPREAD</button>
                     <button id="btn-draw-tarot" type="button" class="px-2.5 py-0.5 rounded-sm border border-acid bg-acid/20 text-acid hover:bg-acid hover:text-void font-bold">[ PULL ]</button>
-                    <button id="btn-copy-tarot" type="button" title="Copy reading formatted for Blackbox Chat" class="px-2 py-0.5 rounded-sm border border-gold/75 text-gold hover:bg-gold hover:text-void font-bold">[ COPY FOR CHAT ]</button>
+                    <button id="btn-copy-tarot" type="button" title="Copy reading for Blackbox Chat" class="px-2 py-0.5 rounded-sm border border-gold/75 text-gold hover:bg-gold hover:text-void font-bold">[ COPY FOR CHAT ]</button>
                   </div>
                 </div>
                 <div id="tarot-spread-stage" class="text-center py-3 text-xs font-typewriter text-ash">
@@ -538,7 +625,7 @@
                 </div>
               </div>
 
-              <!-- Interactive Digital Altar (3 Lightable Cyber-Candles + Incense Smoke) -->
+              <!-- Interactive Digital Altar (3 Cyber-Candles + Incense Smoke) -->
               <div id="digital-altar-box" class="relative rounded-sm border border-gold/55 bg-gradient-to-b from-[#0b0907] to-[#050607] p-3.5 space-y-3 overflow-hidden">
                 <div id="altar-smoke-layer" class="absolute inset-0 pointer-events-none overflow-hidden"></div>
                 <div class="relative z-10 flex items-center justify-between border-b border-rust/35 pb-1.5 font-tech">
@@ -547,21 +634,15 @@
                 </div>
                 <div class="relative z-10 flex items-end justify-around py-2 gap-3">
                   <button type="button" class="altar-candle" data-candle="0" title="Click to light/extinguish Candle I">
-                    <span class="altar-flame"></span>
-                    <span class="altar-wax"></span>
-                    <span class="mt-1 font-tech text-[9px] text-rust">SIGNAL</span>
+                    <span class="altar-flame"></span><span class="altar-wax"></span><span class="mt-1 font-tech text-[9px] text-rust">SIGNAL</span>
                   </button>
                   <button type="button" class="altar-candle" data-candle="1" title="Click to light/extinguish Candle II">
-                    <span class="altar-flame"></span>
-                    <span class="altar-wax h-[54px]"></span>
-                    <span class="mt-1 font-tech text-[9px] text-gold">SPIRIT</span>
+                    <span class="altar-flame"></span><span class="altar-wax h-[54px]"></span><span class="mt-1 font-tech text-[9px] text-gold">SPIRIT</span>
                   </button>
                   <button type="button" class="altar-candle" data-candle="2" title="Click to light/extinguish Candle III">
-                    <span class="altar-flame"></span>
-                    <span class="altar-wax"></span>
-                    <span class="mt-1 font-tech text-[9px] text-pink">STATIC</span>
+                    <span class="altar-flame"></span><span class="altar-wax"></span><span class="mt-1 font-tech text-[9px] text-pink">STATIC</span>
                   </button>
-                  <button id="altar-incense" type="button" title="Click to burn pixel incense" class="flex flex-col items-center cursor-pointer pt-4 group">
+                  <button id="altar-incense" type="button" title="Click to burn pixel incense" class="flex flex-col items-center cursor-pointer pt-4">
                     <span class="w-1.5 h-12 bg-gradient-to-t from-[#5a3c22] to-[#9a6b3e] border border-rust/40 block relative">
                       <span id="incense-ember" class="hidden absolute -top-1 left-1/2 -translate-x-1/2 w-2.5 h-2.5 rounded-full bg-pink shadow-[0_0_12px_#ff1f6d] anim-gif-blink"></span>
                     </span>
@@ -574,17 +655,44 @@
                 </div>
               </div>
 
-              <!-- Floating Relic Stickers -->
+              <!-- Pre-Filled 6 Relic Stickers Spawner -->
               <div class="space-y-2.5">
                 <div class="flex flex-wrap items-center justify-between gap-2 border-b border-acid/40 pb-1.5 font-tech">
                   <span class="text-acid font-bold text-xs tracking-widest">✦ RELIC_STICKERS // CLICK TO SPAWN</span>
                   <button id="btn-clear-stickers" type="button" class="px-2 py-0.5 rounded-sm border border-pink/70 text-pink hover:bg-pink hover:text-void text-[10px] font-bold transition">[ CLEAR SCREEN ]</button>
                 </div>
-                <div id="gifs-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 font-tech text-[10px]"></div>
+                <div id="gifs-grid" class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 font-tech text-[10px]">
+                  <button type="button" data-gif-idx="0" class="gif-spawn-card rounded-sm border border-rust/45 hover:border-acid bg-void p-2.5 flex flex-col items-center gap-1.5 transition">
+                    <svg viewBox="0 0 64 64" class="w-14 h-14 anim-gif-glitch"><circle cx="32" cy="32" r="28" fill="none" stroke="#39ff14" stroke-width="1.5" stroke-dasharray="4 3"/><path d="M18,28 C18,16 46,16 46,28 C46,36 41,40 41,46 H23 C23,40 18,36 18,28 Z" fill="#131618" stroke="#d8d5c8" stroke-width="1.6"/><circle cx="26" cy="29" r="3.5" fill="#39ff14"/><rect x="34" y="26" width="7" height="6" fill="#ff1f6d"/></svg>
+                    <span class="text-acid">CYBER_SKULL.GIF</span>
+                  </button>
+                  <button type="button" data-gif-idx="1" class="gif-spawn-card rounded-sm border border-rust/45 hover:border-acid bg-void p-2.5 flex flex-col items-center gap-1.5 transition">
+                    <svg viewBox="0 0 64 64" class="w-14 h-14 anim-gif-spin"><polygon points="32,6 54,48 10,48" fill="none" stroke="#ff1f6d" stroke-width="1.8"/><polygon points="32,58 54,16 10,16" fill="none" stroke="#00f0ff" stroke-width="1.8"/><circle cx="32" cy="32" r="6" fill="#39ff14"/></svg>
+                    <span class="text-acid">HEX_STAR.GIF</span>
+                  </button>
+                  <button type="button" data-gif-idx="2" class="gif-spawn-card rounded-sm border border-rust/45 hover:border-acid bg-void p-2.5 flex flex-col items-center gap-1.5 transition">
+                    <svg viewBox="0 0 64 64" class="w-14 h-14 anim-eye-blink"><path d="M8,32 Q32,12 56,32 Q32,52 8,32 Z" fill="#0b0d0f" stroke="#00f0ff" stroke-width="2"/><circle cx="32" cy="32" r="9" fill="#ff1f6d"/><circle cx="32" cy="32" r="4" fill="#050607"/></svg>
+                    <span class="text-acid">ORACLE_EYE.GIF</span>
+                  </button>
+                  <button type="button" data-gif-idx="3" class="gif-spawn-card rounded-sm border border-rust/45 hover:border-acid bg-void p-2.5 flex flex-col items-center gap-1.5 transition">
+                    <svg viewBox="0 0 64 64" class="w-14 h-14 anim-gif-bounce"><path d="M32,18 C16,8 6,22 14,34 C18,40 26,38 32,34 C38,38 46,40 50,34 C58,22 48,8 32,18 Z" fill="none" stroke="#d48c28" stroke-width="2"/><line x1="32" y1="14" x2="32" y2="52" stroke="#39ff14" stroke-width="2.2"/><circle cx="20" cy="26" r="3" fill="#ff1f6d"/><circle cx="44" cy="26" r="3" fill="#ff1f6d"/></svg>
+                    <span class="text-acid">RUST_MOTH.GIF</span>
+                  </button>
+                  <button type="button" data-gif-idx="4" class="gif-spawn-card rounded-sm border border-rust/45 hover:border-acid bg-void p-2.5 flex flex-col items-center gap-1.5 transition">
+                    <svg viewBox="0 0 64 64" class="w-14 h-14"><circle cx="32" cy="32" r="11" fill="none" stroke="#f5d27a" stroke-width="2"/><path d="M16,20 A12,12 0 0,0 16,44 A8,12 0 0,1 16,20 Z" fill="#00f0ff"/><path d="M48,20 A12,12 0 0,1 48,44 A8,12 0 0,0 48,20 Z" fill="#ff1f6d"/></svg>
+                    <span class="text-acid">TRIPLE_MOON.GIF</span>
+                  </button>
+                  <button type="button" data-gif-idx="5" class="gif-spawn-card rounded-sm border border-rust/45 hover:border-acid bg-void p-2.5 flex flex-col items-center gap-1.5 transition">
+                    <svg viewBox="0 0 64 64" class="w-14 h-14"><rect x="10" y="10" width="44" height="44" fill="none" stroke="#39ff14" stroke-width="1.6" stroke-dasharray="6 3"/><text x="32" y="42" text-anchor="middle" fill="#39ff14" font-family="monospace" font-size="30" font-weight="bold">ᛟ</text></svg>
+                    <span class="text-acid">RUNE_CORE.GIF</span>
+                  </button>
+                </div>
               </div>
             </div>
 
-            <!-- TAB 5: PERSISTENT CYBER_LOCKER + VISITOR RUNE STAMPS -->
+            <!-- ===============================================================
+                 PORTAL 05: PERSISTENT CYBER_LOCKER + RUNE STAMPS (PRE-FILLED)
+                 =============================================================== -->
             <div id="tab-locker" class="tab-panel hidden p-3.5 sm:p-5 md:p-6 space-y-3">
               <div class="flex flex-wrap items-center justify-between gap-2 border-b border-rust/35 pb-2 font-tech">
                 <span class="text-rust font-bold text-xs tracking-widest">✂ CYBER_LOCKER // POSITIONS AUTO-SAVED</span>
@@ -594,7 +702,6 @@
                 </div>
               </div>
 
-              <!-- Visitor Rune Stamp Toolbar -->
               <div id="locker-stamp-bar" class="flex flex-wrap items-center gap-1.5 bg-void/90 border border-acid/35 rounded-sm px-2.5 py-1.5 font-tech text-[11px]">
                 <span class="text-acid font-bold text-[10px] mr-1">STAMP RUNE:</span>
                 <button type="button" class="locker-stamp-btn px-2 py-0.5 border border-acid/50 hover:bg-acid hover:text-void text-acid rounded-sm" data-stamp="ᛟ">ᛟ</button>
@@ -615,58 +722,74 @@
                   <img src="https://placehold.co/220x200/0b0d0f/ff1f6d?text=POLAROID+02" alt="Polaroid 2" class="w-full h-28 object-cover border border-black/30 pointer-events-none">
                   <div class="font-display text-[11px] text-center mt-1.5">[late night static]</div>
                 </div>
-                <div id="locker-receipt" class="locker-item w-44 bg-[#f2efe4] text-void p-2.5 font-tech text-[10px] shadow-xl border border-black/30" data-init-left="375" data-init-top="32" data-init-rot="-2"></div>
+                <div id="locker-receipt" class="locker-item w-44 bg-[#f2efe4] text-void p-2.5 font-tech text-[10px] shadow-xl border border-black/30" data-init-left="375" data-init-top="32" data-init-rot="-2">
+                  <div class="text-center font-bold border-b border-dashed border-black/50 pb-1 mb-1">SECTOR 09 BODEGA</div>
+                  <div class="flex justify-between"><span>1x ICED COFFEE</span><span>$4.04</span></div>
+                  <div class="flex justify-between"><span>2x BLANK VHS</span><span>$6.66</span></div>
+                  <div class="flex justify-between"><span>1x RAW HTML</span><span>FREE</span></div>
+                  <div class="border-t border-dashed border-black/50 mt-1 pt-1 flex justify-between font-bold"><span>TOTAL</span><span>SOUL_OK</span></div>
+                  <div class="text-center text-[8px] mt-1 tracking-widest">||||| |||| |||||</div>
+                </div>
                 <div id="locker-zine" class="locker-item w-48 bg-scrap border-2 border-dashed border-acid/70 p-2.5 shadow-xl" data-init-left="40" data-init-top="230" data-init-rot="3">
                   <div class="text-[9px] font-tech text-acid font-bold mb-1">✂ ZINE_CLIPPING.TXT</div>
-                  <p class="text-[11px] font-typewriter text-bone/90 italic"></p>
+                  <p class="text-[11px] font-typewriter text-bone/90 italic">"Drop your favorite unhinged lyric, book quote, or personal motto here."</p>
                 </div>
-                <div id="locker-ticket" class="locker-item w-48 bg-[#180911] border-2 border-pink/75 p-2.5 font-tech text-[10px] shadow-xl" data-init-left="270" data-init-top="250" data-init-rot="-5"></div>
+                <div id="locker-ticket" class="locker-item w-48 bg-[#180911] border-2 border-pink/75 p-2.5 font-tech text-[10px] shadow-xl" data-init-left="270" data-init-top="250" data-init-rot="-5">
+                  <div class="flex justify-between text-pink font-bold border-b border-pink/40 pb-1"><span>ADMIT ONE</span><span>NO. 0666</span></div>
+                  <div class="text-bone mt-1 font-bold">[FAVORITE GIG / FILM STUB]</div>
+                  <div class="text-ash text-[9px]">DATE: 11/25/2026 // ROW Z</div>
+                </div>
               </div>
             </div>
 
-            <!-- TAB 6: SIGNAL_RELAYS + PERMANENT GITHUB GISCUS GUESTBOOK -->
+            <!-- ===============================================================
+                 PORTAL 06: SIGNAL_RELAYS + GISCUS GUESTBOOK (PRE-FILLED)
+                 =============================================================== -->
             <div id="tab-webring" class="tab-panel hidden p-3.5 sm:p-5 md:p-6 space-y-4">
               <div class="border-b border-rust/35 pb-2 font-tech flex items-center justify-between">
                 <span class="text-acid font-bold text-xs tracking-widest">⛨ SIGNAL_RELAYS // OUTBOUND PORTALS</span>
-                <span class="text-[10px] text-cyan">SYNCED</span>
+                <span class="text-[10px] text-cyan">EDIT IN CONSOLE</span>
               </div>
 
               <div id="relay-substack" class="rounded-sm border border-rust/65 bg-void/95 p-3.5 space-y-2">
                 <div class="flex flex-wrap items-center justify-between gap-2 font-tech text-[10px]">
                   <span class="text-rust font-bold">ᛟ SUBSTACK DISPATCH</span>
-                  <span id="rel-sub-date-out" class="text-ash"></span>
+                  <span id="rel-sub-date-out" class="text-ash">PUBLISHED: NOV 25, 2026</span>
                 </div>
-                <h3 id="rel-sub-title-out" class="font-display text-sm sm:text-base text-gold"></h3>
-                <p id="rel-sub-teaser-out" class="text-xs text-bone/85 font-typewriter"></p>
-                <a id="rel-sub-url-out" href="#" target="_blank" rel="noopener noreferrer" class="inline-block px-3 py-1 rounded-sm border border-rust bg-rust/15 text-gold hover:bg-rust hover:text-void font-tech font-bold text-[11px] transition">READ ON SUBSTACK ↗</a>
+                <h3 id="rel-sub-title-out" class="font-display text-sm sm:text-base text-gold">[Latest Substack Essay Title]</h3>
+                <p id="rel-sub-teaser-out" class="text-xs text-bone/85 font-typewriter">1-2 sentence teaser of your newest Substack post or newsletter theme.</p>
+                <a id="rel-sub-url-out" href="https://YOUR_SUBSTACK.substack.com" target="_blank" rel="noopener noreferrer" class="inline-block px-3 py-1 rounded-sm border border-rust bg-rust/15 text-gold hover:bg-rust hover:text-void font-tech font-bold text-[11px] transition">READ ON SUBSTACK ↗</a>
               </div>
 
               <div class="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
-                <a id="rel-ig-card" href="#" target="_blank" rel="noopener noreferrer" class="rounded-sm border border-pink/55 bg-void/95 p-3 space-y-2 hover:border-pink transition block">
+                <a id="rel-ig-card" href="https://instagram.com/YOUR_INSTAGRAM_HANDLE" target="_blank" rel="noopener noreferrer" class="rounded-sm border border-pink/55 bg-void/95 p-3 space-y-2 hover:border-pink transition block">
                   <div class="font-tech text-[11px] text-pink font-bold">✦ INSTAGRAM</div>
                   <div class="grid grid-cols-3 gap-1">
                     <img id="rel-ig-img1" src="https://placehold.co/70x70/14080e/ff1f6d?text=01" alt="IG 1" class="w-full aspect-square object-cover rounded-sm border border-pink/40">
                     <img id="rel-ig-img2" src="https://placehold.co/70x70/0d1112/39ff14?text=02" alt="IG 2" class="w-full aspect-square object-cover rounded-sm border border-acid/40">
                     <img id="rel-ig-img3" src="https://placehold.co/70x70/081316/00f0ff?text=03" alt="IG 3" class="w-full aspect-square object-cover rounded-sm border border-cyan/40">
                   </div>
-                  <div id="rel-ig-handle-out" class="font-tech text-xs text-bone truncate"></div>
-                  <p id="rel-ig-bio-out" class="text-[11px] text-ash"></p>
+                  <div id="rel-ig-handle-out" class="font-tech text-xs text-bone truncate">@YOUR_INSTAGRAM_HANDLE</div>
+                  <p id="rel-ig-bio-out" class="text-[11px] text-ash">Darkroom dump, photos &amp; visual chaos.</p>
                 </a>
-                <a id="rel-tt-card" href="#" target="_blank" rel="noopener noreferrer" class="rounded-sm border border-cyan/55 bg-void/95 p-3 space-y-2 hover:border-cyan transition block">
+                <a id="rel-tt-card" href="https://tiktok.com/@YOUR_TIKTOK_HANDLE" target="_blank" rel="noopener noreferrer" class="rounded-sm border border-cyan/55 bg-void/95 p-3 space-y-2 hover:border-cyan transition block">
                   <div class="font-tech text-[11px] text-cyan font-bold">▣ TIKTOK</div>
-                  <div id="rel-tt-handle-out" class="font-tech text-xs text-bone truncate"></div>
-                  <p id="rel-tt-bio-out" class="text-[11px] text-ash"></p>
+                  <div id="rel-tt-handle-out" class="font-tech text-xs text-bone truncate">@YOUR_TIKTOK_HANDLE</div>
+                  <p id="rel-tt-bio-out" class="text-[11px] text-ash">Short-form edits, rants &amp; cursed clips.</p>
                 </a>
-                <a id="rel-fb-card" href="#" target="_blank" rel="noopener noreferrer" class="rounded-sm border border-acid/55 bg-void/95 p-3 space-y-2 hover:border-acid transition block">
+                <a id="rel-fb-card" href="https://facebook.com/YOUR_FACEBOOK_HANDLE" target="_blank" rel="noopener noreferrer" class="rounded-sm border border-acid/55 bg-void/95 p-3 space-y-2 hover:border-acid transition block">
                   <div class="font-tech text-[11px] text-acid font-bold">⛨ FACEBOOK</div>
-                  <div id="rel-fb-handle-out" class="font-tech text-xs text-bone truncate"></div>
-                  <p id="rel-fb-bio-out" class="text-[11px] text-ash"></p>
+                  <div id="rel-fb-handle-out" class="font-tech text-xs text-bone truncate">/YOUR_FACEBOOK_HANDLE</div>
+                  <p id="rel-fb-bio-out" class="text-[11px] text-ash">Status dispatches &amp; signal check-ins.</p>
                 </a>
               </div>
 
               <div class="space-y-2">
                 <div class="font-tech text-xs text-cyan font-bold tracking-wider">⌖ DEADNET_PORTALS</div>
-                <div id="relay-deadnet-list" class="space-y-1.5"></div>
+                <div id="relay-deadnet-list" class="space-y-1.5">
+                  <a href="https://archive.org" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2.5 rounded-sm border border-rust/35 bg-void/85 hover:border-acid transition font-tech text-xs"><span class="text-acid font-bold">↗ INTERNET ARCHIVE</span><span class="text-[10px] text-ash">[RELIC_VAULT]</span></a>
+                  <a href="https://gifcities.org" target="_blank" rel="noopener noreferrer" class="flex items-center justify-between p-2.5 rounded-sm border border-rust/35 bg-void/85 hover:border-pink transition font-tech text-xs"><span class="text-pink font-bold">↗ GIFCITIES</span><span class="text-[10px] text-ash">[GIF_DUMP]</span></a>
+                </div>
               </div>
 
               <div class="rounded-sm border border-dashed border-acid/50 bg-void p-3 text-center space-y-2 font-tech">
@@ -679,7 +802,6 @@
                 </div>
               </div>
 
-              <!-- Permanent GitHub Discussions Guestbook (Giscus — Configured in console.html) -->
               <div id="giscus-guestbook-section" class="rounded-sm border border-pink/55 bg-void/95 p-3.5 space-y-2.5">
                 <div class="flex items-center justify-between border-b border-rust/35 pb-1.5 font-tech">
                   <span class="text-pink font-bold text-xs tracking-widest">⛨ SHRINE_GUESTBOOK // PERMANENT LOG</span>
@@ -691,19 +813,19 @@
               </div>
             </div>
 
-            <!-- UPGRADED HACKER CLI TERMINAL (ARROW HISTORY + NEOFETCH + BOSS + KONAMI) -->
+            <!-- HACKER CLI TERMINAL (TYPE 'console', 'neofetch', 'boss', 'chaos', 'help') -->
             <div class="border-t border-acid/45 bg-[#040607] px-3.5 py-2.5 space-y-2 font-tech">
               <div id="cli-output" class="hidden max-h-36 overflow-y-auto text-[11px] text-acid whitespace-pre-wrap bg-void border border-rust/35 rounded-sm p-2"></div>
               <form id="cli-form" class="flex items-center gap-2 text-xs">
                 <span class="text-acid font-bold shrink-0">z3it@node:~$</span>
-                <input id="cli-input" type="text" autocomplete="off" placeholder="try 'help', 'neofetch', 'badges', 'boss', 'tarot', 'bios' (↑/↓ history)" class="flex-1 min-w-0 bg-transparent text-bone placeholder:text-ash focus:outline-none">
+                <input id="cli-input" type="text" autocomplete="off" placeholder="try 'help', 'neofetch', 'boss', 'chaos', 'console', 'badges' (↑/↓)" class="flex-1 min-w-0 bg-transparent text-bone placeholder:text-ash focus:outline-none">
                 <button type="submit" class="px-2.5 py-1 rounded-sm border border-acid/75 bg-acid/10 text-acid hover:bg-acid hover:text-void font-bold text-[10px] shrink-0">EXEC</button>
               </form>
             </div>
           </div>
         </div>
 
-        <!-- CMS-CONTROLLED INLINE AD #3 -->
+        <!-- INLINE AD #3 -->
         <section data-dismiss-ad="inline-3" class="dismissible-ad relative rounded-sm border-2 ad-strobe overflow-hidden bg-[#160024]">
           <button type="button" data-close-inline-ad="inline-3" title="Close Ad Permanently" class="absolute top-0 right-0 z-10 px-2.5 py-1 sm:px-2 sm:py-0.5 bg-void/95 text-pink hover:bg-pink hover:text-void border-l border-b border-pink font-tech font-bold text-[11px] sm:text-[10px] transition">[X]</button>
           <a href="https://example.com/inline-ad-3" target="_blank" rel="noopener noreferrer" class="inline-ad-link grid grid-cols-1 sm:grid-cols-12 items-center gap-3 p-3 hover:brightness-110 transition">
@@ -783,7 +905,7 @@
           </button>
         </section>
 
-        <!-- 4. CMS-CONTROLLED INLINE AD #4 -->
+        <!-- 4. INLINE AD #4 -->
         <section data-dismiss-ad="inline-4" class="dismissible-ad relative rounded-sm border-2 ad-strobe bg-gradient-to-tr from-[#002b24] via-[#2b0022] to-[#332200] overflow-hidden">
           <div class="bg-[#00ffff] text-void px-2 py-0.5 flex items-center justify-between font-tech text-[9px] font-bold">
             <span class="inline-ad-marquee ad-jitter">🧠 MEGA DEAL!! 奇迹 // 기적 🚽</span>
@@ -827,7 +949,7 @@
       </aside>
     </div>
 
-    <!-- CMS-CONTROLLED INLINE AD #5: PRE-FOOTER MEGA STRIP -->
+    <!-- INLINE AD #5: PRE-FOOTER MEGA STRIP -->
     <section data-dismiss-ad="inline-5" class="dismissible-ad relative rounded-sm border-2 ad-strobe overflow-hidden bg-[#0c0018]">
       <div class="bg-[#ff0066] text-[#ffff00] font-tech font-bold text-[10px] py-0.5 overflow-hidden border-b border-[#ffff00] pr-9">
         <div class="inline-ad-marquee ad-marquee-fast rev flex gap-8">
@@ -859,15 +981,14 @@
     <footer class="cyber-panel rounded-sm px-4 py-3 mb-14 lg:mb-0 text-center text-xs text-ash flex flex-col sm:flex-row items-center justify-between gap-2 font-tech">
       <div>ᛟ <span class="text-acid font-bold tracking-widest">z3itq3ist</span> // hand-welded from scrap HTML &amp; occult static ᛟ</div>
       <div class="flex items-center gap-3 text-[11px]">
+        <a href="./console.html" class="text-acid hover:underline">CMS</a>
         <a href="./feed.xml" target="_blank" rel="noopener noreferrer" class="text-gold hover:underline">RSS</a>
-        <span class="text-rust">[ SECTOR 09 // GITHUB PAGES // LONG LIVE THE WEIRD WEB ]</span>
+        <span class="text-rust">[ SECTOR 09 // GITHUB PAGES ]</span>
       </div>
     </footer>
   </div>
 
-  <!-- =======================================================================
-       POP-UP AD DIRECTORY DOCK & DRAWER
-       ======================================================================= -->
+  <!-- POP-UP AD DIRECTORY DOCK & DRAWER -->
   <button id="z3-ad-dir-dock" type="button" title="Open 15 Pop-Up Ad Directory">
     <span>⛨ AD_DIRECTORY</span>
     <span id="z3-dock-count" class="px-1.5 py-0.5 rounded-sm bg-acid text-void text-[10px]">15/15</span>
@@ -888,9 +1009,7 @@
     </div>
   </div>
 
-  <!-- =======================================================================
-       MOBILE BOTTOM THUMB DOCK & SLIDE-UP SHEET (< 1024px)
-       ======================================================================= -->
+  <!-- MOBILE BOTTOM THUMB DOCK & SLIDE-UP SHEET (< 1024px) -->
   <nav id="z3-mob-dock" aria-label="Mobile Bottom Navigation">
     <button type="button" class="z3-mob-dock-btn is-active" data-mob-action="portals"><span class="z3-dock-ico">⌖</span><span>PORTALS</span></button>
     <button type="button" class="z3-mob-dock-btn" data-mob-action="synth"><span class="z3-dock-ico">♪</span><span>SYNTH</span></button>
@@ -910,9 +1029,7 @@
     </div>
   </div>
 
-  <!-- =======================================================================
-       MODALS: SYSTEM INTERCEPT, AURA SCANNER, ZINE READER, RELIC CASE, KONAMI
-       ======================================================================= -->
+  <!-- MODALS: SYSTEM INTERCEPT, AURA SCANNER, ZINE READER, RELIC CASE, KONAMI -->
   <div id="cyber-modal" class="app-modal fixed inset-0 z-[70] hidden items-center justify-center bg-black/85 p-4">
     <div class="cyber-panel rounded-sm border-pink max-w-md w-full overflow-hidden">
       <div class="scrap-hdr scrap-hdr-pink border-b border-pink px-3.5 py-2 flex items-center justify-between font-tech">
@@ -942,7 +1059,6 @@
     </div>
   </div>
 
-  <!-- Full Long-Form Zine / Diary Reader Modal -->
   <div id="zine-reader-modal" class="app-modal fixed inset-0 z-[78] hidden items-center justify-center bg-black/88 p-3 sm:p-5">
     <div class="cyber-panel rounded-sm border-cyan max-w-2xl w-full max-h-[86vh] flex flex-col overflow-hidden">
       <div class="scrap-hdr scrap-hdr-cyan border-b border-cyan/60 px-4 py-2.5 flex items-center justify-between gap-2 font-tech">
@@ -966,7 +1082,6 @@
     </div>
   </div>
 
-  <!-- Hidden Relic Achievements Case Modal -->
   <div id="relics-modal" class="app-modal fixed inset-0 z-[79] hidden items-center justify-center bg-black/88 p-4">
     <div class="cyber-panel rounded-sm border-gold max-w-lg w-full max-h-[84vh] flex flex-col overflow-hidden">
       <div class="scrap-hdr scrap-hdr-rust border-b border-gold/60 px-4 py-2.5 flex items-center justify-between font-tech">
@@ -980,7 +1095,6 @@
     </div>
   </div>
 
-  <!-- Secret Konami Code Glitch Vault Modal -->
   <div id="konami-modal" class="app-modal fixed inset-0 z-[80] hidden items-center justify-center bg-black/90 p-4">
     <div class="cyber-panel rounded-sm border-gold max-w-md w-full overflow-hidden shadow-[0_0_40px_rgba(245,210,122,.4)]">
       <div class="scrap-hdr scrap-hdr-acid border-b border-gold px-4 py-2.5 flex items-center justify-between font-tech">
@@ -998,7 +1112,7 @@
     </div>
   </div>
 
-  <!-- Separated Application Engine (Step 3) -->
+  <!-- Separated Application Engine (Phase 3) -->
   <script src="./app.js" defer></script>
 </body>
 </html>
