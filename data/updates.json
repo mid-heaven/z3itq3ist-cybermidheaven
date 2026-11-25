@@ -24,7 +24,7 @@
     "spotifyEmbed": "https://open.spotify.com/embed/playlist/37i9dQZF1DXdxcBWuJkbcy?utm_source=generator&theme=0",
     "spotifyProfileUrl": "https://open.spotify.com/user/YOUR_SPOTIFY_ID",
     "spotifyLinerNotes": "3AM raindrive static & post-punk rituals.",
-    "updatedAt": "2026-11-25T00:00:00.000Z"
+    "updatedAt": "2026-11-25T06:42:50.945Z"
   },
   "operator": {
     "badge": "VERIFIED",
@@ -132,12 +132,36 @@
       }
     ],
     "gifs": [
-      { "slot": 1, "label": "CYBER_SKULL.GIF", "url": "" },
-      { "slot": 2, "label": "HEX_STAR.GIF", "url": "" },
-      { "slot": 3, "label": "ORACLE_EYE.GIF", "url": "" },
-      { "slot": 4, "label": "RUST_MOTH.GIF", "url": "" },
-      { "slot": 5, "label": "TRIPLE_MOON.GIF", "url": "" },
-      { "slot": 6, "label": "RUNE_CORE.GIF", "url": "" }
+      {
+        "slot": 1,
+        "label": "CYBER_SKULL.GIF",
+        "url": ""
+      },
+      {
+        "slot": 2,
+        "label": "HEX_STAR.GIF",
+        "url": ""
+      },
+      {
+        "slot": 3,
+        "label": "ORACLE_EYE.GIF",
+        "url": ""
+      },
+      {
+        "slot": 4,
+        "label": "RUST_MOTH.GIF",
+        "url": ""
+      },
+      {
+        "slot": 5,
+        "label": "TRIPLE_MOON.GIF",
+        "url": ""
+      },
+      {
+        "slot": 6,
+        "label": "RUNE_CORE.GIF",
+        "url": ""
+      }
     ],
     "locker": {
       "polaroid1Img": "https://placehold.co/220x200/0b0d0f/39ff14?text=POLAROID+01",
@@ -225,29 +249,227 @@
     }
   ],
   "popupAds": [
-    { "id": "ad-01", "enabled": true, "size": "sm", "theme": "acid", "win": "AD_01 // SCRAP_DEAL.EXE", "head": "SALVAGED CYBER-IMPLANT!!", "copy": "Edit text, url & img in console.html.", "cta": "CLICK HERE >>", "url": "https://example.com/ad-01", "img": "" },
-    { "id": "ad-02", "enabled": true, "size": "wide", "theme": "pink", "win": "AD_02 // RITUAL_ALERT.BAT", "head": "SOLAR FLARE IN SECTOR 09!", "copy": "Wide banner Ad 02 — paste custom GIF in console.", "cta": "OPEN LINK ↗", "url": "https://example.com/ad-02", "img": "" },
-    { "id": "ad-03", "enabled": true, "size": "md", "theme": "cyan", "win": "AD_03 // BOOTLEG_TAPE.MP3", "head": "★ PIRATE SYNTH TRANSMISSION ★", "copy": "Link your Spotify, Bandcamp, or mixtape here.", "cta": "▶ LISTEN NOW", "url": "https://example.com/ad-03", "img": "" },
-    { "id": "ad-04", "enabled": true, "size": "tall", "theme": "amber", "win": "AD_04 // PAGAN_ORACLE.SYS", "head": "DOWNLOAD FORBIDDEN SIGILS", "copy": "Tall poster ad — great for vertical GIFs.", "cta": "ACCESS VAULT >>", "url": "https://example.com/ad-04", "img": "" },
-    { "id": "ad-05", "enabled": true, "size": "xs", "theme": "pink", "win": "AD_05 // MSG.DAT", "head": "✉ 1 ENCRYPTED NOTE", "copy": "Compact secret message pop-up.", "cta": "OPEN", "url": "https://example.com/ad-05", "img": "" },
-    { "id": "ad-06", "enabled": true, "size": "lg", "theme": "acid", "win": "AD_06 // WASTELAND_DROP.ZIP", "head": "SECRET UNDERGROUND SHRINE!", "copy": "Large featured pop-up slot for collabs or promos.", "cta": "ENTER >>", "url": "https://example.com/ad-06", "img": "" },
-    { "id": "ad-07", "enabled": true, "size": "md", "theme": "pink", "win": "AD_07 // ZINE_STASH.ZIP", "head": "DISTRESSED ZINES & PATCHES", "copy": "Point this card to your shop or Substack.", "cta": "BROWSE ↗", "url": "https://example.com/ad-07", "img": "" },
-    { "id": "ad-08", "enabled": true, "size": "wide", "theme": "cyan", "win": "AD_08 // PIRATE_FM_99.9", "head": "● NIGHTSHIFT OCCULT RADIO", "copy": "Wide audio/radio broadcast banner.", "cta": "TUNE IN ↗", "url": "https://example.com/ad-08", "img": "" },
-    { "id": "ad-09", "enabled": true, "size": "xs", "theme": "acid", "win": "AD_09 // RELIC", "head": "★ FREE GIF PACK ★", "copy": "Tiny promo pop-up slot.", "cta": "GRAB .ZIP", "url": "https://example.com/ad-09", "img": "" },
-    { "id": "ad-10", "enabled": true, "size": "tall", "theme": "pink", "win": "AD_10 // AFFILIATE", "head": "✦ FRIEND NODE ✦", "copy": "Shout out a friend's indie web shrine.", "cta": "VISIT SITE ↗", "url": "https://example.com/ad-10", "img": "" },
-    { "id": "ad-11", "enabled": true, "size": "sm", "theme": "amber", "win": "AD_11 // RELIC_SCAN", "head": "⌖ ARTIFACT DETECTED", "copy": "Small wasteland discovery pop-up slot.", "cta": "INSPECT >>", "url": "https://example.com/ad-11", "img": "" },
-    { "id": "ad-12", "enabled": true, "size": "lg", "theme": "cyan", "win": "AD_12 // GALLERY_LEAK", "head": "NEW CYBER-OCCULT ART UPLOADED", "copy": "Showcase photography, edits, or featured videos.", "cta": "OPEN GALLERY >>", "url": "https://example.com/ad-12", "img": "" },
-    { "id": "ad-13", "enabled": true, "size": "md", "theme": "acid", "win": "AD_13 // MYSTERY_PORT", "head": "UNMARKED BUNKER TERMINAL", "copy": "Drop a hidden link or favorite rabbit hole here.", "cta": "JACK IN ↗", "url": "https://example.com/ad-13", "img": "" },
-    { "id": "ad-14", "enabled": true, "size": "wide", "theme": "amber", "win": "AD_14 // SPONSORED", "head": "$$ SCRAP SYNDICATE SUPPLY $$", "copy": "Wide chaotic ad strip — replace url & img anytime.", "cta": "CLAIM ↗", "url": "https://example.com/ad-14", "img": "" },
-    { "id": "ad-15", "enabled": true, "size": "sm", "theme": "cyan", "win": "AD_15 // RADIO_LINK", "head": "FOLLOW Z3ITQ3IST", "copy": "Link your socials, guestbook, or newsletter here.", "cta": "CONNECT ↗", "url": "https://example.com/ad-15", "img": "" }
+    {
+      "id": "ad-01",
+      "enabled": true,
+      "size": "sm",
+      "theme": "acid",
+      "win": "AD_01 // SCRAP_DEAL.EXE",
+      "head": "SALVAGED CYBER-IMPLANT!!",
+      "copy": "Edit text, url & img in console.html.",
+      "cta": "CLICK HERE >>",
+      "url": "https://example.com/ad-01",
+      "img": ""
+    },
+    {
+      "id": "ad-02",
+      "enabled": true,
+      "size": "wide",
+      "theme": "pink",
+      "win": "AD_02 // RITUAL_ALERT.BAT",
+      "head": "SOLAR FLARE IN SECTOR 09!",
+      "copy": "Wide banner Ad 02 — paste custom GIF in console.",
+      "cta": "OPEN LINK ↗",
+      "url": "https://example.com/ad-02",
+      "img": ""
+    },
+    {
+      "id": "ad-03",
+      "enabled": true,
+      "size": "md",
+      "theme": "cyan",
+      "win": "AD_03 // BOOTLEG_TAPE.MP3",
+      "head": "★ PIRATE SYNTH TRANSMISSION ★",
+      "copy": "Link your Spotify, Bandcamp, or mixtape here.",
+      "cta": "▶ LISTEN NOW",
+      "url": "https://example.com/ad-03",
+      "img": ""
+    },
+    {
+      "id": "ad-04",
+      "enabled": true,
+      "size": "tall",
+      "theme": "amber",
+      "win": "AD_04 // PAGAN_ORACLE.SYS",
+      "head": "DOWNLOAD FORBIDDEN SIGILS",
+      "copy": "Tall poster ad — great for vertical GIFs.",
+      "cta": "ACCESS VAULT >>",
+      "url": "https://example.com/ad-04",
+      "img": ""
+    },
+    {
+      "id": "ad-05",
+      "enabled": true,
+      "size": "xs",
+      "theme": "pink",
+      "win": "AD_05 // MSG.DAT",
+      "head": "✉ 1 ENCRYPTED NOTE",
+      "copy": "Compact secret message pop-up.",
+      "cta": "OPEN",
+      "url": "https://example.com/ad-05",
+      "img": ""
+    },
+    {
+      "id": "ad-06",
+      "enabled": true,
+      "size": "lg",
+      "theme": "acid",
+      "win": "AD_06 // WASTELAND_DROP.ZIP",
+      "head": "SECRET UNDERGROUND SHRINE!",
+      "copy": "Large featured pop-up slot for collabs or promos.",
+      "cta": "ENTER >>",
+      "url": "https://example.com/ad-06",
+      "img": ""
+    },
+    {
+      "id": "ad-07",
+      "enabled": true,
+      "size": "md",
+      "theme": "pink",
+      "win": "AD_07 // ZINE_STASH.ZIP",
+      "head": "DISTRESSED ZINES & PATCHES",
+      "copy": "Point this card to your shop or Substack.",
+      "cta": "BROWSE ↗",
+      "url": "https://example.com/ad-07",
+      "img": ""
+    },
+    {
+      "id": "ad-08",
+      "enabled": true,
+      "size": "wide",
+      "theme": "cyan",
+      "win": "AD_08 // PIRATE_FM_99.9",
+      "head": "● NIGHTSHIFT OCCULT RADIO",
+      "copy": "Wide audio/radio broadcast banner.",
+      "cta": "TUNE IN ↗",
+      "url": "https://example.com/ad-08",
+      "img": ""
+    },
+    {
+      "id": "ad-09",
+      "enabled": true,
+      "size": "xs",
+      "theme": "acid",
+      "win": "AD_09 // RELIC",
+      "head": "★ FREE GIF PACK ★",
+      "copy": "Tiny promo pop-up slot.",
+      "cta": "GRAB .ZIP",
+      "url": "https://example.com/ad-09",
+      "img": ""
+    },
+    {
+      "id": "ad-10",
+      "enabled": true,
+      "size": "tall",
+      "theme": "pink",
+      "win": "AD_10 // AFFILIATE",
+      "head": "✦ FRIEND NODE ✦",
+      "copy": "Shout out a friend's indie web shrine.",
+      "cta": "VISIT SITE ↗",
+      "url": "https://example.com/ad-10",
+      "img": ""
+    },
+    {
+      "id": "ad-11",
+      "enabled": true,
+      "size": "sm",
+      "theme": "amber",
+      "win": "AD_11 // RELIC_SCAN",
+      "head": "⌖ ARTIFACT DETECTED",
+      "copy": "Small wasteland discovery pop-up slot.",
+      "cta": "INSPECT >>",
+      "url": "https://example.com/ad-11",
+      "img": ""
+    },
+    {
+      "id": "ad-12",
+      "enabled": true,
+      "size": "lg",
+      "theme": "cyan",
+      "win": "AD_12 // GALLERY_LEAK",
+      "head": "NEW CYBER-OCCULT ART UPLOADED",
+      "copy": "Showcase photography, edits, or featured videos.",
+      "cta": "OPEN GALLERY >>",
+      "url": "https://example.com/ad-12",
+      "img": ""
+    },
+    {
+      "id": "ad-13",
+      "enabled": true,
+      "size": "md",
+      "theme": "acid",
+      "win": "AD_13 // MYSTERY_PORT",
+      "head": "UNMARKED BUNKER TERMINAL",
+      "copy": "Drop a hidden link or favorite rabbit hole here.",
+      "cta": "JACK IN ↗",
+      "url": "https://example.com/ad-13",
+      "img": ""
+    },
+    {
+      "id": "ad-14",
+      "enabled": true,
+      "size": "wide",
+      "theme": "amber",
+      "win": "AD_14 // SPONSORED",
+      "head": "$$ SCRAP SYNDICATE SUPPLY $$",
+      "copy": "Wide chaotic ad strip — replace url & img anytime.",
+      "cta": "CLAIM ↗",
+      "url": "https://example.com/ad-14",
+      "img": ""
+    },
+    {
+      "id": "ad-15",
+      "enabled": true,
+      "size": "sm",
+      "theme": "cyan",
+      "win": "AD_15 // RADIO_LINK",
+      "head": "FOLLOW Z3ITQ3IST",
+      "copy": "Link your socials, guestbook, or newsletter here.",
+      "cta": "CONNECT ↗",
+      "url": "https://example.com/ad-15",
+      "img": ""
+    }
   ],
   "archive": [
+    {
+      "id": "log-mwvrb935",
+      "createdAt": "2026-11-25T06:42:50.945Z",
+      "category": "DISPATCH",
+      "title": "DISPATCH UPDATE",
+      "tags": [],
+      "body": "",
+      "image": "",
+      "link": "",
+      "snapshot": {
+        "listening": "Signal Deck // Nocturnal Static",
+        "reading": "Salvaged Grimoire Vol. 01",
+        "watching": "Pirate TV CH 01 // Dark Synthwave",
+        "mood": "Maxed-out GitHub Pages cyber-occult node online!"
+      },
+      "restoreData": {
+        "current": {
+          "listening": "Signal Deck // Nocturnal Static",
+          "reading": "Salvaged Grimoire Vol. 01",
+          "watching": "Pirate TV CH 01 // Dark Synthwave",
+          "fuel": "Iced Coffee // 3AM",
+          "mood": "Maxed-out GitHub Pages cyber-occult node online!",
+          "spotifyEmbed": "https://open.spotify.com/embed/playlist/37i9dQZF1DXdxcBWuJkbcy?utm_source=generator&theme=0",
+          "spotifyProfileUrl": "https://open.spotify.com/user/YOUR_SPOTIFY_ID",
+          "spotifyLinerNotes": "3AM raindrive static & post-punk rituals.",
+          "updatedAt": "2026-11-25T06:42:50.945Z"
+        }
+      }
+    },
     {
       "id": "log-init",
       "createdAt": "2026-11-25T00:00:00.000Z",
       "category": "DISPATCH",
       "title": "SECTOR 09 MAXED-OUT REBUILD ONLINE",
-      "tags": ["launch", "zine", "github-pages"],
+      "tags": [
+        "launch",
+        "zine",
+        "github-pages"
+      ],
       "body": "# WELCOME TO THE NEW NODE\n\nAll 19 interactive modules, flying **Chibi Cherubims & Seraphims**, **Wild Chaos Glitches**, and your permanent **GitHub CMS** are now live!\n\n> Click any archive card to read it inside the full **Zine Reader**.\n\n- Banish **7 flying cherubims/seraphims** to summon the 3-HP **Gilded Arch-Seraph Boss**\n- Enter the **Konami Code** (`↑↑↓↓←→←→BA`) to unlock the secret 4th synth track\n- Light all 3 **Digital Altar** candles + incense for a secret Relic\n- Open `/console.html` to edit all 20 Ads, Directory Portals, Operator Tag & upload GIFs"
     }
   ]
