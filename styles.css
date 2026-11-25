@@ -1,24 +1,10 @@
 /* ============================================================================
    z3itq3ist // MAXED-OUT MASTER STYLESHEET (styles.css)
-   ----------------------------------------------------------------------------
-   INDEX:
-     01. Base Tokens, Wasteland Grid & Scrollbar
-     02. 4-Mode Display Filter Rack (CRT / PHOSPHOR / AMBER / CLEAN) & Calm Mode
-     03. Retro BIOS POST Boot Sequence Overlay
-     04. Cyber Panels, Scrap Headers & Sovereign Hero Shrine
-     05. Elevated Main Island, Directory Portals & Welcome Banner
-     06. Enlarged 88x31 Stamps, Marquees & Retro Animations
-     07. Bright Neon Inline Ads & Draggable Pop-Up Ad Engine
-     08. Chaos Overdrive, Matrix Rain & Top Bar Glitch
-     09. Pirate TV Snow, Rune Trail, 3-Card Tarot & Digital Altar (Candles/Smoke)
-     10. Cyber-Locker + Visitor Rune Stamps + Zine Reader & Relic Toasts
-     11. Occult 5-Line Margins, Mini Seraphims & Gilded Arch-Seraph Boss
-     12. Mobile View Optimizer (< 1024px) — Preserves Desktop Web View 100%
+   Includes: 4 Display Filters, BIOS Boot, Hero Shrine, Elevated Main Island,
+   Welcome Banner, 20 Ads, WILD CHAOS Glitch Overdrive, Digital Altar,
+   Cyber-Locker Stamps, Zine Reader, Chibi Cherubims/Seraphims + Boss & Mobile
    ============================================================================ */
 
-/* ============================================================================
-   01. BASE TOKENS, STATIC WASTELAND BACKGROUND & SCROLLBAR
-   ============================================================================ */
 :root {
   --acid: #39ff14;
   --pink: #ff1f6d;
@@ -60,9 +46,7 @@ body[data-accent] .bg-acid     { background-color: var(--acid) !important; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-/* ============================================================================
-   02. 4-MODE DISPLAY FILTER RACK & 1-CLICK CALM / LOW-POWER MODE
-   ============================================================================ */
+/* 4-MODE DISPLAY FILTER RACK & MANUAL CALM MODE */
 .crt-overlay {
   pointer-events: none;
   position: fixed;
@@ -75,40 +59,24 @@ body[data-accent] .bg-acid     { background-color: var(--acid) !important; }
   transition: opacity .25s ease;
 }
 body[data-display="clean"] .crt-overlay { opacity: 0; }
-body[data-display="phosphor"] {
-  filter: grayscale(1) sepia(1) hue-rotate(68deg) saturate(3.4) contrast(1.12);
-}
-body[data-display="amber"] {
-  filter: grayscale(1) sepia(1) hue-rotate(-14deg) saturate(2.9) contrast(1.12);
-}
+body[data-display="phosphor"] { filter: grayscale(1) sepia(1) hue-rotate(68deg) saturate(3.4) contrast(1.12); }
+body[data-display="amber"]    { filter: grayscale(1) sepia(1) hue-rotate(-14deg) saturate(2.9) contrast(1.12); }
 
-/* Low-Power / Calm Mode (also auto-triggers if OS prefers-reduced-motion) */
-body.calm-mode *,
-body.calm-mode *::before,
-body.calm-mode *::after {
+body.calm-mode *, body.calm-mode *::before, body.calm-mode *::after {
   animation-play-state: paused !important;
   transition-duration: .08s !important;
 }
 body.calm-mode #z3-occult-veil-layer,
 body.calm-mode #z3-seraph-layer,
-body.calm-mode #rune-trail-layer {
-  opacity: .12 !important;
-}
-body.calm-mode .ad-strobe {
-  border-color: var(--rust) !important;
-  box-shadow: none !important;
-}
+body.calm-mode #rune-trail-layer { opacity: .18 !important; }
+body.calm-mode .ad-strobe { border-color: var(--rust) !important; box-shadow: none !important; }
 
-/* ============================================================================
-   03. RETRO BIOS POST BOOT SEQUENCE OVERLAY
-   ============================================================================ */
+/* RETRO BIOS POST BOOT SEQUENCE */
 #z3-bios-overlay {
   position: fixed;
   inset: 0;
   z-index: 95;
-  background:
-    repeating-linear-gradient(0deg, rgba(57, 255, 20, .05) 0 1px, transparent 1px 3px),
-    #030504;
+  background: repeating-linear-gradient(0deg, rgba(57, 255, 20, .05) 0 1px, transparent 1px 3px), #030504;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -116,10 +84,7 @@ body.calm-mode .ad-strobe {
   font-family: 'Share Tech Mono', monospace;
   transition: opacity .35s ease;
 }
-#z3-bios-overlay.is-hidden {
-  opacity: 0;
-  pointer-events: none;
-}
+#z3-bios-overlay.is-hidden { opacity: 0; pointer-events: none; }
 .z3-bios-shell {
   width: 100%;
   max-width: 560px;
@@ -137,9 +102,7 @@ body.calm-mode .ad-strobe {
   animation: gifBlink .65s steps(2, start) infinite;
 }
 
-/* ============================================================================
-   04. CYBER PANELS, SCRAP HEADERS & SOVEREIGN HERO SHRINE
-   ============================================================================ */
+/* CYBER PANELS, SCRAP HEADERS & SOVEREIGN HERO SHRINE */
 .cyber-panel {
   position: relative;
   background:
@@ -153,8 +116,7 @@ body.calm-mode .ad-strobe {
     0 0 20px rgba(0, 0, 0, .78);
   transition: border-color .18s ease, box-shadow .18s ease;
 }
-.cyber-panel::before,
-.cyber-panel::after {
+.cyber-panel::before, .cyber-panel::after {
   content: "";
   position: absolute;
   width: 11px;
@@ -177,24 +139,11 @@ body.calm-mode .ad-strobe {
     6px 7px 0 rgba(0, 0, 0, .95);
   z-index: 2;
 }
-.cyber-focal:hover {
-  border-color: var(--acid);
-  box-shadow:
-    inset 0 1px 0 rgba(255, 255, 255, .22),
-    inset 0 0 24px rgba(0, 0, 0, .84),
-    0 0 0 1px rgba(0, 240, 255, .32),
-    0 0 32px rgba(57, 255, 20, .32),
-    6px 7px 0 rgba(0, 0, 0, .95);
-}
-
 .core-cta {
   box-shadow: 0 0 14px rgba(57, 255, 20, .24), inset 0 1px 0 rgba(255, 255, 255, .18);
   transition: transform .14s ease, box-shadow .18s ease, background-color .15s ease, color .15s ease;
 }
-.core-cta:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 0 20px rgba(57, 255, 20, .45), 0 4px 12px rgba(0, 0, 0, .75);
-}
+.core-cta:hover { transform: translateY(-1px); box-shadow: 0 0 20px rgba(57, 255, 20, .45), 0 4px 12px rgba(0, 0, 0, .75); }
 
 .scrap-hdr {
   background:
@@ -206,13 +155,6 @@ body.calm-mode .ad-strobe {
 .scrap-hdr-cyan { --hdr-rgb: 0, 240, 255; }
 .scrap-hdr-rust { --hdr-rgb: 212, 140, 40; }
 
-.sigil-glow {
-  text-shadow:
-    -2px 0 0 rgba(255, 31, 109, .75),
-    2px 0 0 rgba(0, 240, 255, .72),
-    0 0 18px rgba(57, 255, 20, .48);
-}
-
 @keyframes spin360           { to { transform: rotate(360deg); } }
 @keyframes spinReverse       { to { transform: rotate(-360deg); } }
 @keyframes shrineBorderFlow  { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
@@ -223,16 +165,10 @@ body.calm-mode .ad-strobe {
   0%, 78%, 100% { opacity: .28; transform: translate3d(0, 0, 0); }
   82%           { opacity: .82; transform: translate3d(-4px, 1px, 0) skewX(-5deg); }
   86%           { opacity: .75; transform: translate3d(4px, -1px, 0) skewX(4deg); }
-  90%           { opacity: .35; transform: translate3d(-1px, 0, 0); }
 }
 @keyframes shrineCircuitFlow { to { stroke-dashoffset: -120; } }
-@keyframes shrineEmberRise {
-  0%   { transform: translateY(18px) scale(.5); opacity: 0; }
-  25%  { opacity: .95; }
-  80%  { opacity: .7; }
-  100% { transform: translateY(-110px) scale(1.25); opacity: 0; }
-}
-@keyframes shrineBadgeGlint { 0%, 72%, 100% { left: -120%; } 88% { left: 140%; } }
+@keyframes shrineEmberRise   { 0% { transform: translateY(18px) scale(.5); opacity: 0; } 25% { opacity: .95; } 80% { opacity: .7; } 100% { transform: translateY(-110px) scale(1.25); opacity: 0; } }
+@keyframes shrineBadgeGlint  { 0%, 72%, 100% { left: -120%; } 88% { left: 140%; } }
 @keyframes shrineOrbBreath {
   0%, 100% { box-shadow: 0 0 14px rgba(57, 255, 20, .35), inset 0 0 18px rgba(57, 255, 20, .25); }
   50%      { box-shadow: 0 0 28px rgba(245, 210, 122, .65), 0 0 42px rgba(255, 31, 109, .32), inset 0 0 22px rgba(0, 240, 255, .3); }
@@ -277,8 +213,7 @@ body.calm-mode .ad-strobe {
   animation: shrineTitleFoil 4.8s linear infinite;
   filter: drop-shadow(0 0 18px rgba(57, 255, 20, .48)) drop-shadow(0 4px 12px rgba(0, 0, 0, .95));
 }
-.hero-title-wrap::before,
-.hero-title-wrap::after {
+.hero-title-wrap::before, .hero-title-wrap::after {
   content: attr(data-text);
   position: absolute;
   inset: 0;
@@ -291,27 +226,12 @@ body.calm-mode .ad-strobe {
 .hero-title-wrap::before { color: rgba(255, 31, 109, .78); clip-path: inset(0 0 52% 0); animation: shrineTitleEcho 3.4s steps(2, end) infinite; }
 .hero-title-wrap::after  { color: rgba(0, 240, 255, .75);  clip-path: inset(50% 0 0 0); animation: shrineTitleEcho 3.4s steps(2, end) infinite reverse; }
 
-.hero-ember {
-  position: absolute;
-  bottom: 8px;
-  pointer-events: none;
-  font-size: 10px;
-  animation: shrineEmberRise var(--ed, 4.2s) ease-in infinite;
-  animation-delay: var(--el, 0s);
-}
-.hero-badge-plate {
-  position: relative;
-  overflow: hidden;
-  backdrop-filter: blur(4px);
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, .14), 0 4px 12px rgba(0, 0, 0, .75);
-}
+.hero-ember { position: absolute; bottom: 8px; pointer-events: none; font-size: 10px; animation: shrineEmberRise var(--ed, 4.2s) ease-in infinite; animation-delay: var(--el, 0s); }
+.hero-badge-plate { position: relative; overflow: hidden; backdrop-filter: blur(4px); box-shadow: inset 0 1px 0 rgba(255, 255, 255, .14), 0 4px 12px rgba(0, 0, 0, .75); }
 .hero-badge-plate::after {
   content: "";
   position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 55%;
-  left: -120%;
+  top: 0; bottom: 0; width: 55%; left: -120%;
   background: linear-gradient(90deg, transparent, rgba(255, 248, 220, .35), transparent);
   transform: skewX(-22deg);
   animation: shrineBadgeGlint 4.4s ease-in-out infinite;
@@ -319,9 +239,7 @@ body.calm-mode .ad-strobe {
   pointer-events: none;
 }
 
-/* ============================================================================
-   05. ELEVATED MAIN ISLAND, DIRECTORY PORTALS & WELCOME BANNER
-   ============================================================================ */
+/* ELEVATED MAIN ISLAND, DIRECTORY PORTALS & WELCOME BANNER */
 .main-island-wrap { position: relative; z-index: 30; }
 .main-island-wrap::before {
   content: "";
@@ -361,33 +279,18 @@ body.calm-mode .ad-strobe {
   box-shadow: 0 0 18px rgba(57, 255, 20, .3);
 }
 .dir-icon-box {
-  width: 30px;
-  height: 30px;
-  border-radius: 2px;
+  width: 30px; height: 30px; border-radius: 2px;
   border: 1px solid var(--portal-accent, var(--acid));
   background: rgba(5, 6, 7, .92);
   color: var(--portal-accent, var(--acid));
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 14px;
-  flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; flex-shrink: 0;
 }
 
-@keyframes z3WelcomeBlink {
-  0%, 58%   { opacity: 1; }
-  59%, 78%  { opacity: .22; }
-  79%, 91%  { opacity: .95; transform: translateX(-1px); }
-  92%, 100% { opacity: .45; transform: none; }
-}
-@keyframes z3QuarantineBlink {
-  0%, 48%   { opacity: 1; text-shadow: 0 0 8px rgba(212, 140, 40, .7); }
-  49%, 100% { opacity: .25; text-shadow: none; }
-}
+@keyframes z3WelcomeBlink    { 0%, 58% { opacity: 1; } 59%, 78% { opacity: .22; } 79%, 91% { opacity: .95; transform: translateX(-1px); } 92%, 100% { opacity: .45; transform: none; } }
+@keyframes z3QuarantineBlink { 0%, 48% { opacity: 1; text-shadow: 0 0 8px rgba(212, 140, 40, .7); } 49%, 100% { opacity: .25; text-shadow: none; } }
 .z3-wb-box {
-  background:
-    repeating-linear-gradient(0deg, rgba(0, 0, 0, .28) 0 1px, transparent 1px 3px),
-    linear-gradient(180deg, #090c0b 0%, #050607 100%);
+  background: repeating-linear-gradient(0deg, rgba(0, 0, 0, .28) 0 1px, transparent 1px 3px), linear-gradient(180deg, #090c0b 0%, #050607 100%);
   box-shadow: 4px 5px 0 rgba(0, 0, 0, .92), inset 0 0 18px rgba(0, 0, 0, .88);
 }
 .z3-wb-title {
@@ -403,9 +306,7 @@ body.calm-mode .ad-strobe {
 }
 .z3-wb-quarantine { animation: z3QuarantineBlink 0.83s steps(2, start) -0.37s infinite; }
 
-/* ============================================================================
-   06. ENLARGED 88x31 STAMPS, MARQUEES & RETRO ANIMATIONS
-   ============================================================================ */
+/* 88x31 STAMPS, MARQUEES & RETRO ANIMATIONS */
 @keyframes marqueeScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 @keyframes gifBlink      { 0%, 49% { opacity: 1; } 50%, 100% { opacity: .18; } }
 @keyframes eyeBlink      { 0%, 88%, 100% { transform: scaleY(1); } 93% { transform: scaleY(.08); } }
@@ -431,34 +332,17 @@ body.calm-mode .ad-strobe {
 .anim-gif-bounce               { animation: gifBounce .85s steps(4, end) infinite; }
 .eq-bar                        { transform-origin: bottom; animation: gifEqualizer .68s steps(4, end) infinite; }
 .eq-paused .eq-bar             { animation-play-state: paused; transform: scaleY(.14); }
-.caution-tape {
-  background: repeating-linear-gradient(-45deg, #d48c28 0 10px, #070809 10px 20px);
-  background-size: 40px 40px;
-  animation: tapeSlide 1.6s linear infinite;
-}
+.caution-tape                  { background: repeating-linear-gradient(-45deg, #d48c28 0 10px, #070809 10px 20px); background-size: 40px 40px; animation: tapeSlide 1.6s linear infinite; }
 
 .btn-88x31 {
-  position: relative;
-  overflow: hidden;
-  width: 100%;
-  min-height: 54px;
-  padding: 6px 8px;
-  font-size: 11px;
-  line-height: 1.15;
-  letter-spacing: .06em;
-  cursor: pointer;
+  position: relative; overflow: hidden; width: 100%; min-height: 54px; padding: 6px 8px;
+  font-size: 11px; line-height: 1.15; letter-spacing: .06em; cursor: pointer;
   box-shadow: 3px 3px 0 rgba(0, 0, 0, .92), inset 0 1px 0 rgba(255, 255, 255, .14);
   transition: transform .15s ease, box-shadow .16s ease, filter .16s ease;
 }
-.btn-88x31:hover {
-  transform: translateY(-2px) scale(1.04);
-  box-shadow: 0 0 16px rgba(57, 255, 20, .38), 4px 5px 0 rgba(0, 0, 0, .96);
-  filter: brightness(1.12);
-}
+.btn-88x31:hover { transform: translateY(-2px) scale(1.04); box-shadow: 0 0 16px rgba(57, 255, 20, .38), 4px 5px 0 rgba(0, 0, 0, .96); filter: brightness(1.12); }
 
-/* ============================================================================
-   07. BRIGHT NEON INLINE ADS & UNIFIED DRAGGABLE POP-UP AD ENGINE
-   ============================================================================ */
+/* BRIGHT NEON INLINE ADS & 15 DRAGGABLE POP-UPS */
 @keyframes adStrobe {
   0%, 100% { border-color: #ffff00; box-shadow: 0 0 18px rgba(255, 255, 0, .65); }
   25%      { border-color: #ff00ff; box-shadow: 0 0 22px rgba(255, 0, 255, .75); }
@@ -492,11 +376,7 @@ body.calm-mode .ad-strobe {
 
 #z3-ad-popup-layer { position: fixed; inset: 0; pointer-events: none; z-index: 62; overflow: hidden; }
 .z3-popup-win {
-  position: fixed;
-  pointer-events: auto;
-  border-radius: 2px;
-  overflow: hidden;
-  max-width: calc(100vw - 18px);
+  position: fixed; pointer-events: auto; border-radius: 2px; overflow: hidden; max-width: calc(100vw - 18px);
   background: linear-gradient(175deg, rgba(16, 19, 21, .98), rgba(5, 6, 7, .99));
   border: 1.5px solid var(--z3-accent, #ff1f6d);
   box-shadow: 5px 7px 0 rgba(0, 0, 0, .94), 0 0 22px var(--z3-glow, rgba(255, 31, 109, .32));
@@ -508,161 +388,91 @@ body.calm-mode .ad-strobe {
 .z3-popup-win.sz-lg   { width: 340px; } .z3-popup-win.sz-wide { width: 396px; } .z3-popup-win.sz-tall { width: 222px; min-height: 290px; }
 
 .z3-popup-bar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  padding: 5px 8px;
-  background: var(--z3-bar-bg, #1a0810);
-  border-bottom: 1px solid var(--z3-accent, #ff1f6d);
-  color: var(--z3-accent, #ff1f6d);
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: .08em;
-  cursor: move;
-  touch-action: none;
-  user-select: none;
+  display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 5px 8px;
+  background: var(--z3-bar-bg, #1a0810); border-bottom: 1px solid var(--z3-accent, #ff1f6d);
+  color: var(--z3-accent, #ff1f6d); font-family: 'Share Tech Mono', monospace; font-size: 10px; font-weight: 700;
+  letter-spacing: .08em; cursor: move; touch-action: none; user-select: none;
 }
 .z3-popup-x {
-  width: 22px;
-  height: 18px;
-  border: 1px solid currentColor;
-  border-radius: 2px;
-  background: var(--void);
-  color: inherit;
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 10px;
-  font-weight: 700;
-  line-height: 1;
-  cursor: pointer;
-  flex-shrink: 0;
+  width: 22px; height: 18px; border: 1px solid currentColor; border-radius: 2px; background: var(--void);
+  color: inherit; font-family: 'Share Tech Mono', monospace; font-size: 10px; font-weight: 700; line-height: 1; cursor: pointer; flex-shrink: 0;
 }
 .z3-popup-x:hover { background: var(--pink); border-color: var(--pink); color: var(--void); }
 .z3-popup-link { display: block; text-decoration: none; color: inherit; padding: 10px; }
 .z3-popup-win.sz-wide .z3-popup-link { display: flex; align-items: center; gap: 10px; }
 .z3-popup-slot {
-  width: 100%;
-  height: 78px;
-  border-radius: 2px;
-  border: 1px dashed var(--z3-accent, #39ff14);
-  background: var(--void);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  overflow: hidden;
-  margin-bottom: 8px;
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 10px;
-  color: var(--z3-accent, #39ff14);
+  width: 100%; height: 78px; border-radius: 2px; border: 1px dashed var(--z3-accent, #39ff14); background: var(--void);
+  display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; margin-bottom: 8px;
+  font-family: 'Share Tech Mono', monospace; font-size: 10px; color: var(--z3-accent, #39ff14);
 }
 .z3-popup-win.sz-wide .z3-popup-slot { width: 108px; height: 74px; margin-bottom: 0; flex-shrink: 0; }
-.z3-popup-win.sz-tall .z3-popup-slot { height: 128px; }
-.z3-popup-win.sz-lg   .z3-popup-slot { height: 102px; }
+.z3-popup-win.sz-tall .z3-popup-slot { height: 128px; } .z3-popup-win.sz-lg .z3-popup-slot { height: 102px; }
 .z3-popup-slot img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
 #z3-ad-dir-dock {
-  position: fixed;
-  right: 14px;
-  bottom: 14px;
-  z-index: 69;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 8px 13px;
-  border-radius: 2px;
-  border: 1.5px solid var(--pink);
-  background: linear-gradient(135deg, #170811, #070c09);
-  color: #fff6e0;
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: .12em;
-  cursor: pointer;
-  animation: z3DockGlow 3.2s ease-in-out infinite;
+  position: fixed; right: 14px; bottom: 14px; z-index: 69; display: inline-flex; align-items: center; gap: 8px;
+  padding: 8px 13px; border-radius: 2px; border: 1.5px solid var(--pink); background: linear-gradient(135deg, #170811, #070c09);
+  color: #fff6e0; font-family: 'Share Tech Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: .12em;
+  cursor: pointer; animation: z3DockGlow 3.2s ease-in-out infinite;
 }
 #z3-ad-dir-dock:hover { border-color: var(--acid); transform: translateY(-2px); }
-
-#z3-ad-dir-modal {
-  position: fixed;
-  inset: 0;
-  z-index: 75;
-  display: none;
-  align-items: center;
-  justify-content: center;
-  padding: 14px;
-  background: rgba(3, 4, 5, .86);
-  backdrop-filter: blur(3px);
-}
+#z3-ad-dir-modal { position: fixed; inset: 0; z-index: 75; display: none; align-items: center; justify-content: center; padding: 14px; background: rgba(3, 4, 5, .86); backdrop-filter: blur(3px); }
 #z3-ad-dir-modal.is-open { display: flex; }
 
-/* ============================================================================
-   08. CHAOS OVERDRIVE, MATRIX RAIN & TOP BAR GLITCH
-   ============================================================================ */
-@keyframes chaosBlink { 0%, 62%, 100% { opacity: 1; } 18% { opacity: .1; } 30%, 90% { opacity: .94; } 46% { opacity: .06; } }
+/* WILDER CHAOS OVERDRIVE, SCREEN-RIP TEARS, SHAKE & HYPER-MATRIX RAIN */
+@keyframes chaosBlink { 0%, 62%, 100% { opacity: 1; } 18% { opacity: .08; } 30%, 90% { opacity: .94; } 46% { opacity: .05; } }
 @keyframes chaosGlitchBurst {
   0%, 100% { filter: hue-rotate(0deg) contrast(1.1); }
-  20%      { filter: hue-rotate(60deg) contrast(1.45) drop-shadow(-6px 0 0 rgba(255, 31, 109, .88)) drop-shadow(6px 0 0 rgba(0, 240, 255, .88)); }
-  55%      { filter: hue-rotate(-75deg) saturate(1.9) drop-shadow(8px -3px 0 rgba(57, 255, 20, .85)); }
+  20%      { filter: hue-rotate(65deg) contrast(1.5) drop-shadow(-7px 0 0 rgba(255, 31, 109, .92)) drop-shadow(7px 0 0 rgba(0, 240, 255, .92)); }
+  55%      { filter: hue-rotate(-85deg) saturate(2.1) drop-shadow(9px -3px 0 rgba(57, 255, 20, .88)); }
 }
-@keyframes ghostFade {
-  0%   { opacity: .6; transform: translate3d(0, 0, 0) scale(1); }
-  100% { opacity: 0; transform: translate3d(calc(var(--gx, 14px) * 2), calc(var(--gy, -10px) * 2), 0) scale(.97); }
+@keyframes z3PanelInvertFlash {
+  0%, 100% { filter: none; }
+  25%      { filter: invert(1) hue-rotate(140deg) contrast(1.8) saturate(2.5); }
+  55%      { filter: hue-rotate(-110deg) contrast(1.6) drop-shadow(-10px 0 0 #ff1f6d) drop-shadow(10px 0 0 #00f0ff); }
 }
-@keyframes matrixCanvasGlitch {
-  0%, 86%, 100% { filter: none; transform: none; }
-  88%           { filter: hue-rotate(-25deg) contrast(1.45); transform: translate3d(-4px, 0, 0); }
+@keyframes z3ScreenShake {
+  0%, 100% { transform: translate3d(0, 0, 0) skewX(0deg); }
+  15%      { transform: translate3d(-5px, 2px, 0) skewX(-1.5deg); }
+  35%      { transform: translate3d(6px, -3px, 0) skewX(1.8deg); }
+  58%      { transform: translate3d(-4px, -2px, 0) skewX(-1.2deg); }
+  78%      { transform: translate3d(5px, 3px, 0) skewX(1.3deg); }
 }
-@keyframes topTextGlitch {
-  0%, 84%, 100% { transform: none; }
-  86%           { transform: translate3d(-2px, .5px, 0) skewX(-6deg); text-shadow: -4px 0 #ff1f6d, 4px 0 #00f0ff; }
-}
-@keyframes topBurstSnap {
-  0%, 100% { transform: none; }
-  35%      { transform: translate3d(-3px, 1px, 0) skewX(-8deg); filter: hue-rotate(45deg); }
-}
+@keyframes z3TearSlide   { 0% { opacity: .95; transform: translateX(var(--tx0, -24px)) scaleY(1); } 50% { opacity: .82; transform: translateX(var(--tx1, 32px)) scaleY(1.3); } 100% { opacity: 0; transform: translateX(var(--tx2, -14px)) scaleY(.6); } }
+@keyframes z3StaticFlash { 0% { opacity: .36; } 45% { opacity: .14; } 100% { opacity: 0; } }
+@keyframes ghostFade     { 0% { opacity: .65; transform: translate3d(0, 0, 0) scale(1); } 100% { opacity: 0; transform: translate3d(calc(var(--gx, 14px) * 2), calc(var(--gy, -10px) * 2), 0) scale(.96); } }
+@keyframes matrixCanvasGlitch { 0%, 84%, 100% { filter: none; transform: none; } 87% { filter: hue-rotate(-32deg) contrast(1.55); transform: translate3d(-5px, 0, 0); } }
+@keyframes topTextGlitch { 0%, 84%, 100% { transform: none; } 86% { transform: translate3d(-2px, .5px, 0) skewX(-6deg); text-shadow: -4px 0 #ff1f6d, 4px 0 #00f0ff; } }
+@keyframes topBurstSnap  { 0%, 100% { transform: none; } 35% { transform: translate3d(-3px, 1px, 0) skewX(-8deg); filter: hue-rotate(45deg); } }
 
+#z3-chaos-tear-layer { position: fixed; inset: 0; z-index: 64; pointer-events: none; overflow: hidden; }
+.z3-tear-bar   { position: fixed; left: -6vw; width: 112vw; pointer-events: none; mix-blend-mode: screen; animation: z3TearSlide var(--td, .22s) steps(3, end) forwards; }
+.z3-chaos-flash { position: fixed; inset: 0; pointer-events: none; mix-blend-mode: hard-light; animation: z3StaticFlash .19s steps(3, end) forwards; }
+body.overdrive-mode.chaos-shaking > div.relative.z-20 { animation: z3ScreenShake .24s steps(3, end) infinite; }
+body.overdrive-mode::after {
+  content: ""; position: fixed; inset: 0; z-index: 63; pointer-events: none; mix-blend-mode: screen;
+  background: repeating-linear-gradient(0deg, rgba(255, 31, 109, .08) 0 2px, transparent 2px 5px, rgba(0, 240, 255, .07) 5px 7px, transparent 7px 11px);
+}
 body.overdrive-mode .cyber-panel { position: relative; z-index: 15; will-change: transform, opacity, filter; }
-body.overdrive-mode .chaos-blinking { animation: chaosBlink .26s steps(2, end) infinite; }
-body.overdrive-mode .chaos-glitching { animation: chaosGlitchBurst .22s steps(3, end) infinite; }
-body.overdrive-mode .chaos-ghost-echo { filter: drop-shadow(-11px 6px 0 rgba(0, 240, 255, .45)) drop-shadow(11px -6px 0 rgba(255, 31, 109, .45)); }
-body.overdrive-mode .cyber-panel:hover,
-body.overdrive-mode .cyber-panel:focus-within { z-index: 38 !important; opacity: 1 !important; animation: none !important; filter: none !important; }
+body.overdrive-mode .chaos-blinking     { animation: chaosBlink .24s steps(2, end) infinite; }
+body.overdrive-mode .chaos-glitching    { animation: chaosGlitchBurst .2s steps(3, end) infinite; }
+body.overdrive-mode .chaos-invert-spike { animation: z3PanelInvertFlash .22s steps(2, end) infinite !important; }
+body.overdrive-mode .chaos-ghost-echo   { filter: drop-shadow(-11px 6px 0 rgba(0, 240, 255, .48)) drop-shadow(11px -6px 0 rgba(255, 31, 109, .48)); }
+body.overdrive-mode .cyber-panel:hover, body.overdrive-mode .cyber-panel:focus-within { z-index: 38 !important; opacity: 1 !important; animation: none !important; filter: none !important; }
 .chaos-returning { transition: transform .65s cubic-bezier(.22, 1, .36, 1), opacity .4s ease, filter .4s ease !important; }
-.chaos-ghost-clone,
-.top-bar-ghost-clone {
-  position: fixed;
-  margin: 0 !important;
-  pointer-events: none !important;
-  mix-blend-mode: screen;
-  animation: ghostFade var(--gd, .75s) cubic-bezier(.22, 1, .36, 1) forwards;
-}
+.chaos-ghost-clone, .top-bar-ghost-clone { position: fixed; margin: 0 !important; pointer-events: none !important; mix-blend-mode: screen; animation: ghostFade var(--gd, .75s) cubic-bezier(.22, 1, .36, 1) forwards; }
 #matrix-rain-canvas { display: block; width: 100%; height: 100%; }
-body.overdrive-mode #matrix-rain-canvas { animation: matrixCanvasGlitch 2.2s steps(2, end) infinite; }
+body.overdrive-mode #matrix-rain-canvas { animation: matrixCanvasGlitch 2.0s steps(2, end) infinite; }
 .top-glitch-target { position: relative; }
-body.overdrive-mode .top-glitch-target { animation: topTextGlitch 3.2s steps(2, end) infinite; }
-body.overdrive-mode .top-glitch-target.is-bursting { animation: topBurstSnap .24s steps(3, end) infinite !important; }
+body.overdrive-mode .top-glitch-target { animation: topTextGlitch 3.0s steps(2, end) infinite; }
+body.overdrive-mode .top-glitch-target.is-bursting { animation: topBurstSnap .22s steps(3, end) infinite !important; }
 
-/* ============================================================================
-   09. PIRATE TV SNOW, RUNE TRAIL, 3-CARD TAROT & DIGITAL ALTAR (CANDLES/SMOKE)
-   ============================================================================ */
-@keyframes tvStaticJitter { 0% { background-position: 0 0; opacity: .96; } 100% { background-position: 30px 14px; opacity: 0; } }
-@keyframes runeTrailFade  { 0% { opacity: .95; transform: translate(-50%, -50%) scale(1); } 100% { opacity: 0; transform: translate(-50%, calc(-50% - 22px)) scale(.55) rotate(24deg); } }
-@keyframes tarotGlitchReveal {
-  0%   { opacity: 0; transform: scale(.86) skewX(-8deg); filter: hue-rotate(90deg) contrast(1.8); }
-  55%  { opacity: .95; transform: scale(1.03) skewX(4deg); }
-  100% { opacity: 1; transform: none; filter: none; }
-}
-@keyframes flameFlicker {
-  0%, 100% { transform: translateX(-50%) scale(1, 1) rotate(-3deg); opacity: .95; }
-  33%      { transform: translateX(-50%) scale(.88, 1.14) rotate(4deg); opacity: 1; }
-  66%      { transform: translateX(-50%) scale(1.08, .92) rotate(-2deg); opacity: .88; }
-}
-@keyframes altarSmokeRise {
-  0%   { opacity: .85; transform: translate(-50%, 0) scale(.85); }
-  100% { opacity: 0; transform: translate(calc(-50% + var(--sx, 12px)), -64px) scale(1.35); }
-}
+/* PIRATE TV SNOW, RUNE TRAIL, 3-CARD TAROT & DIGITAL ALTAR */
+@keyframes tvStaticJitter    { 0% { background-position: 0 0; opacity: .96; } 100% { background-position: 30px 14px; opacity: 0; } }
+@keyframes runeTrailFade     { 0% { opacity: .95; transform: translate(-50%, -50%) scale(1); } 100% { opacity: 0; transform: translate(-50%, calc(-50% - 22px)) scale(.55) rotate(24deg); } }
+@keyframes tarotGlitchReveal { 0% { opacity: 0; transform: scale(.86) skewX(-8deg); filter: hue-rotate(90deg) contrast(1.8); } 55% { opacity: .95; transform: scale(1.03) skewX(4deg); } 100% { opacity: 1; transform: none; filter: none; } }
+@keyframes flameFlicker      { 0%, 100% { transform: translateX(-50%) scale(1, 1) rotate(-3deg); opacity: .95; } 33% { transform: translateX(-50%) scale(.88, 1.14) rotate(4deg); opacity: 1; } 66% { transform: translateX(-50%) scale(1.08, .92) rotate(-2deg); opacity: .88; } }
+@keyframes altarSmokeRise    { 0% { opacity: .85; transform: translate(-50%, 0) scale(.85); } 100% { opacity: 0; transform: translate(calc(-50% + var(--sx, 12px)), -64px) scale(1.35); } }
 
 .tv-static-flash {
   background-image:
@@ -671,180 +481,61 @@ body.overdrive-mode .top-glitch-target.is-bursting { animation: topBurstSnap .24
   background-size: 9px 9px, 100% 4px;
   animation: tvStaticJitter .32s steps(4, end) forwards;
 }
-.rune-trail-particle {
-  position: fixed;
-  pointer-events: none;
-  user-select: none;
-  font-family: 'Share Tech Mono', monospace;
-  font-weight: 700;
-  text-shadow: 0 0 8px currentColor;
-  animation: runeTrailFade .68s ease-out forwards;
-}
+.rune-trail-particle { position: fixed; pointer-events: none; user-select: none; font-family: 'Share Tech Mono', monospace; font-weight: 700; text-shadow: 0 0 8px currentColor; animation: runeTrailFade .68s ease-out forwards; }
 .tarot-reveal { animation: tarotGlitchReveal .36s steps(4, end) forwards; }
 
-/* Digital Altar Candles & Incense */
-.altar-candle {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  cursor: pointer;
-  padding-top: 22px;
-  transition: transform .15s ease;
-}
+.altar-candle { position: relative; display: flex; flex-direction: column; align-items: center; cursor: pointer; padding-top: 22px; transition: transform .15s ease; }
 .altar-candle:hover { transform: translateY(-2px); }
 .altar-flame {
-  position: absolute;
-  top: 2px;
-  left: 50%;
-  width: 12px;
-  height: 18px;
-  border-radius: 50% 50% 45% 45%;
+  position: absolute; top: 2px; left: 50%; width: 12px; height: 18px; border-radius: 50% 50% 45% 45%;
   background: radial-gradient(circle at 50% 70%, #ffffff 0%, #ffff00 40%, #ff6b00 75%, transparent 100%);
   box-shadow: 0 0 14px #ffae00, 0 0 26px rgba(255, 115, 0, .65);
-  opacity: 0;
-  pointer-events: none;
-  transform: translateX(-50%);
+  opacity: 0; pointer-events: none; transform: translateX(-50%);
 }
-.altar-candle.is-lit .altar-flame {
-  opacity: 1;
-  animation: flameFlicker .45s ease-in-out infinite;
-}
-.altar-wax {
-  width: 24px;
-  height: 44px;
-  border-radius: 2px 2px 1px 1px;
-  border: 1px solid rgba(245, 210, 122, .45);
-  background: linear-gradient(180deg, #e7dfcc, #9b8e78);
-  position: relative;
-}
-.altar-candle.is-lit .altar-wax {
-  box-shadow: 0 0 16px rgba(255, 180, 40, .35);
-}
-.altar-smoke-glyph {
-  position: absolute;
-  pointer-events: none;
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 11px;
-  color: rgba(0, 240, 255, .82);
-  text-shadow: 0 0 8px rgba(57, 255, 20, .6);
-  animation: altarSmokeRise 2.1s ease-out forwards;
-}
+.altar-candle.is-lit .altar-flame { opacity: 1; animation: flameFlicker .45s ease-in-out infinite; }
+.altar-wax { width: 24px; height: 44px; border-radius: 2px 2px 1px 1px; border: 1px solid rgba(245, 210, 122, .45); background: linear-gradient(180deg, #e7dfcc, #9b8e78); }
+.altar-candle.is-lit .altar-wax { box-shadow: 0 0 16px rgba(255, 180, 40, .35); }
+.altar-smoke-glyph { position: absolute; pointer-events: none; font-family: 'Share Tech Mono', monospace; font-size: 11px; color: rgba(0, 240, 255, .82); text-shadow: 0 0 8px rgba(57, 255, 20, .6); animation: altarSmokeRise 2.1s ease-out forwards; }
 
-/* ============================================================================
-   10. CYBER-LOCKER, VISITOR STAMPS, ZINE READER & ACHIEVEMENT TOASTS
-   ============================================================================ */
-.locker-item {
-  position: absolute;
-  cursor: grab;
-  touch-action: none;
-  user-select: none;
-  transition: box-shadow .15s ease;
-}
-.locker-item:active {
-  cursor: grabbing;
-  box-shadow: 0 12px 28px rgba(0, 0, 0, .9), 0 0 16px rgba(57, 255, 20, .35);
-}
+/* CYBER-LOCKER, RUNE STAMPS, ZINE READER & TOASTS */
+.locker-item { position: absolute; cursor: grab; touch-action: none; user-select: none; transition: box-shadow .15s ease; }
+.locker-item:active { cursor: grabbing; box-shadow: 0 12px 28px rgba(0, 0, 0, .9), 0 0 16px rgba(57, 255, 20, .35); }
 .locker-user-stamp {
-  position: absolute;
-  cursor: grab;
-  touch-action: none;
-  user-select: none;
-  padding: 2px 6px;
-  border-radius: 2px;
-  border: 1px dashed var(--acid);
-  background: rgba(5, 6, 7, .88);
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 18px;
-  line-height: 1.1;
+  position: absolute; cursor: grab; touch-action: none; user-select: none; padding: 2px 6px; border-radius: 2px;
+  border: 1px dashed var(--acid); background: rgba(5, 6, 7, .88); font-family: 'Share Tech Mono', monospace; font-size: 18px; line-height: 1.1;
   box-shadow: 2px 3px 0 #000, 0 0 12px rgba(57, 255, 20, .35);
 }
 
-/* Zine Reader Markdown Styling */
-.zine-prose h1, .zine-prose h2, .zine-prose h3 {
-  font-family: 'Special Elite', monospace;
-  color: var(--acid);
-  margin: .75rem 0 .4rem;
-  letter-spacing: .06em;
-}
-.zine-prose h1 { font-size: 1.25rem; }
-.zine-prose h2 { font-size: 1.05rem; color: var(--gold); }
+.zine-prose h1, .zine-prose h2, .zine-prose h3 { font-family: 'Special Elite', monospace; color: var(--acid); margin: .75rem 0 .4rem; letter-spacing: .06em; }
+.zine-prose h1 { font-size: 1.25rem; } .zine-prose h2 { font-size: 1.05rem; color: var(--gold); }
 .zine-prose p  { margin-bottom: .65rem; line-height: 1.6; }
-.zine-prose blockquote {
-  border-left: 3px solid var(--pink);
-  background: rgba(255, 31, 109, .08);
-  padding: .45rem .75rem;
-  margin: .65rem 0;
-  color: #f3e4ea;
-  font-style: italic;
-}
+.zine-prose blockquote { border-left: 3px solid var(--pink); background: rgba(255, 31, 109, .08); padding: .45rem .75rem; margin: .65rem 0; color: #f3e4ea; font-style: italic; }
 .zine-prose ul { list-style: "ᛟ "; padding-left: 1.25rem; margin: .5rem 0; }
 .zine-prose li { margin-bottom: .25rem; }
-.zine-prose code {
-  background: #0d1512;
-  border: 1px solid rgba(57, 255, 20, .35);
-  color: var(--cyan);
-  padding: 1px 4px;
-  font-family: 'Share Tech Mono', monospace;
-  font-size: .85em;
-}
+.zine-prose code { background: #0d1512; border: 1px solid rgba(57, 255, 20, .35); color: var(--cyan); padding: 1px 4px; font-family: 'Share Tech Mono', monospace; font-size: .85em; }
 
-/* Retro Achievement / Boss Toast Notifications */
-#z3-toast-stack {
-  position: fixed;
-  top: 56px;
-  right: 14px;
-  z-index: 88;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-  pointer-events: none;
-  max-width: min(320px, calc(100vw - 24px));
-}
+#z3-toast-stack { position: fixed; top: 56px; right: 14px; z-index: 88; display: flex; flex-direction: column; gap: 8px; pointer-events: none; max-width: min(320px, calc(100vw - 24px)); }
 @keyframes toastSlideIn { from { opacity: 0; transform: translateX(28px); } to { opacity: 1; transform: none; } }
-.z3-toast {
-  pointer-events: auto;
-  border: 1.5px solid var(--gold);
-  border-left: 5px solid var(--acid);
-  background: linear-gradient(135deg, #0b140d, #060708);
-  padding: 9px 12px;
-  box-shadow: 4px 5px 0 #000, 0 0 22px rgba(57, 255, 20, .35);
-  font-family: 'Share Tech Mono', monospace;
-  animation: toastSlideIn .25s ease-out forwards;
-}
+.z3-toast { pointer-events: auto; border: 1.5px solid var(--gold); border-left: 5px solid var(--acid); background: linear-gradient(135deg, #0b140d, #060708); padding: 9px 12px; box-shadow: 4px 5px 0 #000, 0 0 22px rgba(57, 255, 20, .35); font-family: 'Share Tech Mono', monospace; animation: toastSlideIn .25s ease-out forwards; }
 
-/* ============================================================================
-   11. OCCULT 5-LINE MARGINS, MINI SERAPHIMS & GILDED ARCH-SERAPH BOSS
-   ============================================================================ */
+/* OCCULT 5-LINE MARGINS, FLYING CHIBI CHERUBIMS/SERAPHIMS & ARCH-SERAPH BOSS */
 #z3-occult-veil-layer { position: fixed; inset: 0; z-index: 57; pointer-events: none; overflow: hidden; }
 #z3-occult-veil-canvas { display: block; width: 100%; height: 100%; }
 #z3-seraph-layer { position: fixed; inset: 0; z-index: 58; pointer-events: none; overflow: hidden; }
 
 .z3-seraph {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 72px;
-  height: 60px;
-  pointer-events: auto;
-  cursor: crosshair;
-  user-select: none;
+  position: fixed; top: 0; left: 0; width: 74px; height: 62px; pointer-events: auto; cursor: crosshair; user-select: none;
   will-change: transform, opacity;
   filter:
-    drop-shadow(0 0 5px var(--sr-glow, rgba(57, 255, 20, .9)))
-    drop-shadow(-1.5px 0 0 rgba(255, 31, 109, .75))
-    drop-shadow(1.5px 0 0 rgba(0, 240, 255, .75));
+    drop-shadow(0 0 6px var(--sr-glow, rgba(57, 255, 20, .92)))
+    drop-shadow(-1.5px 0 0 rgba(255, 31, 109, .78))
+    drop-shadow(1.5px 0 0 rgba(0, 240, 255, .78));
 }
 .z3-seraph.is-boss {
-  width: 118px;
-  height: 98px;
-  filter:
-    drop-shadow(0 0 12px rgba(245, 210, 122, .95))
-    drop-shadow(0 0 24px rgba(255, 31, 109, .8));
+  width: 120px; height: 100px;
+  filter: drop-shadow(0 0 12px rgba(245, 210, 122, .95)) drop-shadow(0 0 24px rgba(255, 31, 109, .85));
 }
-.z3-seraph.is-hit {
-  filter: brightness(2.4) drop-shadow(0 0 18px #ffffff) !important;
-}
+.z3-seraph.is-hit { filter: brightness(2.4) drop-shadow(0 0 18px #ffffff) !important; }
 .z3-seraph.is-vanishing { pointer-events: none; transition: transform .16s ease-out, opacity .16s ease-out; opacity: 0 !important; }
 .z3-seraph svg { width: 100%; height: 100%; overflow: visible; }
 
@@ -862,155 +553,47 @@ body.overdrive-mode .top-glitch-target.is-bursting { animation: topBurstSnap .24
 .z3-seraph .sr-wing-top-r { transform-origin: 44px 23px; animation: z3WingUpperR var(--sr-flap, .62s) ease-in-out infinite .08s; }
 .z3-seraph .sr-halo       { animation: z3HaloFloat 2.1s ease-in-out infinite; }
 .z3-seraph .sr-eye        { transform-origin: 40px 28px; animation: z3SeraphBlink 4.6s steps(3, end) infinite; }
-.z3-seraph-spark {
-  position: fixed;
-  pointer-events: none;
-  user-select: none;
-  font-family: 'Share Tech Mono', monospace;
-  font-size: 10px;
-  font-weight: 700;
-  text-shadow: 0 0 7px currentColor;
-  animation: z3SparkFade .75s ease-out forwards;
-}
+.z3-seraph-spark { position: fixed; pointer-events: none; user-select: none; font-family: 'Share Tech Mono', monospace; font-size: 10px; font-weight: 700; text-shadow: 0 0 7px currentColor; animation: z3SparkFade .75s ease-out forwards; }
 
-/* ============================================================================
-   12. MOBILE VIEW OPTIMIZER (< 1024px) — PRESERVES DESKTOP WEB VIEW 100%
-   ============================================================================ */
-#z3-mob-dock,
-#z3-mob-sheet-backdrop,
-.z3-mob-chevron { display: none; }
+/* MOBILE VIEW OPTIMIZER (< 1024px ONLY — PRESERVES DESKTOP 100%) */
+#z3-mob-dock, #z3-mob-sheet-backdrop, .z3-mob-chevron { display: none; }
 
 @media (max-width: 1023px) {
-  html, body {
-    overflow-x: clip !important;
-    background-attachment: scroll !important;
-    -webkit-tap-highlight-color: rgba(57, 255, 20, .18);
-  }
+  html, body { overflow-x: clip !important; background-attachment: scroll !important; -webkit-tap-highlight-color: rgba(57, 255, 20, .18); }
   body { padding-bottom: calc(74px + env(safe-area-inset-bottom, 0px)) !important; }
   main, #main-island-anchor, aside section, aside nav { scroll-margin-top: 86px; }
   .main-island-wrap::before { inset: -6px -2px; filter: blur(8px); }
   #cli-input, input[type="text"], textarea, select { font-size: 16px !important; }
   [data-close-inline-ad] { min-width: 34px; min-height: 30px; display: inline-flex; align-items: center; justify-content: center; }
-
-  #z3-ad-dir-dock {
-    bottom: calc(68px + env(safe-area-inset-bottom, 0px)) !important;
-    right: 10px !important;
-    padding: 6px 10px !important;
-    font-size: 10px !important;
-    z-index: 66 !important;
-  }
+  #z3-ad-dir-dock { bottom: calc(68px + env(safe-area-inset-bottom, 0px)) !important; right: 10px !important; padding: 6px 10px !important; font-size: 10px !important; z-index: 66 !important; }
 
   .z3-mob-collapsible-hdr { cursor: pointer; user-select: none; }
-  .z3-mob-chevron {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-left: 6px;
-    padding: 1px 5px;
-    border-radius: 2px;
-    border: 1px solid rgba(57, 255, 20, .45);
-    background: rgba(5, 6, 7, .85);
-    color: var(--acid);
-    font-family: 'Share Tech Mono', monospace;
-    font-size: 10px;
-    transition: transform .18s ease;
-  }
+  .z3-mob-chevron { display: inline-flex; align-items: center; justify-content: center; margin-left: 6px; padding: 1px 5px; border-radius: 2px; border: 1px solid rgba(57, 255, 20, .45); background: rgba(5, 6, 7, .85); color: var(--acid); font-family: 'Share Tech Mono', monospace; font-size: 10px; transition: transform .18s ease; }
   .z3-mob-collapsed .z3-mob-chevron { transform: rotate(-90deg); color: var(--gold); border-color: rgba(245, 210, 122, .45); }
   .z3-mob-collapsed > :not(.z3-mob-collapsible-hdr) { display: none !important; }
 
   #z3-mob-dock {
-    display: grid;
-    grid-template-columns: repeat(5, minmax(0, 1fr));
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 68;
-    padding: 5px 6px calc(6px + env(safe-area-inset-bottom, 0px));
-    gap: 4px;
+    display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); position: fixed; left: 0; right: 0; bottom: 0; z-index: 68;
+    padding: 5px 6px calc(6px + env(safe-area-inset-bottom, 0px)); gap: 4px;
     background: linear-gradient(180deg, rgba(8, 12, 11, .97), rgba(4, 5, 6, .99));
-    border-top: 2px solid rgba(57, 255, 20, .75);
-    box-shadow: 0 -8px 26px rgba(0, 0, 0, .92);
-    backdrop-filter: blur(8px);
-    font-family: 'Share Tech Mono', monospace;
+    border-top: 2px solid rgba(57, 255, 20, .75); box-shadow: 0 -8px 26px rgba(0, 0, 0, .92);
+    backdrop-filter: blur(8px); font-family: 'Share Tech Mono', monospace;
   }
   .z3-mob-dock-btn {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 2px;
-    min-height: 46px;
-    border-radius: 3px;
-    border: 1px solid rgba(212, 140, 40, .3);
-    background: rgba(11, 14, 15, .92);
-    color: var(--bone);
-    font-size: 9px;
-    font-weight: 700;
-    letter-spacing: .07em;
-    cursor: pointer;
+    position: relative; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; min-height: 46px;
+    border-radius: 3px; border: 1px solid rgba(212, 140, 40, .3); background: rgba(11, 14, 15, .92);
+    color: var(--bone); font-size: 9px; font-weight: 700; letter-spacing: .07em; cursor: pointer;
   }
   .z3-mob-dock-btn .z3-dock-ico { font-size: 14px; line-height: 1; }
   .z3-mob-dock-btn.is-active { border-color: var(--acid); background: rgba(57, 255, 20, .18); color: var(--acid); }
   .z3-mob-dock-btn[data-mob-action="chat"].is-active { border-color: var(--pink); background: rgba(255, 31, 109, .18); color: var(--pink); }
-  .z3-mob-dock-btn[data-mob-action="synth"].is-live::after {
-    content: "";
-    position: absolute;
-    top: 4px;
-    right: 6px;
-    width: 6px;
-    height: 6px;
-    border-radius: 999px;
-    background: var(--cyan);
-    box-shadow: 0 0 8px var(--cyan);
-  }
+  .z3-mob-dock-btn[data-mob-action="synth"].is-live::after { content: ""; position: absolute; top: 4px; right: 6px; width: 6px; height: 6px; border-radius: 999px; background: var(--cyan); box-shadow: 0 0 8px var(--cyan); }
 
-  #z3-mob-sheet-backdrop {
-    position: fixed;
-    inset: 0;
-    z-index: 76;
-    display: none;
-    align-items: flex-end;
-    justify-content: center;
-    background: rgba(3, 4, 5, .78);
-    backdrop-filter: blur(3px);
-  }
+  #z3-mob-sheet-backdrop { position: fixed; inset: 0; z-index: 76; display: none; align-items: flex-end; justify-content: center; background: rgba(3, 4, 5, .78); backdrop-filter: blur(3px); }
   #z3-mob-sheet-backdrop.is-open { display: flex; }
-  #z3-mob-sheet {
-    width: 100%;
-    max-width: 620px;
-    max-height: 80dvh;
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px 10px 0 0;
-    border-top: 2px solid var(--acid);
-    background: linear-gradient(180deg, #0d1314, #050607);
-    box-shadow: 0 -14px 40px rgba(0, 0, 0, .96);
-    overflow: hidden;
-  }
-  .z3-sheet-body {
-    padding: 12px 12px calc(18px + env(safe-area-inset-bottom, 0px));
-    overflow-y: auto;
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 8px;
-  }
-  .z3-sheet-card {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 3px;
-    padding: 11px 10px;
-    border-radius: 3px;
-    border: 1px solid rgba(212, 140, 40, .42);
-    border-left: 3px solid var(--card-accent, var(--acid));
-    background: rgba(8, 11, 12, .96);
-    color: var(--bone);
-    text-align: left;
-    font-family: 'Share Tech Mono', monospace;
-    cursor: pointer;
-  }
+  #z3-mob-sheet { width: 100%; max-width: 620px; max-height: 80dvh; display: flex; flex-direction: column; border-radius: 10px 10px 0 0; border-top: 2px solid var(--acid); background: linear-gradient(180deg, #0d1314, #050607); box-shadow: 0 -14px 40px rgba(0, 0, 0, .96); overflow: hidden; }
+  .z3-sheet-body { padding: 12px 12px calc(18px + env(safe-area-inset-bottom, 0px)); overflow-y: auto; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .z3-sheet-card { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; padding: 11px 10px; border-radius: 3px; border: 1px solid rgba(212, 140, 40, .42); border-left: 3px solid var(--card-accent, var(--acid)); background: rgba(8, 11, 12, .96); color: var(--bone); text-align: left; font-family: 'Share Tech Mono', monospace; cursor: pointer; }
   .z3-sheet-card.is-current { border-color: var(--card-accent, var(--acid)); background: rgba(57, 255, 20, .14); }
 }
 
@@ -1023,6 +606,6 @@ body.overdrive-mode .top-glitch-target.is-bursting { animation: topBurstSnap .24
   .z3-popup-win.sz-wide, .z3-popup-win.sz-lg { width: min(92vw, 305px); }
   .z3-popup-win.sz-tall { width: min(82vw, 240px); min-height: 0; }
   .z3-popup-x { width: 28px; height: 24px; font-size: 12px; }
-  .z3-seraph { width: 52px; height: 44px; opacity: .92; filter: drop-shadow(0 0 4px var(--sr-glow, rgba(57, 255, 20, .82))); }
-  .z3-seraph.is-boss { width: 88px; height: 74px; }
+  .z3-seraph { width: 54px; height: 46px; opacity: .94; filter: drop-shadow(0 0 4px var(--sr-glow, rgba(57, 255, 20, .82))); }
+  .z3-seraph.is-boss { width: 90px; height: 76px; }
 }
