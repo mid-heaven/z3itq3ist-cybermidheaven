@@ -285,7 +285,7 @@
   /* =========================================================================
      5. TOP BAR CONTROLS (DISPLAY RACK, SFX, CALM, CLOCK, TELEMETRY, MOON)
      ========================================================================= */
-  const DISPLAY_MODES = ['crt', 'phosphor', 'amber', 'clean'];
+  const DISPLAY_MODES = ['crt', 'phosphor', 'amber', 'clean', 'psychedelic'];
   let dispIdx = Math.max(0, DISPLAY_MODES.indexOf(lsGet(KEYS.display, 'crt')));
   function applyDisplayMode() {
     const mode = DISPLAY_MODES[dispIdx % DISPLAY_MODES.length];
