@@ -24,7 +24,7 @@
     "spotifyEmbed": "https://open.spotify.com/embed/playlist/4zjr6vrc8wSm24YPigzhbL?utm_source=generator&theme=0",
     "spotifyProfileUrl": "https://open.spotify.com/user/31pu6vk7wf2wceqmz5yimpwmvzh4?si=2962cbee675f415a",
     "spotifyLinerNotes": "Wala. Trip ko lang ngayon.",
-    "updatedAt": "2026-11-27T14:58:51.769Z"
+    "updatedAt": "2026-11-27T15:02:23.225Z"
   },
   "operator": {
     "badge": "VERIFIED",
@@ -211,11 +211,11 @@
       "id": "inline-2",
       "enabled": true,
       "marquee": "🗿 ALERT!! 경고 // 警告 🪱",
-      "head": "GET INTO MY LITTLE SENTIMENTALITY!",
-      "sub": "Pasok na, SWIZSSS!",
-      "cta": "VISIT NEOW >>",
+      "head": "GET INTO MY LITTLE SENTIMENTALITY!🚨👁️👄👁️🚨",
+      "sub": "🚨Pasok na, SWIZSSS!🚨",
+      "cta": "💎↗ VISIT NEOW >>",
       "url": "https://mid-heaven.github.io/things/",
-      "img": "images/mwz3uldg-img_6799.jpg"
+      "img": "images/mwz401fk-screenshot_2026-11-27_225658.png"
     },
     {
       "id": "inline-3",
@@ -431,6 +431,67 @@
     }
   ],
   "archive": [
+    {
+      "id": "in-mwz41d6h",
+      "createdAt": "2026-11-27T15:02:23.225Z",
+      "category": "INLINE_5",
+      "title": "5 NEON INLINE ADS SAVED",
+      "body": "Updated 5 Neon Inline Ads.",
+      "restoreData": {
+        "inlineAds": [
+          {
+            "id": "inline-1",
+            "enabled": true,
+            "marquee": "🦐🪩 FREE BRAIN RAM DOWNLOAD!! 紧急通知 999% 🧀🦖 무료 혜택 지금 클릭 👁️👄👁️ 🛸 NO SCAM 1000% REAL!! 🚽🔥",
+            "head": "⚡ OVERCLOCK YOUR SOUL 999%!! 神秘下载 // 무료 다운로드 🛸",
+            "sub": "SALVAGED CYBER-BARGAIN • 100% HAUNTED PIXELS • CLICK BEFORE SIGNAL DECAYS 🧀",
+            "cta": "CLAIM NOW ↗",
+            "url": "https://example.com/inline-ad-1",
+            "img": "gifs/mwvs4ul8-4hv2mfjbj7ym4exhozirwkxmrjxi434b.gif"
+          },
+          {
+            "id": "inline-2",
+            "enabled": true,
+            "marquee": "🗿 ALERT!! 경고 // 警告 🪱",
+            "head": "GET INTO MY LITTLE SENTIMENTALITY!🚨👁️👄👁️🚨",
+            "sub": "🚨Pasok na, SWIZSSS!🚨",
+            "cta": "💎↗ VISIT NEOW >>",
+            "url": "https://mid-heaven.github.io/things/",
+            "img": "images/mwz401fk-screenshot_2026-11-27_225658.png"
+          },
+          {
+            "id": "inline-3",
+            "enabled": true,
+            "marquee": "",
+            "head": "SECRET MIXTAPE DROP // 秘密磁带 🪩",
+            "sub": "Edit all 5 inline neon banners directly from console.html!",
+            "cta": "OPEN PORTAL ↗",
+            "url": "https://example.com/inline-ad-3",
+            "img": ""
+          },
+          {
+            "id": "inline-4",
+            "enabled": true,
+            "marquee": "🧠 MEGA DEAL!! 奇迹 // 기적 🚽",
+            "head": "BUY 1 PIXEL GET 99 GHOSTS!! 🫧🦖",
+            "sub": "",
+            "cta": "ENTER!! 进入/입장 💎↗",
+            "url": "https://example.com/inline-ad-4",
+            "img": ""
+          },
+          {
+            "id": "inline-5",
+            "enabled": true,
+            "marquee": "🛸🤡 LAST CHANCE!! 最后机会点击领取 🧀🦖 긴급 이벤트 마감 임박!! 👁️👄👁️ 9999% FREE CHEESE BONUS 🪩",
+            "head": "🗿 ULTIMATE CHAOS SHOP!! 终极商店 // 궁극의 링크 🧃🔥",
+            "sub": "🚨 CLICK BEFORE THE MOON EXPLODES!! 超级优惠 • 지금 클릭 • 100% LEGIT 🪱🪩",
+            "cta": "",
+            "url": "https://example.com/inline-ad-5",
+            "img": ""
+          }
+        ]
+      }
+    },
     {
       "id": "all-mwz3wu0q",
       "createdAt": "2026-11-27T14:58:51.769Z",
